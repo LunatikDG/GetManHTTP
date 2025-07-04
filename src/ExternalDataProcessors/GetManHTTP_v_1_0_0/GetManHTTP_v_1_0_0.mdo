@@ -3,7 +3,7 @@
   <producedTypes>
     <objectType typeId="92f1360d-38e5-4130-8988-74d7dca4d713" valueTypeId="105b644f-ddbf-43c5-92d3-3ff4970d762a"/>
   </producedTypes>
-  <name>GetManHTTP</name>
+  <name>GetManHTTP_v_1_0_0</name>
   <synonym>
     <key>ru</key>
     <value>GetMan (HTTP-клиент)</value>

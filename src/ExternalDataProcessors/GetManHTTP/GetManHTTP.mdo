@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mdclass:ExternalDataProcessor xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:core="http://g5.1c.ru/v8/dt/mcore" xmlns:mdclass="http://g5.1c.ru/v8/dt/metadata/mdclass" uuid="63536e14-a4ff-4444-b991-0546165b0f61">
+  <producedTypes>
+    <objectType typeId="92f1360d-38e5-4130-8988-74d7dca4d713" valueTypeId="105b644f-ddbf-43c5-92d3-3ff4970d762a"/>
+  </producedTypes>
+  <name>GetManHTTP</name>
+  <synonym>
+    <key>ru</key>
+    <value>GetMan (HTTP-клиент)</value>
+  </synonym>
+  <containedObjects classId="c3831ec8-d8d5-4f93-8a22-f9bfae07327f" objectId="1ec223ba-a94b-46b1-add9-72bfc146757c"/>
+  <attributes uuid="c181f80f-179c-48ae-9794-05cfc9d1b705">
+    <name>МетодHTTP</name>
+    <synonym>
+      <key>ru</key>
+      <value>Метод HTTP</value>
+    </synonym>
+    <type>
+      <types>String</types>
+      <stringQualifiers>
+        <length>10</length>
+      </stringQualifiers>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+  </attributes>
+</mdclass:ExternalDataProcessor>

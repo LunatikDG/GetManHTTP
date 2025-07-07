@@ -839,6 +839,35 @@
           <autoCommandBar>
             <name>ЗаголовкиЗапросаКоманднаяПанель</name>
             <id>61</id>
+            <items xsi:type="form:Button">
+              <name>ДобавитьЗаголовок</name>
+              <id>97</id>
+              <title>
+                <key>ru</key>
+                <value>Добавить</value>
+              </title>
+              <visible>true</visible>
+              <enabled>true</enabled>
+              <userVisible>
+                <common>true</common>
+              </userVisible>
+              <extendedTooltip>
+                <name>ДобавитьЗаголовокРасширеннаяПодсказка</name>
+                <id>98</id>
+                <type>Label</type>
+                <autoMaxWidth>true</autoMaxWidth>
+                <autoMaxHeight>true</autoMaxHeight>
+                <extInfo xsi:type="form:LabelDecorationExtInfo">
+                  <horizontalAlign>Left</horizontalAlign>
+                </extInfo>
+              </extendedTooltip>
+              <commandName>Form.Item.ЗаголовкиЗапроса.StandardCommand.Add</commandName>
+              <representation>Auto</representation>
+              <autoMaxWidth>true</autoMaxWidth>
+              <autoMaxHeight>true</autoMaxHeight>
+              <placementArea>UserCmds</placementArea>
+              <representationInContextMenu>Auto</representationInContextMenu>
+            </items>
             <horizontalAlign>Left</horizontalAlign>
           </autoCommandBar>
           <searchStringAddition>

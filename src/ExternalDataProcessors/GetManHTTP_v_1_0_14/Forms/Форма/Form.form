@@ -361,6 +361,35 @@
           <autoCommandBar>
             <name>ПараметрыЗапросаКоманднаяПанель</name>
             <id>21</id>
+            <items xsi:type="form:Button">
+              <name>ДобавитьПараметр</name>
+              <id>116</id>
+              <title>
+                <key>ru</key>
+                <value>Добавить</value>
+              </title>
+              <visible>true</visible>
+              <enabled>true</enabled>
+              <userVisible>
+                <common>true</common>
+              </userVisible>
+              <extendedTooltip>
+                <name>ДобавитьПараметрРасширеннаяПодсказка</name>
+                <id>117</id>
+                <type>Label</type>
+                <autoMaxWidth>true</autoMaxWidth>
+                <autoMaxHeight>true</autoMaxHeight>
+                <extInfo xsi:type="form:LabelDecorationExtInfo">
+                  <horizontalAlign>Left</horizontalAlign>
+                </extInfo>
+              </extendedTooltip>
+              <commandName>Form.Item.ПараметрыЗапроса.StandardCommand.Add</commandName>
+              <representation>Auto</representation>
+              <autoMaxWidth>true</autoMaxWidth>
+              <autoMaxHeight>true</autoMaxHeight>
+              <placementArea>UserCmds</placementArea>
+              <representationInContextMenu>Auto</representationInContextMenu>
+            </items>
             <horizontalAlign>Left</horizontalAlign>
           </autoCommandBar>
           <searchStringAddition>
@@ -471,6 +500,7 @@
           <fileDragMode>AsFileRef</fileDragMode>
           <rowFilter xsi:type="core:UndefinedValue"/>
         </items>
+        <visible>true</visible>
         <enabled>true</enabled>
         <userVisible>
           <common>true</common>
@@ -1452,7 +1482,7 @@
     <name>Объект</name>
     <id>1</id>
     <valueType>
-      <types>ExternalDataProcessor.GetManHTTP_v_1_0_13</types>
+      <types>ExternalDataProcessor.GetManHTTP_v_1_0_14</types>
     </valueType>
     <view>
       <common>true</common>

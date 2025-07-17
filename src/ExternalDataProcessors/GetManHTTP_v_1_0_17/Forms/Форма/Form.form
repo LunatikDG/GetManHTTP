@@ -95,33 +95,6 @@
               <value>DELETE</value>
             </value>
           </choiceList>
-          <choiceList>
-            <presentation>
-              <key>ru</key>
-              <value>CONNECT</value>
-            </presentation>
-            <value xsi:type="core:StringValue">
-              <value>CONNECT</value>
-            </value>
-          </choiceList>
-          <choiceList>
-            <presentation>
-              <key>ru</key>
-              <value>OPTIONS</value>
-            </presentation>
-            <value xsi:type="core:StringValue">
-              <value>OPTIONS</value>
-            </value>
-          </choiceList>
-          <choiceList>
-            <presentation>
-              <key>ru</key>
-              <value>TRACE</value>
-            </presentation>
-            <value xsi:type="core:StringValue">
-              <value>TRACE</value>
-            </value>
-          </choiceList>
         </extInfo>
       </items>
       <items xsi:type="form:FormField">
@@ -1157,6 +1130,32 @@
       <items xsi:type="form:FormGroup">
         <name>СтраницаТелоЗапроса</name>
         <id>82</id>
+        <items xsi:type="form:Button">
+          <name>ФорматироватьТело</name>
+          <id>120</id>
+          <visible>true</visible>
+          <enabled>true</enabled>
+          <userVisible>
+            <common>true</common>
+          </userVisible>
+          <extendedTooltip>
+            <name>ФорматироватьТелоРасширеннаяПодсказка</name>
+            <id>121</id>
+            <type>Label</type>
+            <autoMaxWidth>true</autoMaxWidth>
+            <autoMaxHeight>true</autoMaxHeight>
+            <extInfo xsi:type="form:LabelDecorationExtInfo">
+              <horizontalAlign>Left</horizontalAlign>
+            </extInfo>
+          </extendedTooltip>
+          <type>UsualButton</type>
+          <commandName>Form.Command.ФорматироватьТело</commandName>
+          <representation>Auto</representation>
+          <autoMaxWidth>true</autoMaxWidth>
+          <autoMaxHeight>true</autoMaxHeight>
+          <placementArea>UserCmds</placementArea>
+          <representationInContextMenu>Auto</representationInContextMenu>
+        </items>
         <items xsi:type="form:FormField">
           <name>ТелоЗапроса</name>
           <id>84</id>
@@ -1512,7 +1511,7 @@
     <name>Объект</name>
     <id>1</id>
     <valueType>
-      <types>ExternalDataProcessor.GetManHTTP_v_1_0_15</types>
+      <types>ExternalDataProcessor.GetManHTTP_v_1_0_17</types>
     </valueType>
     <view>
       <common>true</common>
@@ -1884,6 +1883,23 @@
     <action xsi:type="form:FormCommandHandlerContainer">
       <handler>
         <name>Отправить</name>
+      </handler>
+    </action>
+    <currentRowUse>Auto</currentRowUse>
+  </formCommands>
+  <formCommands>
+    <name>ФорматироватьТело</name>
+    <title>
+      <key>ru</key>
+      <value>Форматировать тело</value>
+    </title>
+    <id>3</id>
+    <use>
+      <common>true</common>
+    </use>
+    <action xsi:type="form:FormCommandHandlerContainer">
+      <handler>
+        <name>ФорматироватьТело</name>
       </handler>
     </action>
     <currentRowUse>Auto</currentRowUse>

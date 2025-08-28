@@ -3,13 +3,13 @@
   <producedTypes>
     <objectType typeId="92f1360d-38e5-4130-8988-74d7dca4d713" valueTypeId="105b644f-ddbf-43c5-92d3-3ff4970d762a"/>
   </producedTypes>
-  <name>GetManHTTP_v_1_0_17</name>
+  <name>GetManHTTP_v_1_0_18</name>
   <synonym>
     <key>ru</key>
     <value>GetMan (HTTP-клиент)</value>
   </synonym>
   <containedObjects classId="c3831ec8-d8d5-4f93-8a22-f9bfae07327f" objectId="1ec223ba-a94b-46b1-add9-72bfc146757c"/>
-  <defaultForm>ExternalDataProcessor.GetManHTTP_v_1_0_17.Form.Форма</defaultForm>
+  <defaultForm>ExternalDataProcessor.GetManHTTP_v_1_0_18.Form.Форма</defaultForm>
   <forms uuid="2709dc97-2905-4090-b1c8-998529f751df">
     <name>Форма</name>
     <synonym>

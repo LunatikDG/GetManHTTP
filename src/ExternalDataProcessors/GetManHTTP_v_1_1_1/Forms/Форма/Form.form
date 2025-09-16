@@ -1164,9 +1164,65 @@
       <name>СтраницаТелоЗапроса</name>
       <id>82</id>
       <items xsi:type="form:FormField">
+        <name>ВариантТелаЗапроса</name>
+        <id>155</id>
+        <visible>true</visible>
+        <enabled>true</enabled>
+        <userVisible>
+          <common>true</common>
+        </userVisible>
+        <dataPath xsi:type="form:DataPath">
+          <segments>ВариантТелаЗапроса</segments>
+        </dataPath>
+        <titleLocation>Top</titleLocation>
+        <handlers>
+          <event>OnChange</event>
+          <name>ВариантТелаЗапросаПриИзменении</name>
+        </handlers>
+        <extendedTooltip>
+          <name>ВариантТелаЗапросаРасширеннаяПодсказка</name>
+          <id>157</id>
+          <type>Label</type>
+          <autoMaxWidth>true</autoMaxWidth>
+          <autoMaxHeight>true</autoMaxHeight>
+          <extInfo xsi:type="form:LabelDecorationExtInfo">
+            <horizontalAlign>Left</horizontalAlign>
+          </extInfo>
+        </extendedTooltip>
+        <contextMenu>
+          <name>ВариантТелаЗапросаКонтекстноеМеню</name>
+          <id>156</id>
+          <autoFill>true</autoFill>
+        </contextMenu>
+        <type>RadioButtonField</type>
+        <editMode>Enter</editMode>
+        <showInHeader>true</showInHeader>
+        <headerHorizontalAlign>Left</headerHorizontalAlign>
+        <showInFooter>true</showInFooter>
+        <extInfo xsi:type="form:RadioButtonsFieldExtInfo">
+          <choiceList>
+            <presentation>
+              <key>ru</key>
+              <value>JSON</value>
+            </presentation>
+            <value xsi:type="core:StringValue">
+              <value>JSON</value>
+            </value>
+          </choiceList>
+          <choiceList>
+            <presentation>
+              <key>ru</key>
+              <value>Двоичные данные</value>
+            </presentation>
+            <value xsi:type="core:StringValue">
+              <value>BINARY</value>
+            </value>
+          </choiceList>
+        </extInfo>
+      </items>
+      <items xsi:type="form:FormField">
         <name>ТелоЗапроса</name>
         <id>84</id>
-        <visible>true</visible>
         <enabled>true</enabled>
         <userVisible>
           <common>true</common>
@@ -1207,6 +1263,31 @@
           <horizontalStretch>true</horizontalStretch>
           <verticalStretch>true</verticalStretch>
         </extInfo>
+      </items>
+      <items xsi:type="form:Button">
+        <name>ЗагрузитьВходящийФайл</name>
+        <id>158</id>
+        <enabled>true</enabled>
+        <userVisible>
+          <common>true</common>
+        </userVisible>
+        <extendedTooltip>
+          <name>ЗагрузитьВходящийФайлРасширеннаяПодсказка</name>
+          <id>159</id>
+          <type>Label</type>
+          <autoMaxWidth>true</autoMaxWidth>
+          <autoMaxHeight>true</autoMaxHeight>
+          <extInfo xsi:type="form:LabelDecorationExtInfo">
+            <horizontalAlign>Left</horizontalAlign>
+          </extInfo>
+        </extendedTooltip>
+        <type>UsualButton</type>
+        <commandName>Form.Command.ЗагрузитьВходящийФайл</commandName>
+        <representation>Auto</representation>
+        <autoMaxWidth>true</autoMaxWidth>
+        <autoMaxHeight>true</autoMaxHeight>
+        <placementArea>UserCmds</placementArea>
+        <representationInContextMenu>Auto</representationInContextMenu>
       </items>
       <visible>true</visible>
       <enabled>true</enabled>
@@ -1866,7 +1947,7 @@
     <name>Объект</name>
     <id>1</id>
     <valueType>
-      <types>ExternalDataProcessor.GetManHTTP_v_1_0_21</types>
+      <types>ExternalDataProcessor.GetManHTTP_v_1_1_1</types>
     </valueType>
     <view>
       <common>true</common>
@@ -2296,6 +2377,60 @@
       </edit>
     </columns>
   </attributes>
+  <attributes>
+    <name>ВариантТелаЗапроса</name>
+    <title>
+      <key>ru</key>
+      <value>Вариант тела запроса</value>
+    </title>
+    <id>25</id>
+    <valueType>
+      <types>String</types>
+      <stringQualifiers/>
+    </valueType>
+    <view>
+      <common>true</common>
+    </view>
+    <edit>
+      <common>true</common>
+    </edit>
+  </attributes>
+  <attributes>
+    <name>ДвоичныеДанныеВходящие</name>
+    <title>
+      <key>ru</key>
+      <value>Двоичные данные входящие</value>
+    </title>
+    <id>26</id>
+    <valueType>
+      <types>String</types>
+      <stringQualifiers/>
+    </valueType>
+    <view>
+      <common>true</common>
+    </view>
+    <edit>
+      <common>true</common>
+    </edit>
+  </attributes>
+  <attributes>
+    <name>ПутьКФайлуВх</name>
+    <title>
+      <key>ru</key>
+      <value>Путь к файлу вх</value>
+    </title>
+    <id>27</id>
+    <valueType>
+      <types>String</types>
+      <stringQualifiers/>
+    </valueType>
+    <view>
+      <common>true</common>
+    </view>
+    <edit>
+      <common>true</common>
+    </edit>
+  </attributes>
   <formCommands>
     <name>Отправить</name>
     <title>
@@ -2309,6 +2444,23 @@
     <action xsi:type="form:FormCommandHandlerContainer">
       <handler>
         <name>Отправить</name>
+      </handler>
+    </action>
+    <currentRowUse>Auto</currentRowUse>
+  </formCommands>
+  <formCommands>
+    <name>ЗагрузитьВходящийФайл</name>
+    <title>
+      <key>ru</key>
+      <value>Загрузить входящий файл</value>
+    </title>
+    <id>5</id>
+    <use>
+      <common>true</common>
+    </use>
+    <action xsi:type="form:FormCommandHandlerContainer">
+      <handler>
+        <name>ЗагрузитьВходящийФайл</name>
       </handler>
     </action>
     <currentRowUse>Auto</currentRowUse>

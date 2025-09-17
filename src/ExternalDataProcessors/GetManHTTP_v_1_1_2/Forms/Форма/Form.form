@@ -1947,7 +1947,7 @@
     <name>Объект</name>
     <id>1</id>
     <valueType>
-      <types>ExternalDataProcessor.GetManHTTP_v_1_1_1</types>
+      <types>ExternalDataProcessor.GetManHTTP_v_1_1_2</types>
     </valueType>
     <view>
       <common>true</common>

@@ -3,7 +3,7 @@
 [![Build Status](https://img.shields.io/badge/build-passing-brightgreen)](#)
 [![License](https://img.shields.io/badge/license-GPL--3.0-blue)](https://github.com/LunatikDG/GetManHTTP/blob/main/LICENSE)
 [![1C Version](https://img.shields.io/badge/1С-8.3.26%2B-orange)](#)
-[![Release](https://img.shields.io/badge/release-1.1.58-red)](https://github.com/LunatikDG/GetManHTTP/releases)
+[![Release](https://img.shields.io/badge/release-1.2.2-red)](https://github.com/LunatikDG/GetManHTTP/releases)
 
 <p align="center">
   <a href="#english">🇬🇧 English</a> •
@@ -28,7 +28,8 @@ something the platform doesn't handle well out of the box.
 - JSON and XML request body support
 - Binary file upload support
 - Response and status code handling
-- Save response body to a file
+- Save response body to a file (auto-selects JSON/XML/HTML by Content-Type)
+- Settings form with configurable HTTP timeout
 - Authorization support (Basic, Bearer Token)
 - HTTPS support
 - Persists the last used data in the processor between 1C sessions
@@ -75,7 +76,8 @@ Feedback, suggestions and bug reports are welcome:
 - Поддержка JSON- и XML-тел запросов
 - Отправка двоичных файлов
 - Обработка ответа и кода состояния
-- Сохранение тела ответа в файл
+- Сохранение тела ответа в файл (автовыбор JSON/XML/HTML по Content-Type)
+- Форма настроек с настраиваемым таймаутом HTTP
 - Работа с авторизацией (Basic, Bearer Token)
 - Поддержка HTTPS
 - Сохраняет последние данные в обработке при выходе из 1С

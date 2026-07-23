@@ -3,7 +3,7 @@
 [![Build Status](https://img.shields.io/badge/build-passing-brightgreen)](#)
 [![License](https://img.shields.io/badge/license-GPL--3.0-blue)](https://github.com/LunatikDG/GetManHTTP/blob/main/LICENSE)
 [![1C Version](https://img.shields.io/badge/1С-8.3.26%2B-orange)](#)
-[![Release](https://img.shields.io/badge/release-1.2.2-red)](https://github.com/LunatikDG/GetManHTTP/releases)
+[![Release](https://img.shields.io/badge/release-1.2.4-red)](https://github.com/LunatikDG/GetManHTTP/releases)
 
 <p align="center">
   <a href="#english">🇬🇧 English</a> •
@@ -25,8 +25,8 @@ something the platform doesn't handle well out of the box.
 
 - Sends **GET**, **POST**, **PUT**, **DELETE**, **PATCH** requests
 - Custom headers and query parameters
-- JSON and XML request body support
-- Binary file upload support
+- JSON, XML, form-data and binary request body support
+- Option to send a request without a body
 - Response and status code handling
 - Save response body to a file (auto-selects JSON/XML/HTML by Content-Type)
 - Settings form with configurable HTTP timeout
@@ -73,7 +73,8 @@ Feedback, suggestions and bug reports are welcome:
 
 - Отправка **GET**, **POST**, **PUT**, **DELETE**, **PATCH** запросов
 - Передача заголовков и параметров
-- Поддержка JSON- и XML-тел запросов
+- Поддержка JSON-, XML-, form-data- и двоичных тел запросов
+- Вариант отправки без тела запроса
 - Отправка двоичных файлов
 - Обработка ответа и кода состояния
 - Сохранение тела ответа в файл (автовыбор JSON/XML/HTML по Content-Type)

@@ -3,7 +3,7 @@
 [![Build Status](https://img.shields.io/badge/build-passing-brightgreen)](#)
 [![License](https://img.shields.io/badge/license-GPL--3.0-blue)](https://github.com/LunatikDG/GetManHTTP/blob/main/LICENSE)
 [![1C Version](https://img.shields.io/badge/1С-8.3.26%2B-orange)](#)
-[![Release](https://img.shields.io/badge/release-1.2.4-red)](https://github.com/LunatikDG/GetManHTTP/releases)
+[![Release](https://img.shields.io/badge/release-1.2.12-red)](https://github.com/LunatikDG/GetManHTTP/releases)
 
 <p align="center">
   <a href="#english">🇬🇧 English</a> •
@@ -24,6 +24,7 @@ something the platform doesn't handle well out of the box.
 ### Features
 
 - Sends **GET**, **POST**, **PUT**, **DELETE**, **PATCH** requests
+- Multiple saved requests in a numbered sidebar list (add / rename / delete / switch)
 - Custom headers and query parameters
 - JSON, XML, form-data and binary request body support
 - Option to send a request without a body
@@ -32,7 +33,7 @@ something the platform doesn't handle well out of the box.
 - Settings form with configurable HTTP timeout
 - Authorization support (Basic, Bearer Token)
 - HTTPS support
-- Persists the last used data in the processor between 1C sessions
+- Persists all request list items and their data between 1C sessions
 - Auto-save every 30 seconds while the form is open
 - Safe settings persistence on form close (skips save on platform shutdown)
 - Request execution time measurement
@@ -72,6 +73,7 @@ Feedback, suggestions and bug reports are welcome:
 ### Возможности
 
 - Отправка **GET**, **POST**, **PUT**, **DELETE**, **PATCH** запросов
+- Несколько сохранённых запросов в нумерованном списке слева (добавление / переименование / удаление / переключение)
 - Передача заголовков и параметров
 - Поддержка JSON-, XML-, form-data- и двоичных тел запросов
 - Вариант отправки без тела запроса
@@ -81,7 +83,7 @@ Feedback, suggestions and bug reports are welcome:
 - Форма настроек с настраиваемым таймаутом HTTP
 - Работа с авторизацией (Basic, Bearer Token)
 - Поддержка HTTPS
-- Сохраняет последние данные в обработке при выходе из 1С
+- Сохраняет все элементы списка запросов и их данные между сеансами 1С
 - Автосохранение каждые 30 секунд при открытой форме
 - Безопасное сохранение настроек при закрытии (без ошибки при завершении работы платформы)
 - Поддержка замера времени выполнения запроса

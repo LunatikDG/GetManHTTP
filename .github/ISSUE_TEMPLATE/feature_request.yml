@@ -1,0 +1,42 @@
+name: Feature request
+description: Предложить улучшение / Suggest an enhancement
+title: "[Feature]: "
+labels: ["enhancement"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Опишите идею и зачем она нужна.  
+        Describe the idea and why it would help.
+
+  - type: textarea
+    id: problem
+    attributes:
+      label: Какую задачу решаем / Problem to solve
+      description: Что сейчас неудобно или невозможно сделать
+    validations:
+      required: true
+
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Предложение / Proposed solution
+      description: Как вы видите новое поведение
+    validations:
+      required: true
+
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Альтернативы / Alternatives considered
+      description: Другие варианты, которые уже пробовали или рассматривали
+    validations:
+      required: false
+
+  - type: textarea
+    id: extra
+    attributes:
+      label: Дополнительно / Additional context
+      description: Примеры API, скриншоты, ссылки
+    validations:
+      required: false

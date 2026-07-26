@@ -1,0 +1,16 @@
+# OS
+Thumbs.db
+Desktop.ini
+.DS_Store
+
+# Editor / temp
+*.tmp
+*.bak
+*~
+*.log
+
+# Local release-notes drafts (used for gh release create, not committed)
+RELEASE_NOTES_*.md
+
+# EDT / Eclipse workspace (if opened from a parent folder)
+.metadata/

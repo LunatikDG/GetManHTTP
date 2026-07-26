@@ -1,0 +1,69 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - "v_*"
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    name: Create GitHub Release
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Resolve version and artifact
+        id: meta
+        shell: bash
+        run: |
+          TAG="${GITHUB_REF_NAME}"
+          EPF="bin/GetManHTTP_${TAG}.epf"
+
+          if [[ ! -f "${EPF}" ]]; then
+            echo "::error::File not found: ${EPF}"
+            echo "Put the built processor at bin/GetManHTTP_${TAG}.epf before pushing the tag."
+            ls -la bin || true
+            exit 1
+          fi
+
+          # v_1_2_12 -> 1.2.12
+          VERSION="${TAG#v_}"
+          VERSION="${VERSION//_/.}"
+
+          {
+            echo "tag=${TAG}"
+            echo "version=${VERSION}"
+            echo "epf=${EPF}"
+            echo "asset_name=GetManHTTP_${TAG}.epf"
+          } >> "${GITHUB_OUTPUT}"
+
+      - name: Create release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ steps.meta.outputs.tag }}
+          name: GetManHTTP v${{ steps.meta.outputs.version }}
+          files: ${{ steps.meta.outputs.epf }}
+          fail_on_unmatched_files: true
+          generate_release_notes: true
+          body: |
+            ## 🇬🇧 English
+
+            ### Installation
+
+            1. Download `${{ steps.meta.outputs.asset_name }}` from this release
+            2. Open it in 1C via *File → Open*
+
+            ---
+
+            ## 🇷🇺 Русский
+
+            ### Установка
+
+            1. Скачайте `${{ steps.meta.outputs.asset_name }}` из этого релиза
+            2. Откройте в 1С через *Файл → Открыть*
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

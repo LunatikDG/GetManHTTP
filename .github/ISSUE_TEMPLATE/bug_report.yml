@@ -1,0 +1,76 @@
+name: Bug report
+description: Сообщить об ошибке / Report a bug
+title: "[Bug]: "
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Опишите проблему как можно точнее.  
+        Please describe the issue as clearly as possible.
+
+  - type: input
+    id: getman-version
+    attributes:
+      label: Версия GetManHTTP / GetManHTTP version
+      description: Например, 1.2.12 (из имени .epf или релиза на GitHub)
+      placeholder: 1.2.12
+    validations:
+      required: true
+
+  - type: input
+    id: platform-version
+    attributes:
+      label: Версия 1С / 1C platform version
+      description: Например, 8.3.27.xxxx
+      placeholder: 8.3.27.16498
+    validations:
+      required: true
+
+  - type: dropdown
+    id: client-type
+    attributes:
+      label: Клиент / Client
+      options:
+        - Толстый клиент (managed)
+        - Тонкий клиент
+        - Веб-клиент
+        - Не уверен / Not sure
+    validations:
+      required: true
+
+  - type: textarea
+    id: steps
+    attributes:
+      label: Шаги воспроизведения / Steps to reproduce
+      description: Что вы делали до ошибки
+      placeholder: |
+        1. Открыл обработку
+        2. ...
+        3. ...
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: Ожидаемое поведение / Expected behavior
+    validations:
+      required: true
+
+  - type: textarea
+    id: actual
+    attributes:
+      label: Фактическое поведение / Actual behavior
+      description: Текст ошибки, скриншот (можно приложить), что произошло вместо ожидаемого
+    validations:
+      required: true
+
+  - type: textarea
+    id: extra
+    attributes:
+      label: Дополнительно / Additional context
+      description: HTTP-метод, HTTPS, авторизация, тип тела запроса и т.п. (без паролей и токенов)
+      placeholder: POST, HTTPS, body JSON, автосохранение выключено...
+    validations:
+      required: false

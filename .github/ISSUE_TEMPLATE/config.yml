@@ -1,0 +1,8 @@
+blank_issues_enabled: true
+contact_links:
+  - name: Telegram
+    url: https://t.me/LunatikDG
+    about: Быстрая обратная связь / quick feedback
+  - name: Email
+    url: mailto:main@lunatikdg.ru
+    about: Замечания и пожелания по почте / email feedback

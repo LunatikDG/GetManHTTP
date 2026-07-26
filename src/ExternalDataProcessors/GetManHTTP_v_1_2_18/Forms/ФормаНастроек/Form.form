@@ -49,6 +49,92 @@
       <textEdit>true</textEdit>
     </extInfo>
   </items>
+  <items xsi:type="form:FormField">
+    <name>АвтосохранениеВключено</name>
+    <id>10</id>
+    <visible>true</visible>
+    <enabled>true</enabled>
+    <userVisible>
+      <common>true</common>
+    </userVisible>
+    <dataPath xsi:type="form:DataPath">
+      <segments>АвтосохранениеВключено</segments>
+    </dataPath>
+    <titleLocation>Right</titleLocation>
+    <toolTip>
+      <key>ru</key>
+      <value>Периодически сохранять список запросов и настройки, пока форма открыта.</value>
+    </toolTip>
+    <handlers>
+      <event>OnChange</event>
+      <name>АвтосохранениеВключеноПриИзменении</name>
+    </handlers>
+    <extendedTooltip>
+      <name>АвтосохранениеВключеноРасширеннаяПодсказка</name>
+      <id>11</id>
+      <type>Label</type>
+      <autoMaxWidth>true</autoMaxWidth>
+      <autoMaxHeight>true</autoMaxHeight>
+      <extInfo xsi:type="form:LabelDecorationExtInfo">
+        <horizontalAlign>Left</horizontalAlign>
+      </extInfo>
+    </extendedTooltip>
+    <contextMenu>
+      <name>АвтосохранениеВключеноКонтекстноеМеню</name>
+      <id>12</id>
+      <autoFill>true</autoFill>
+    </contextMenu>
+    <type>CheckBoxField</type>
+    <editMode>Enter</editMode>
+    <showInHeader>true</showInHeader>
+    <headerHorizontalAlign>Left</headerHorizontalAlign>
+    <showInFooter>true</showInFooter>
+  </items>
+  <items xsi:type="form:FormField">
+    <name>ИнтервалАвтосохранения</name>
+    <id>13</id>
+    <visible>true</visible>
+    <enabled>true</enabled>
+    <userVisible>
+      <common>true</common>
+    </userVisible>
+    <dataPath xsi:type="form:DataPath">
+      <segments>ИнтервалАвтосохранения</segments>
+    </dataPath>
+    <titleLocation>Left</titleLocation>
+    <toolTip>
+      <key>ru</key>
+      <value>Интервал автосохранения в секундах. Минимум 1 секунда.</value>
+    </toolTip>
+    <extendedTooltip>
+      <name>ИнтервалАвтосохраненияРасширеннаяПодсказка</name>
+      <id>14</id>
+      <type>Label</type>
+      <autoMaxWidth>true</autoMaxWidth>
+      <autoMaxHeight>true</autoMaxHeight>
+      <extInfo xsi:type="form:LabelDecorationExtInfo">
+        <horizontalAlign>Left</horizontalAlign>
+      </extInfo>
+    </extendedTooltip>
+    <contextMenu>
+      <name>ИнтервалАвтосохраненияКонтекстноеМеню</name>
+      <id>15</id>
+      <autoFill>true</autoFill>
+    </contextMenu>
+    <type>InputField</type>
+    <editMode>Enter</editMode>
+    <showInHeader>true</showInHeader>
+    <headerHorizontalAlign>Left</headerHorizontalAlign>
+    <showInFooter>true</showInFooter>
+    <extInfo xsi:type="form:InputFieldExtInfo">
+      <width>10</width>
+      <autoMaxHeight>true</autoMaxHeight>
+      <wrap>true</wrap>
+      <spinButton>true</spinButton>
+      <typeDomainEnabled>true</typeDomainEnabled>
+      <textEdit>true</textEdit>
+    </extInfo>
+  </items>
   <items xsi:type="form:FormGroup">
     <name>ГруппаКнопок</name>
     <id>8</id>
@@ -146,6 +232,10 @@
     <event>OnCreateAtServer</event>
     <name>ПриСозданииНаСервере</name>
   </handlers>
+  <handlers>
+    <event>OnOpen</event>
+    <name>ПриОткрытии</name>
+  </handlers>
   <windowOpeningMode>LockOwnerWindow</windowOpeningMode>
   <autoTitle>true</autoTitle>
   <autoUrl>true</autoUrl>
@@ -159,7 +249,7 @@
     <name>Объект</name>
     <id>1</id>
     <valueType>
-      <types>ExternalDataProcessor.GetManHTTP_v_1_2_12</types>
+      <types>ExternalDataProcessor.GetManHTTP_v_1_2_18</types>
     </valueType>
     <view>
       <common>true</common>
@@ -173,9 +263,47 @@
     <name>Таймаут</name>
     <title>
       <key>ru</key>
-      <value>Таймаут, сек</value>
+      <value>Таймаут HTTP, сек</value>
     </title>
     <id>2</id>
+    <valueType>
+      <types>Number</types>
+      <numberQualifiers>
+        <precision>5</precision>
+        <nonNegative>true</nonNegative>
+      </numberQualifiers>
+    </valueType>
+    <view>
+      <common>true</common>
+    </view>
+    <edit>
+      <common>true</common>
+    </edit>
+  </attributes>
+  <attributes>
+    <name>АвтосохранениеВключено</name>
+    <title>
+      <key>ru</key>
+      <value>Автосохранение</value>
+    </title>
+    <id>3</id>
+    <valueType>
+      <types>Boolean</types>
+    </valueType>
+    <view>
+      <common>true</common>
+    </view>
+    <edit>
+      <common>true</common>
+    </edit>
+  </attributes>
+  <attributes>
+    <name>ИнтервалАвтосохранения</name>
+    <title>
+      <key>ru</key>
+      <value>Интервал автосохранения, сек</value>
+    </title>
+    <id>4</id>
     <valueType>
       <types>Number</types>
       <numberQualifiers>

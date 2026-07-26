@@ -1,9 +1,8 @@
 # HTTP-client for 1C:Enterprise
 
-[![Build Status](https://img.shields.io/badge/build-passing-brightgreen)](#)
-[![License](https://img.shields.io/badge/license-GPL--3.0-blue)](https://github.com/LunatikDG/GetManHTTP/blob/main/LICENSE)
+[![License](https://img.shields.io/badge/license-GPL--3.0-blue)](https://github.com/LunatikDG/GetManHTTP/blob/main/LICENSE.txt)
 [![1C Version](https://img.shields.io/badge/1С-8.3.26%2B-orange)](#)
-[![Release](https://img.shields.io/badge/release-1.2.12-red)](https://github.com/LunatikDG/GetManHTTP/releases)
+[![Release](https://img.shields.io/badge/release-1.2.18-red)](https://github.com/LunatikDG/GetManHTTP/releases)
 
 <p align="center">
   <a href="#english">🇬🇧 English</a> •
@@ -30,11 +29,11 @@ something the platform doesn't handle well out of the box.
 - Option to send a request without a body
 - Response and status code handling
 - Save response body to a file (auto-selects JSON/XML/HTML by Content-Type)
-- Settings form with configurable HTTP timeout
+- Settings form with configurable HTTP timeout and autosave interval
 - Authorization support (Basic, Bearer Token)
 - HTTPS support
 - Persists all request list items and their data between 1C sessions
-- Auto-save every 30 seconds while the form is open
+- Optional auto-save while the form is open (off by default; interval configurable in settings)
 - Safe settings persistence on form close (skips save on platform shutdown)
 - Request execution time measurement
 - Detailed response inspection (response headers, status code, request body)
@@ -45,6 +44,12 @@ something the platform doesn't handle well out of the box.
 1. Download the [latest release](https://github.com/LunatikDG/GetManHTTP/releases)
 2. Load the external data processor into your 1C configuration via
    *File → Open*
+
+### Releasing (maintainers)
+
+1. Build `bin/GetManHTTP_v_X_Y_Z.epf` and commit it with the sources
+2. Create and push a tag: `git tag -a v_X_Y_Z -m "GetManHTTP vX.Y.Z"` then `git push origin v_X_Y_Z`
+3. GitHub Actions creates the release and attaches the `.epf`
 
 ### Requirements
 
@@ -80,11 +85,11 @@ Feedback, suggestions and bug reports are welcome:
 - Отправка двоичных файлов
 - Обработка ответа и кода состояния
 - Сохранение тела ответа в файл (автовыбор JSON/XML/HTML по Content-Type)
-- Форма настроек с настраиваемым таймаутом HTTP
+- Форма настроек с настраиваемым таймаутом HTTP и интервалом автосохранения
 - Работа с авторизацией (Basic, Bearer Token)
 - Поддержка HTTPS
 - Сохраняет все элементы списка запросов и их данные между сеансами 1С
-- Автосохранение каждые 30 секунд при открытой форме
+- Опциональное автосохранение при открытой форме (по умолчанию выключено; интервал задаётся в настройках)
 - Безопасное сохранение настроек при закрытии (без ошибки при завершении работы платформы)
 - Поддержка замера времени выполнения запроса
 - Отображение детальной информации результата запроса (заголовки ответа,
@@ -95,6 +100,12 @@ Feedback, suggestions and bug reports are welcome:
 
 1. Скачайте [последний релиз](https://github.com/LunatikDG/GetManHTTP/releases)
 2. Загрузите обработку в конфигурацию 1С через *Файл → Открыть*
+
+### Релиз (для мейнтейнеров)
+
+1. Соберите `bin/GetManHTTP_v_X_Y_Z.epf` и закоммитьте вместе с исходниками
+2. Создайте и запушьте тег: `git tag -a v_X_Y_Z -m "GetManHTTP vX.Y.Z"` затем `git push origin v_X_Y_Z`
+3. GitHub Actions создаст релиз и приложит `.epf`
 
 ### Требования
 

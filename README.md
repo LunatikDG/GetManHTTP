@@ -2,7 +2,7 @@
 
 [![License](https://img.shields.io/badge/license-GPL--3.0-blue)](https://github.com/LunatikDG/GetManHTTP/blob/main/LICENSE.txt)
 [![1C Version](https://img.shields.io/badge/1С-8.3.26%2B-orange)](#)
-[![Release](https://img.shields.io/badge/release-1.2.18-red)](https://github.com/LunatikDG/GetManHTTP/releases)
+[![Release](https://img.shields.io/badge/release-1.3.4-red)](https://github.com/LunatikDG/GetManHTTP/releases)
 
 <p align="center">
   <a href="#english">🇬🇧 English</a> •
@@ -23,7 +23,7 @@ something the platform doesn't handle well out of the box.
 ### Features
 
 - Sends **GET**, **POST**, **PUT**, **DELETE**, **PATCH** requests
-- Multiple saved requests in a numbered sidebar list (add / rename / delete / switch)
+- Multiple saved requests in a hierarchical sidebar tree with folders (add / rename / delete / switch)
 - Custom headers and query parameters
 - JSON, XML, form-data and binary request body support
 - Option to send a request without a body
@@ -78,7 +78,7 @@ Feedback, suggestions and bug reports are welcome:
 ### Возможности
 
 - Отправка **GET**, **POST**, **PUT**, **DELETE**, **PATCH** запросов
-- Несколько сохранённых запросов в нумерованном списке слева (добавление / переименование / удаление / переключение)
+- Несколько сохранённых запросов в иерархическом дереве слева с папками (добавление / переименование / удаление / переключение)
 - Передача заголовков и параметров
 - Поддержка JSON-, XML-, form-data- и двоичных тел запросов
 - Вариант отправки без тела запроса

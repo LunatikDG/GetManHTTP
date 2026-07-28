@@ -89,6 +89,9 @@
     <showInHeader>true</showInHeader>
     <headerHorizontalAlign>Left</headerHorizontalAlign>
     <showInFooter>true</showInFooter>
+    <extInfo xsi:type="form:CheckBoxFieldExtInfo">
+      <checkBoxType>CHECK_BOX</checkBoxType>
+    </extInfo>
   </items>
   <items xsi:type="form:FormField">
     <name>ИнтервалАвтосохранения</name>
@@ -249,7 +252,7 @@
     <name>Объект</name>
     <id>1</id>
     <valueType>
-      <types>ExternalDataProcessor.GetManHTTP_v_1_3_4</types>
+      <types>ExternalDataProcessor.GetManHTTP_v_1_3_13</types>
     </valueType>
     <view>
       <common>true</common>

@@ -7,6 +7,180 @@
   <items xsi:type="form:FormGroup">
     <name>ГруппаЛево</name>
     <id>164</id>
+    <items xsi:type="form:FormGroup">
+      <name>ГруппаВыборКоллекции</name>
+      <id>270</id>
+      <items xsi:type="form:FormField">
+        <name>КоллекцияЗапросов</name>
+        <id>271</id>
+        <title>
+          <key>ru</key>
+          <value>Коллекция</value>
+        </title>
+        <visible>true</visible>
+        <enabled>true</enabled>
+        <userVisible>
+          <common>true</common>
+        </userVisible>
+        <dataPath xsi:type="form:DataPath">
+          <segments>ТекущаяКоллекция</segments>
+        </dataPath>
+        <titleLocation>Left</titleLocation>
+        <handlers>
+          <event>OnChange</event>
+          <name>КоллекцияЗапросовПриИзменении</name>
+        </handlers>
+        <extendedTooltip>
+          <name>КоллекцияЗапросовРасширеннаяПодсказка</name>
+          <id>274</id>
+          <type>Label</type>
+          <autoMaxWidth>true</autoMaxWidth>
+          <autoMaxHeight>true</autoMaxHeight>
+          <extInfo xsi:type="form:LabelDecorationExtInfo">
+            <horizontalAlign>Left</horizontalAlign>
+          </extInfo>
+        </extendedTooltip>
+        <contextMenu>
+          <name>КоллекцияЗапросовКонтекстноеМеню</name>
+          <id>275</id>
+          <autoFill>true</autoFill>
+        </contextMenu>
+        <type>InputField</type>
+        <editMode>Enter</editMode>
+        <showInHeader>true</showInHeader>
+        <headerHorizontalAlign>Left</headerHorizontalAlign>
+        <showInFooter>true</showInFooter>
+        <extInfo xsi:type="form:InputFieldExtInfo">
+          <autoMaxWidth>true</autoMaxWidth>
+          <autoMaxHeight>true</autoMaxHeight>
+          <horizontalStretch>true</horizontalStretch>
+          <wrap>true</wrap>
+          <dropListButton>true</dropListButton>
+          <listChoiceMode>true</listChoiceMode>
+          <typeDomainEnabled>true</typeDomainEnabled>
+          <textEdit>false</textEdit>
+        </extInfo>
+      </items>
+      <items xsi:type="form:Button">
+        <name>КнопкаНастройкиКоллекцииЗапросов</name>
+        <id>272</id>
+        <visible>true</visible>
+        <enabled>true</enabled>
+        <userVisible>
+          <common>true</common>
+        </userVisible>
+        <extendedTooltip>
+          <name>КнопкаНастройкиКоллекцииЗапросовРасширеннаяПодсказка</name>
+          <id>276</id>
+          <type>Label</type>
+          <autoMaxWidth>true</autoMaxWidth>
+          <autoMaxHeight>true</autoMaxHeight>
+          <extInfo xsi:type="form:LabelDecorationExtInfo">
+            <horizontalAlign>Left</horizontalAlign>
+          </extInfo>
+        </extendedTooltip>
+        <type>UsualButton</type>
+        <commandName>Form.Command.НастройкиКоллекцииЗапросов</commandName>
+        <representation>Picture</representation>
+        <autoMaxWidth>true</autoMaxWidth>
+        <autoMaxHeight>true</autoMaxHeight>
+        <placementArea>UserCmds</placementArea>
+        <picture xsi:type="core:PictureRef">
+          <picture>StdPicture.Setting</picture>
+        </picture>
+        <representationInContextMenu>Auto</representationInContextMenu>
+      </items>
+      <items xsi:type="form:Button">
+        <name>КнопкаДобавитьКоллекциюЗапросов</name>
+        <id>273</id>
+        <visible>true</visible>
+        <enabled>true</enabled>
+        <userVisible>
+          <common>true</common>
+        </userVisible>
+        <extendedTooltip>
+          <name>КнопкаДобавитьКоллекциюЗапросовРасширеннаяПодсказка</name>
+          <id>277</id>
+          <type>Label</type>
+          <autoMaxWidth>true</autoMaxWidth>
+          <autoMaxHeight>true</autoMaxHeight>
+          <extInfo xsi:type="form:LabelDecorationExtInfo">
+            <horizontalAlign>Left</horizontalAlign>
+          </extInfo>
+        </extendedTooltip>
+        <type>UsualButton</type>
+        <commandName>Form.Command.ДобавитьКоллекциюЗапросов</commandName>
+        <representation>Picture</representation>
+        <autoMaxWidth>true</autoMaxWidth>
+        <autoMaxHeight>true</autoMaxHeight>
+        <placementArea>UserCmds</placementArea>
+        <picture xsi:type="core:PictureRef">
+          <picture>StdPicture.CreateListItem</picture>
+        </picture>
+        <representationInContextMenu>Auto</representationInContextMenu>
+      </items>
+      <items xsi:type="form:Button">
+        <name>КнопкаУдалитьКоллекциюЗапросов</name>
+        <id>314</id>
+        <visible>true</visible>
+        <enabled>true</enabled>
+        <userVisible>
+          <common>true</common>
+        </userVisible>
+        <extendedTooltip>
+          <name>КнопкаУдалитьКоллекциюЗапросовРасширеннаяПодсказка</name>
+          <id>315</id>
+          <type>Label</type>
+          <autoMaxWidth>true</autoMaxWidth>
+          <autoMaxHeight>true</autoMaxHeight>
+          <extInfo xsi:type="form:LabelDecorationExtInfo">
+            <horizontalAlign>Left</horizontalAlign>
+          </extInfo>
+        </extendedTooltip>
+        <type>UsualButton</type>
+        <commandName>Form.Command.УдалитьКоллекциюЗапросов</commandName>
+        <representation>Picture</representation>
+        <autoMaxWidth>true</autoMaxWidth>
+        <autoMaxHeight>true</autoMaxHeight>
+        <placementArea>UserCmds</placementArea>
+        <picture xsi:type="core:PictureRef">
+          <picture>StdPicture.Delete</picture>
+        </picture>
+        <representationInContextMenu>Auto</representationInContextMenu>
+      </items>
+      <visible>true</visible>
+      <enabled>true</enabled>
+      <userVisible>
+        <common>true</common>
+      </userVisible>
+      <title>
+        <key>ru</key>
+        <value>Коллекция</value>
+      </title>
+      <titleTextColor xsi:type="core:ColorRef">
+        <color>Style.FormBackColor</color>
+      </titleTextColor>
+      <extendedTooltip>
+        <name>ГруппаВыборКоллекцииРасширеннаяПодсказка</name>
+        <id>278</id>
+        <type>Label</type>
+        <autoMaxWidth>true</autoMaxWidth>
+        <autoMaxHeight>true</autoMaxHeight>
+        <extInfo xsi:type="form:LabelDecorationExtInfo">
+          <horizontalAlign>Left</horizontalAlign>
+        </extInfo>
+      </extendedTooltip>
+      <type>UsualGroup</type>
+      <extInfo xsi:type="form:UsualGroupExtInfo">
+        <group>AlwaysHorizontal</group>
+        <behavior>Auto</behavior>
+        <showLeftMargin>true</showLeftMargin>
+        <united>true</united>
+        <showTitle>false</showTitle>
+        <throughAlign>Auto</throughAlign>
+        <currentRowUse>Auto</currentRowUse>
+      </extInfo>
+    </items>
     <items xsi:type="form:Table">
       <name>СписокЗапросов</name>
       <id>200</id>
@@ -1069,7 +1243,7 @@
             </items>
             <items xsi:type="form:Button">
               <name>УдалитьПараметр</name>
-              <id>223</id>
+              <id>310</id>
               <title>
                 <key>ru</key>
                 <value>Удалить</value>
@@ -1081,7 +1255,7 @@
               </userVisible>
               <extendedTooltip>
                 <name>УдалитьПараметрРасширеннаяПодсказка</name>
-                <id>224</id>
+                <id>311</id>
                 <type>Label</type>
                 <autoMaxWidth>true</autoMaxWidth>
                 <autoMaxHeight>true</autoMaxHeight>
@@ -1407,7 +1581,7 @@
             </items>
             <items xsi:type="form:Button">
               <name>УдалитьЗаголовок</name>
-              <id>225</id>
+              <id>312</id>
               <title>
                 <key>ru</key>
                 <value>Удалить</value>
@@ -3112,7 +3286,7 @@
     <name>Объект</name>
     <id>1</id>
     <valueType>
-      <types>ExternalDataProcessor.GetManHTTP_v_1_3_4</types>
+      <types>ExternalDataProcessor.GetManHTTP_v_1_3_13</types>
     </valueType>
     <view>
       <common>true</common>
@@ -3932,9 +4106,177 @@
       <key>ru</key>
       <value>Идет переключение запроса</value>
     </title>
-    <id>46</id>
+    <id>295</id>
     <valueType>
       <types>Boolean</types>
+    </valueType>
+    <view>
+      <common>true</common>
+    </view>
+    <edit>
+      <common>true</common>
+    </edit>
+  </attributes>
+  <attributes>
+    <name>КоллекцииЗапросов</name>
+    <title>
+      <key>ru</key>
+      <value>Коллекции запросов</value>
+    </title>
+    <id>280</id>
+    <valueType>
+      <types>ValueTable</types>
+    </valueType>
+    <view>
+      <common>true</common>
+    </view>
+    <edit>
+      <common>true</common>
+    </edit>
+    <columns>
+      <name>Идентификатор</name>
+      <title>
+        <key>ru</key>
+        <value>Идентификатор</value>
+      </title>
+      <id>281</id>
+      <valueType>
+        <types>String</types>
+        <stringQualifiers>
+          <length>36</length>
+        </stringQualifiers>
+      </valueType>
+      <view>
+        <common>true</common>
+      </view>
+      <edit>
+        <common>true</common>
+      </edit>
+    </columns>
+    <columns>
+      <name>Наименование</name>
+      <title>
+        <key>ru</key>
+        <value>Наименование</value>
+      </title>
+      <id>282</id>
+      <valueType>
+        <types>String</types>
+        <stringQualifiers/>
+      </valueType>
+      <view>
+        <common>true</common>
+      </view>
+      <edit>
+        <common>true</common>
+      </edit>
+    </columns>
+    <columns>
+      <name>ИспользоватьТаймаутПоУмолчанию</name>
+      <title>
+        <key>ru</key>
+        <value>Использовать таймаут по умолчанию</value>
+      </title>
+      <id>283</id>
+      <valueType>
+        <types>Boolean</types>
+      </valueType>
+      <view>
+        <common>true</common>
+      </view>
+      <edit>
+        <common>true</common>
+      </edit>
+    </columns>
+    <columns>
+      <name>Таймаут</name>
+      <title>
+        <key>ru</key>
+        <value>Таймаут</value>
+      </title>
+      <id>284</id>
+      <valueType>
+        <types>Number</types>
+        <numberQualifiers>
+          <precision>5</precision>
+          <nonNegative>true</nonNegative>
+        </numberQualifiers>
+      </valueType>
+      <view>
+        <common>true</common>
+      </view>
+      <edit>
+        <common>true</common>
+      </edit>
+    </columns>
+    <columns>
+      <name>ДанныеСписка</name>
+      <title>
+        <key>ru</key>
+        <value>Данные списка</value>
+      </title>
+      <id>285</id>
+      <valueType>
+        <types>String</types>
+        <stringQualifiers/>
+      </valueType>
+      <view>
+        <common>true</common>
+      </view>
+      <edit>
+        <common>true</common>
+      </edit>
+    </columns>
+  </attributes>
+  <attributes>
+    <name>ТекущаяКоллекция</name>
+    <title>
+      <key>ru</key>
+      <value>Текущая коллекция</value>
+    </title>
+    <id>286</id>
+    <valueType>
+      <types>String</types>
+      <stringQualifiers>
+        <length>36</length>
+      </stringQualifiers>
+    </valueType>
+    <view>
+      <common>true</common>
+    </view>
+    <edit>
+      <common>true</common>
+    </edit>
+  </attributes>
+  <attributes>
+    <name>ИдетПереключениеКоллекции</name>
+    <title>
+      <key>ru</key>
+      <value>Идет переключение коллекции</value>
+    </title>
+    <id>287</id>
+    <valueType>
+      <types>Boolean</types>
+    </valueType>
+    <view>
+      <common>true</common>
+    </view>
+    <edit>
+      <common>true</common>
+    </edit>
+  </attributes>
+  <attributes>
+    <name>ОтображаемаяКоллекция</name>
+    <title>
+      <key>ru</key>
+      <value>Отображаемая коллекция</value>
+    </title>
+    <id>313</id>
+    <valueType>
+      <types>String</types>
+      <stringQualifiers>
+        <length>36</length>
+      </stringQualifiers>
     </valueType>
     <view>
       <common>true</common>
@@ -4017,7 +4359,7 @@
       <key>ru</key>
       <value>Добавить папку</value>
     </title>
-    <id>172</id>
+    <id>302</id>
     <toolTip>
       <key>ru</key>
       <value>Создать папку в списке запросов</value>
@@ -4041,7 +4383,7 @@
       <key>ru</key>
       <value>Добавить</value>
     </title>
-    <id>170</id>
+    <id>300</id>
     <toolTip>
       <key>ru</key>
       <value>Добавить запрос</value>
@@ -4066,7 +4408,7 @@
       <key>ru</key>
       <value>Скопировать</value>
     </title>
-    <id>173</id>
+    <id>303</id>
     <toolTip>
       <key>ru</key>
       <value>Создать копию выбранного элемента</value>
@@ -4091,7 +4433,7 @@
       <key>ru</key>
       <value>Изменить</value>
     </title>
-    <id>174</id>
+    <id>304</id>
     <toolTip>
       <key>ru</key>
       <value>Изменить наименование</value>
@@ -4116,7 +4458,7 @@
       <key>ru</key>
       <value>Удалить</value>
     </title>
-    <id>171</id>
+    <id>301</id>
     <use>
       <common>true</common>
     </use>
@@ -4127,6 +4469,78 @@
     <action xsi:type="form:FormCommandHandlerContainer">
       <handler>
         <name>УдалитьЗапрос</name>
+      </handler>
+    </action>
+    <currentRowUse>DontUse</currentRowUse>
+  </formCommands>
+  <formCommands>
+    <name>НастройкиКоллекцииЗапросов</name>
+    <title>
+      <key>ru</key>
+      <value>Настройки коллекции</value>
+    </title>
+    <id>305</id>
+    <toolTip>
+      <key>ru</key>
+      <value>Настройки текущей коллекции запросов</value>
+    </toolTip>
+    <use>
+      <common>true</common>
+    </use>
+    <picture xsi:type="core:PictureRef">
+      <picture>StdPicture.Setting</picture>
+    </picture>
+    <action xsi:type="form:FormCommandHandlerContainer">
+      <handler>
+        <name>НастройкиКоллекцииЗапросов</name>
+      </handler>
+    </action>
+    <currentRowUse>DontUse</currentRowUse>
+  </formCommands>
+  <formCommands>
+    <name>ДобавитьКоллекциюЗапросов</name>
+    <title>
+      <key>ru</key>
+      <value>Добавить коллекцию</value>
+    </title>
+    <id>306</id>
+    <toolTip>
+      <key>ru</key>
+      <value>Создать новую коллекцию запросов</value>
+    </toolTip>
+    <use>
+      <common>true</common>
+    </use>
+    <picture xsi:type="core:PictureRef">
+      <picture>StdPicture.CreateListItem</picture>
+    </picture>
+    <action xsi:type="form:FormCommandHandlerContainer">
+      <handler>
+        <name>ДобавитьКоллекциюЗапросов</name>
+      </handler>
+    </action>
+    <currentRowUse>DontUse</currentRowUse>
+  </formCommands>
+  <formCommands>
+    <name>УдалитьКоллекциюЗапросов</name>
+    <title>
+      <key>ru</key>
+      <value>Удалить коллекцию</value>
+    </title>
+    <id>307</id>
+    <toolTip>
+      <key>ru</key>
+      <value>Удалить выбранную коллекцию запросов</value>
+    </toolTip>
+    <use>
+      <common>true</common>
+    </use>
+    <picture xsi:type="core:PictureRef">
+      <picture>StdPicture.Delete</picture>
+    </picture>
+    <action xsi:type="form:FormCommandHandlerContainer">
+      <handler>
+        <name>УдалитьКоллекциюЗапросов</name>
       </handler>
     </action>
     <currentRowUse>DontUse</currentRowUse>

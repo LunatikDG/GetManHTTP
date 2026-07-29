@@ -2,10 +2,10 @@
 <form:Form xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:core="http://g5.1c.ru/v8/dt/mcore" xmlns:form="http://g5.1c.ru/v8/dt/form">
   <title>
     <key>ru</key>
-    <value>Настройки</value>
+    <value>Коллекция запросов</value>
   </title>
   <items xsi:type="form:FormField">
-    <name>Таймаут</name>
+    <name>Наименование</name>
     <id>1</id>
     <visible>true</visible>
     <enabled>true</enabled>
@@ -13,15 +13,11 @@
       <common>true</common>
     </userVisible>
     <dataPath xsi:type="form:DataPath">
-      <segments>Таймаут</segments>
+      <segments>Наименование</segments>
     </dataPath>
     <titleLocation>Left</titleLocation>
-    <toolTip>
-      <key>ru</key>
-      <value>Таймаут HTTP-соединения в секундах. 0 — без ограничения.</value>
-    </toolTip>
     <extendedTooltip>
-      <name>ТаймаутРасширеннаяПодсказка</name>
+      <name>НаименованиеРасширеннаяПодсказка</name>
       <id>2</id>
       <type>Label</type>
       <autoMaxWidth>true</autoMaxWidth>
@@ -31,7 +27,7 @@
       </extInfo>
     </extendedTooltip>
     <contextMenu>
-      <name>ТаймаутКонтекстноеМеню</name>
+      <name>НаименованиеКонтекстноеМеню</name>
       <id>3</id>
       <autoFill>true</autoFill>
     </contextMenu>
@@ -41,16 +37,13 @@
     <headerHorizontalAlign>Left</headerHorizontalAlign>
     <showInFooter>true</showInFooter>
     <extInfo xsi:type="form:InputFieldExtInfo">
-      <width>10</width>
-      <autoMaxHeight>true</autoMaxHeight>
+      <autoMaxWidth>true</autoMaxWidth>
       <wrap>true</wrap>
-      <spinButton>true</spinButton>
-      <typeDomainEnabled>true</typeDomainEnabled>
       <textEdit>true</textEdit>
     </extInfo>
   </items>
   <items xsi:type="form:FormField">
-    <name>АвтосохранениеВключено</name>
+    <name>ИспользоватьТаймаутПоУмолчанию</name>
     <id>10</id>
     <visible>true</visible>
     <enabled>true</enabled>
@@ -58,19 +51,15 @@
       <common>true</common>
     </userVisible>
     <dataPath xsi:type="form:DataPath">
-      <segments>АвтосохранениеВключено</segments>
+      <segments>ИспользоватьТаймаутПоУмолчанию</segments>
     </dataPath>
     <titleLocation>Right</titleLocation>
-    <toolTip>
-      <key>ru</key>
-      <value>Периодически сохранять список запросов и настройки, пока форма открыта.</value>
-    </toolTip>
     <handlers>
       <event>OnChange</event>
-      <name>АвтосохранениеВключеноПриИзменении</name>
+      <name>ИспользоватьТаймаутПоУмолчаниюПриИзменении</name>
     </handlers>
     <extendedTooltip>
-      <name>АвтосохранениеВключеноРасширеннаяПодсказка</name>
+      <name>ИспользоватьТаймаутПоУмолчаниюРасширеннаяПодсказка</name>
       <id>11</id>
       <type>Label</type>
       <autoMaxWidth>true</autoMaxWidth>
@@ -80,7 +69,7 @@
       </extInfo>
     </extendedTooltip>
     <contextMenu>
-      <name>АвтосохранениеВключеноКонтекстноеМеню</name>
+      <name>ИспользоватьТаймаутПоУмолчаниюКонтекстноеМеню</name>
       <id>12</id>
       <autoFill>true</autoFill>
     </contextMenu>
@@ -89,12 +78,10 @@
     <showInHeader>true</showInHeader>
     <headerHorizontalAlign>Left</headerHorizontalAlign>
     <showInFooter>true</showInFooter>
-    <extInfo xsi:type="form:CheckBoxFieldExtInfo">
-      <checkBoxType>CHECK_BOX</checkBoxType>
-    </extInfo>
+    <extInfo xsi:type="form:CheckBoxFieldExtInfo"/>
   </items>
   <items xsi:type="form:FormField">
-    <name>ИнтервалАвтосохранения</name>
+    <name>ТаймаутКоллекции</name>
     <id>13</id>
     <visible>true</visible>
     <enabled>true</enabled>
@@ -102,15 +89,15 @@
       <common>true</common>
     </userVisible>
     <dataPath xsi:type="form:DataPath">
-      <segments>ИнтервалАвтосохранения</segments>
+      <segments>ТаймаутКоллекции</segments>
     </dataPath>
     <titleLocation>Left</titleLocation>
     <toolTip>
       <key>ru</key>
-      <value>Интервал автосохранения в секундах. Минимум 1 секунда.</value>
+      <value>Таймаут HTTP для всех запросов коллекции, в секундах. 0 — без ограничения.</value>
     </toolTip>
     <extendedTooltip>
-      <name>ИнтервалАвтосохраненияРасширеннаяПодсказка</name>
+      <name>ТаймаутКоллекцииРасширеннаяПодсказка</name>
       <id>14</id>
       <type>Label</type>
       <autoMaxWidth>true</autoMaxWidth>
@@ -120,7 +107,7 @@
       </extInfo>
     </extendedTooltip>
     <contextMenu>
-      <name>ИнтервалАвтосохраненияКонтекстноеМеню</name>
+      <name>ТаймаутКоллекцииКонтекстноеМеню</name>
       <id>15</id>
       <autoFill>true</autoFill>
     </contextMenu>
@@ -140,10 +127,10 @@
   </items>
   <items xsi:type="form:FormGroup">
     <name>ГруппаКнопок</name>
-    <id>8</id>
+    <id>4</id>
     <items xsi:type="form:Button">
       <name>КнопкаОК</name>
-      <id>4</id>
+      <id>5</id>
       <visible>true</visible>
       <enabled>true</enabled>
       <userVisible>
@@ -151,7 +138,7 @@
       </userVisible>
       <extendedTooltip>
         <name>КнопкаОКРасширеннаяПодсказка</name>
-        <id>5</id>
+        <id>6</id>
         <type>Label</type>
         <autoMaxWidth>true</autoMaxWidth>
         <autoMaxHeight>true</autoMaxHeight>
@@ -160,7 +147,7 @@
         </extInfo>
       </extendedTooltip>
       <type>UsualButton</type>
-      <commandName>Form.Command.ПрименитьНастройки</commandName>
+      <commandName>Form.Command.ПрименитьНастройкиКоллекции</commandName>
       <representation>Auto</representation>
       <defaultButton>true</defaultButton>
       <autoMaxWidth>true</autoMaxWidth>
@@ -170,7 +157,7 @@
     </items>
     <items xsi:type="form:Button">
       <name>КнопкаОтмена</name>
-      <id>6</id>
+      <id>7</id>
       <visible>true</visible>
       <enabled>true</enabled>
       <userVisible>
@@ -178,7 +165,7 @@
       </userVisible>
       <extendedTooltip>
         <name>КнопкаОтменаРасширеннаяПодсказка</name>
-        <id>7</id>
+        <id>8</id>
         <type>Label</type>
         <autoMaxWidth>true</autoMaxWidth>
         <autoMaxHeight>true</autoMaxHeight>
@@ -187,7 +174,7 @@
         </extInfo>
       </extendedTooltip>
       <type>UsualButton</type>
-      <commandName>Form.Command.ОтменитьНастройки</commandName>
+      <commandName>Form.Command.ОтменитьНастройкиКоллекции</commandName>
       <representation>Auto</representation>
       <autoMaxWidth>true</autoMaxWidth>
       <autoMaxHeight>true</autoMaxHeight>
@@ -250,9 +237,9 @@
   <showCloseButton>true</showCloseButton>
   <attributes>
     <name>Объект</name>
-    <id>1</id>
+    <id>20</id>
     <valueType>
-      <types>ExternalDataProcessor.GetManHTTP_v_1_3_13</types>
+      <types>ExternalDataProcessor.GetManHTTP_v_1_3_17</types>
     </valueType>
     <view>
       <common>true</common>
@@ -263,18 +250,15 @@
     <main>true</main>
   </attributes>
   <attributes>
-    <name>Таймаут</name>
+    <name>Наименование</name>
     <title>
       <key>ru</key>
-      <value>Таймаут HTTP, сек</value>
+      <value>Наименование</value>
     </title>
-    <id>2</id>
+    <id>21</id>
     <valueType>
-      <types>Number</types>
-      <numberQualifiers>
-        <precision>5</precision>
-        <nonNegative>true</nonNegative>
-      </numberQualifiers>
+      <types>String</types>
+      <stringQualifiers/>
     </valueType>
     <view>
       <common>true</common>
@@ -284,12 +268,12 @@
     </edit>
   </attributes>
   <attributes>
-    <name>АвтосохранениеВключено</name>
+    <name>ИспользоватьТаймаутПоУмолчанию</name>
     <title>
       <key>ru</key>
-      <value>Автосохранение</value>
+      <value>Использовать значение по умолчанию</value>
     </title>
-    <id>3</id>
+    <id>22</id>
     <valueType>
       <types>Boolean</types>
     </valueType>
@@ -301,12 +285,12 @@
     </edit>
   </attributes>
   <attributes>
-    <name>ИнтервалАвтосохранения</name>
+    <name>ТаймаутКоллекции</name>
     <title>
       <key>ru</key>
-      <value>Интервал автосохранения, сек</value>
+      <value>Таймаут коллекции, сек</value>
     </title>
-    <id>4</id>
+    <id>23</id>
     <valueType>
       <types>Number</types>
       <numberQualifiers>
@@ -322,35 +306,35 @@
     </edit>
   </attributes>
   <formCommands>
-    <name>ПрименитьНастройки</name>
+    <name>ПрименитьНастройкиКоллекции</name>
     <title>
       <key>ru</key>
       <value>ОК</value>
     </title>
-    <id>1</id>
+    <id>30</id>
     <use>
       <common>true</common>
     </use>
     <action xsi:type="form:FormCommandHandlerContainer">
       <handler>
-        <name>ПрименитьНастройки</name>
+        <name>ПрименитьНастройкиКоллекции</name>
       </handler>
     </action>
     <currentRowUse>Auto</currentRowUse>
   </formCommands>
   <formCommands>
-    <name>ОтменитьНастройки</name>
+    <name>ОтменитьНастройкиКоллекции</name>
     <title>
       <key>ru</key>
       <value>Отмена</value>
     </title>
-    <id>2</id>
+    <id>31</id>
     <use>
       <common>true</common>
     </use>
     <action xsi:type="form:FormCommandHandlerContainer">
       <handler>
-        <name>ОтменитьНастройки</name>
+        <name>ОтменитьНастройкиКоллекции</name>
       </handler>
     </action>
     <currentRowUse>Auto</currentRowUse>

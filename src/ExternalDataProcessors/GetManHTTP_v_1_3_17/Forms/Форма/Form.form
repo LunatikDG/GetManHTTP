@@ -58,7 +58,6 @@
           <dropListButton>true</dropListButton>
           <listChoiceMode>true</listChoiceMode>
           <typeDomainEnabled>true</typeDomainEnabled>
-          <textEdit>false</textEdit>
         </extInfo>
       </items>
       <items xsi:type="form:Button">
@@ -176,7 +175,6 @@
         <behavior>Auto</behavior>
         <showLeftMargin>true</showLeftMargin>
         <united>true</united>
-        <showTitle>false</showTitle>
         <throughAlign>Auto</throughAlign>
         <currentRowUse>Auto</currentRowUse>
       </extInfo>
@@ -952,6 +950,10 @@
             <segments>URI</segments>
           </dataPath>
           <titleLocation>None</titleLocation>
+          <handlers>
+            <event>OnChange</event>
+            <name>URIПриИзменении</name>
+          </handlers>
           <extendedTooltip>
             <name>URIРасширеннаяПодсказка</name>
             <id>10</id>
@@ -1086,6 +1088,47 @@
             <segments>ПараметрыЗапроса</segments>
           </dataPath>
           <titleLocation>None</titleLocation>
+          <items xsi:type="form:FormField">
+            <name>ПараметрыЗапросаАктивен</name>
+            <id>316</id>
+            <title>
+              <key>ru</key>
+              <value>Вкл.</value>
+            </title>
+            <visible>true</visible>
+            <enabled>true</enabled>
+            <userVisible>
+              <common>true</common>
+            </userVisible>
+            <dataPath xsi:type="form:DataPath">
+              <segments>ПараметрыЗапроса.Активен</segments>
+            </dataPath>
+            <handlers>
+              <event>OnChange</event>
+              <name>ПараметрыЗапросаАктивенПриИзменении</name>
+            </handlers>
+            <extendedTooltip>
+              <name>ПараметрыЗапросаАктивенРасширеннаяПодсказка</name>
+              <id>317</id>
+              <type>Label</type>
+              <autoMaxWidth>true</autoMaxWidth>
+              <autoMaxHeight>true</autoMaxHeight>
+              <extInfo xsi:type="form:LabelDecorationExtInfo">
+                <horizontalAlign>Left</horizontalAlign>
+              </extInfo>
+            </extendedTooltip>
+            <contextMenu>
+              <name>ПараметрыЗапросаАктивенКонтекстноеМеню</name>
+              <id>318</id>
+              <autoFill>true</autoFill>
+            </contextMenu>
+            <type>CheckBoxField</type>
+            <editMode>Enter</editMode>
+            <showInHeader>true</showInHeader>
+            <headerHorizontalAlign>Left</headerHorizontalAlign>
+            <showInFooter>true</showInFooter>
+            <extInfo xsi:type="form:CheckBoxFieldExtInfo"/>
+          </items>
           <items xsi:type="form:FormField">
             <name>ПараметрыЗапросаКлючПараметра</name>
             <id>33</id>
@@ -1276,6 +1319,18 @@
             </items>
             <horizontalAlign>Left</horizontalAlign>
           </autoCommandBar>
+          <handlers>
+            <event>OnStartEdit</event>
+            <name>ПараметрыЗапросаПриНачалеРедактирования</name>
+          </handlers>
+          <handlers>
+            <event>OnEditEnd</event>
+            <name>ПараметрыЗапросаПриОкончанииРедактирования</name>
+          </handlers>
+          <handlers>
+            <event>AfterDeleteRow</event>
+            <name>ПараметрыЗапросаПослеУдаления</name>
+          </handlers>
           <searchStringAddition>
             <name>ПараметрыЗапросаСтрокаПоиска</name>
             <id>24</id>
@@ -1424,6 +1479,39 @@
             <segments>ЗаголовкиЗапроса</segments>
           </dataPath>
           <titleLocation>None</titleLocation>
+          <items xsi:type="form:FormField">
+            <name>ЗаголовкиЗапросаАктивен</name>
+            <id>5000</id>
+            <visible>true</visible>
+            <enabled>true</enabled>
+            <userVisible>
+              <common>true</common>
+            </userVisible>
+            <dataPath xsi:type="form:DataPath">
+              <segments>ЗаголовкиЗапроса.Активен</segments>
+            </dataPath>
+            <extendedTooltip>
+              <name>ЗаголовкиЗапросаАктивенРасширеннаяПодсказка</name>
+              <id>5001</id>
+              <type>Label</type>
+              <autoMaxWidth>true</autoMaxWidth>
+              <autoMaxHeight>true</autoMaxHeight>
+              <extInfo xsi:type="form:LabelDecorationExtInfo">
+                <horizontalAlign>Left</horizontalAlign>
+              </extInfo>
+            </extendedTooltip>
+            <contextMenu>
+              <name>ЗаголовкиЗапросаАктивенКонтекстноеМеню</name>
+              <id>5002</id>
+              <autoFill>true</autoFill>
+            </contextMenu>
+            <type>CheckBoxField</type>
+            <editMode>Enter</editMode>
+            <showInHeader>true</showInHeader>
+            <headerHorizontalAlign>Left</headerHorizontalAlign>
+            <showInFooter>true</showInFooter>
+            <extInfo xsi:type="form:CheckBoxFieldExtInfo"/>
+          </items>
           <items xsi:type="form:FormField">
             <name>ЗаголовкиЗапросаКлючЗаголовка</name>
             <id>73</id>
@@ -1614,6 +1702,10 @@
             </items>
             <horizontalAlign>Left</horizontalAlign>
           </autoCommandBar>
+          <handlers>
+            <event>OnStartEdit</event>
+            <name>ЗаголовкиЗапросаПриНачалеРедактирования</name>
+          </handlers>
           <searchStringAddition>
             <name>ЗаголовкиЗапросаСтрокаПоиска</name>
             <id>64</id>
@@ -3286,7 +3378,7 @@
     <name>Объект</name>
     <id>1</id>
     <valueType>
-      <types>ExternalDataProcessor.GetManHTTP_v_1_3_13</types>
+      <types>ExternalDataProcessor.GetManHTTP_v_1_3_17</types>
     </valueType>
     <view>
       <common>true</common>
@@ -3368,6 +3460,23 @@
     <edit>
       <common>true</common>
     </edit>
+    <columns>
+      <name>Активен</name>
+      <title>
+        <key>ru</key>
+        <value>Активен</value>
+      </title>
+      <id>319</id>
+      <valueType>
+        <types>Boolean</types>
+      </valueType>
+      <view>
+        <common>true</common>
+      </view>
+      <edit>
+        <common>true</common>
+      </edit>
+    </columns>
     <columns>
       <name>КлючПараметра</name>
       <title>
@@ -3495,6 +3604,23 @@
     <edit>
       <common>true</common>
     </edit>
+    <columns>
+      <name>Активен</name>
+      <title>
+        <key>ru</key>
+        <value>Активен</value>
+      </title>
+      <id>17</id>
+      <valueType>
+        <types>Boolean</types>
+      </valueType>
+      <view>
+        <common>true</common>
+      </view>
+      <edit>
+        <common>true</common>
+      </edit>
+    </columns>
     <columns>
       <name>КлючЗаголовка</name>
       <title>

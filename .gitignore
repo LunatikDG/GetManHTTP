@@ -12,5 +12,9 @@ Desktop.ini
 # Local release-notes drafts (used for gh release create, not committed)
 RELEASE_NOTES_*.md
 
+# Локальный BSL Language Server (scripts/bsl-lint.ps1) — не коммитить
+.ci/
+reports/
+
 # EDT / Eclipse workspace (if opened from a parent folder)
 .metadata/

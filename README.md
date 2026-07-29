@@ -2,7 +2,8 @@
 
 [![License](https://img.shields.io/badge/license-GPL--3.0-blue)](https://github.com/LunatikDG/GetManHTTP/blob/main/LICENSE.txt)
 [![1C Version](https://img.shields.io/badge/1С-8.3.26%2B-orange)](#)
-[![Release](https://img.shields.io/badge/release-1.3.13-red)](https://github.com/LunatikDG/GetManHTTP/releases)
+[![Release](https://img.shields.io/badge/release-1.3.17-red)](https://github.com/LunatikDG/GetManHTTP/releases)
+[![BSL Lint](https://github.com/LunatikDG/GetManHTTP/actions/workflows/bsl-lint.yml/badge.svg)](https://github.com/LunatikDG/GetManHTTP/actions/workflows/bsl-lint.yml)
 
 <p align="center">
   <a href="#english">🇬🇧 English</a> •
@@ -50,6 +51,16 @@ something the platform doesn't handle well out of the box.
 1. Build `bin/GetManHTTP_v_X_Y_Z.epf` and commit it with the sources
 2. Create and push a tag: `git tag -a v_X_Y_Z -m "GetManHTTP vX.Y.Z"` then `git push origin v_X_Y_Z`
 3. GitHub Actions creates the release and attaches the `.epf`
+
+Pushes and pull requests to `main` that touch `src/` run **BSL Language Server** static analysis (see `.github/workflows/bsl-lint.yml` and `.bsl-language-server.json`).
+
+Before push (JDK **21** required locally):
+
+```powershell
+.\scripts\bsl-lint.ps1
+```
+
+Or: `scripts\bsl-lint.cmd`, or `./scripts/bsl-lint.sh` (Git Bash/WSL). JAR and reports go to `.ci/` and `reports/` (gitignored).
 
 ### Requirements
 
@@ -106,6 +117,16 @@ Feedback, suggestions and bug reports are welcome:
 1. Соберите `bin/GetManHTTP_v_X_Y_Z.epf` и закоммитьте вместе с исходниками
 2. Создайте и запушьте тег: `git tag -a v_X_Y_Z -m "GetManHTTP vX.Y.Z"` затем `git push origin v_X_Y_Z`
 3. GitHub Actions создаст релиз и приложит `.epf`
+
+При push и pull request в `main`, если меняется `src/`, запускается статический анализ **BSL Language Server** (см. `.github/workflows/bsl-lint.yml` и `.bsl-language-server.json`).
+
+Перед push (локально нужна **Java 21**):
+
+```powershell
+.\scripts\bsl-lint.ps1
+```
+
+Также: `scripts\bsl-lint.cmd` или `./scripts/bsl-lint.sh` (Git Bash/WSL). JAR и отчёты попадают в `.ci/` и `reports/` (в git не коммитятся).
 
 ### Требования
 

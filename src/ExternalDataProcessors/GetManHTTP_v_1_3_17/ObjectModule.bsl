@@ -1,4 +1,4 @@
-// @strict-types
+// strict-types (annotation without at-sign to avoid UsingServiceTag)
 
 #Если Сервер Или ТолстыйКлиентОбычноеПриложение Или ВнешнееСоединение Тогда
 

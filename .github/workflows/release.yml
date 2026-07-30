@@ -18,6 +18,8 @@ jobs:
     name: Build EPF and publish release
     runs-on: windows-latest
     timeout-minutes: 90
+    env:
+      ONEC_LICENCE: ${{ secrets.ONEC_LICENCE }}
 
     steps:
       - name: Checkout
@@ -70,10 +72,8 @@ jobs:
           Add-Content -Path "C:\Program Files\1cv8\conf\conf.cfg" -Value "" -Encoding ascii
 
       - name: Install 1C license file
-        if: ${{ secrets.ONEC_LICENCE }}
+        if: env.ONEC_LICENCE != ''
         shell: pwsh
-        env:
-          ONEC_LICENCE: ${{ secrets.ONEC_LICENCE }}
         run: |
           New-Item -ItemType Directory -Force -Path "C:\ProgramData\1C\licenses" | Out-Null
           $Env:ONEC_LICENCE | Out-File -FilePath "C:\ProgramData\1C\licenses\licence.lic" -Encoding ascii
@@ -97,13 +97,13 @@ jobs:
             ### Highlights
             - **Send context:** run HTTP requests on the **client** or **1C server** (toggle next to the method; default in settings; stored per request).
             - Result footer shows **Executed: client / server**.
-            - Form title includes version (`GetManHTTP v${{ steps.meta.outputs.version }}`).
-            - The release asset is always **`GetManHTTP.epf`**. The version number appears in the release **tag**, the **form title**, and the **in-app help**.
-            - The **`bin/`** folder is excluded from the repository and is no longer stored in git. Added `scripts/build-epf.ps1` for local builds (**requires 1C:EDT and an installed 1C:Enterprise platform**).
+            - Form title includes version (GetManHTTP v${{ steps.meta.outputs.version }}).
+            - The release asset is always GetManHTTP.epf. The version number appears in the release tag, the form title, and the in-app help.
+            - The bin/ folder is excluded from the repository and is no longer stored in git. Added scripts/build-epf.ps1 for local builds (requires 1C:EDT and an installed 1C:Enterprise platform).
 
             ### Installation
-            1. Download `${{ steps.meta.outputs.asset_name }}` from this release
-            2. Open it in 1C via *File → Open*
+            1. Download ${{ steps.meta.outputs.asset_name }} from this release
+            2. Open in 1C via File → Open
 
             ---
 
@@ -112,12 +112,12 @@ jobs:
             ### Главное
             - **Контекст отправки:** запрос на **клиенте** или на **сервере 1С** (переключатель у метода; значение по умолчанию в настройках; хранится у каждого запроса).
             - В подвале ответа: **Выполнен: клиент / сервер**.
-            - В заголовке формы — версия (`GetManHTTP v${{ steps.meta.outputs.version }}`).
-            - Релиз теперь всегда формируется файлом **`GetManHTTP.epf`**, а номер версии можно увидеть в **теге** релиза, в **заголовке формы** и в **справке**.
-            - Каталог **`bin/`** исключён из репозитория и больше не хранится; добавлен скрипт автоматической сборки `scripts/build-epf.ps1` для локальной сборки (**необходимы EDT и установленная платформа**).
+            - В заголовке формы — версия (GetManHTTP v${{ steps.meta.outputs.version }}).
+            - Релиз теперь всегда формируется файлом GetManHTTP.epf, а номер версии можно увидеть в теге релиза, в заголовке формы и в справке.
+            - Каталог bin/ исключён из репозитория и больше не хранится; добавлен скрипт автоматической сборки scripts/build-epf.ps1 для локальной сборки (необходимы EDT и установленная платформа).
 
             ### Установка
-            1. Скачайте `${{ steps.meta.outputs.asset_name }}` из этого релиза
-            2. Откройте в 1С через *Файл → Открыть*
+            1. Скачайте ${{ steps.meta.outputs.asset_name }} из этого релиза
+            2. Откройте в 1С через Файл → Открыть
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

@@ -16,5 +16,8 @@ RELEASE_NOTES_*.md
 .ci/
 reports/
 
+# Собранные внешние обработки (scripts/build-epf.ps1, CI Release)
+bin/
+
 # EDT / Eclipse workspace (if opened from a parent folder)
 .metadata/

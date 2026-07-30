@@ -2,7 +2,7 @@
 <form:Form xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:core="http://g5.1c.ru/v8/dt/mcore" xmlns:form="http://g5.1c.ru/v8/dt/form">
   <title>
     <key>ru</key>
-    <value>GetManHTTP</value>
+    <value>GetManHTTP (HTTP-клиент): v1.3.19</value>
   </title>
   <items xsi:type="form:FormGroup">
     <name>ГруппаЛево</name>
@@ -939,6 +939,77 @@
           </extInfo>
         </items>
         <items xsi:type="form:FormField">
+          <name>РежимОтправкиЗапроса</name>
+          <id>308</id>
+          <visible>true</visible>
+          <enabled>true</enabled>
+          <userVisible>
+            <common>true</common>
+          </userVisible>
+          <dataPath xsi:type="form:DataPath">
+            <segments>РежимОтправкиЗапроса</segments>
+          </dataPath>
+          <title>
+            <key>ru</key>
+            <value>Контекст</value>
+          </title>
+          <titleLocation>Top</titleLocation>
+          <toolTip>
+            <key>ru</key>
+            <value>Где выполнять HTTP-запрос: на клиенте (рабочая станция) или на сервере 1С.</value>
+          </toolTip>
+          <extendedTooltip>
+            <name>РежимОтправкиЗапросаРасширеннаяПодсказка</name>
+            <id>309</id>
+            <type>Label</type>
+            <autoMaxWidth>true</autoMaxWidth>
+            <autoMaxHeight>true</autoMaxHeight>
+            <extInfo xsi:type="form:LabelDecorationExtInfo">
+              <horizontalAlign>Left</horizontalAlign>
+            </extInfo>
+          </extendedTooltip>
+          <contextMenu>
+            <name>РежимОтправкиЗапросаКонтекстноеМеню</name>
+            <id>310</id>
+            <autoFill>true</autoFill>
+          </contextMenu>
+          <type>InputField</type>
+          <editMode>Enter</editMode>
+          <showInHeader>true</showInHeader>
+          <headerHorizontalAlign>Left</headerHorizontalAlign>
+          <showInFooter>true</showInFooter>
+          <extInfo xsi:type="form:InputFieldExtInfo">
+            <width>8</width>
+            <autoMaxWidth>false</autoMaxWidth>
+            <maxWidth>8</maxWidth>
+            <autoMaxHeight>true</autoMaxHeight>
+            <horizontalStretch>false</horizontalStretch>
+            <wrap>true</wrap>
+            <dropListButton>true</dropListButton>
+            <listChoiceMode>true</listChoiceMode>
+            <chooseType>true</chooseType>
+            <typeDomainEnabled>true</typeDomainEnabled>
+            <choiceList>
+              <presentation>
+                <key>ru</key>
+                <value>Клиент</value>
+              </presentation>
+              <value xsi:type="core:StringValue">
+                <value>Клиент</value>
+              </value>
+            </choiceList>
+            <choiceList>
+              <presentation>
+                <key>ru</key>
+                <value>Сервер</value>
+              </presentation>
+              <value xsi:type="core:StringValue">
+                <value>Сервер</value>
+              </value>
+            </choiceList>
+          </extInfo>
+        </items>
+        <items xsi:type="form:FormField">
           <name>URI</name>
           <id>8</id>
           <visible>true</visible>
@@ -1286,7 +1357,7 @@
             </items>
             <items xsi:type="form:Button">
               <name>УдалитьПараметр</name>
-              <id>310</id>
+              <id>320</id>
               <title>
                 <key>ru</key>
                 <value>Удалить</value>
@@ -1298,7 +1369,7 @@
               </userVisible>
               <extendedTooltip>
                 <name>УдалитьПараметрРасширеннаяПодсказка</name>
-                <id>311</id>
+                <id>321</id>
                 <type>Label</type>
                 <autoMaxWidth>true</autoMaxWidth>
                 <autoMaxHeight>true</autoMaxHeight>
@@ -1669,7 +1740,7 @@
             </items>
             <items xsi:type="form:Button">
               <name>УдалитьЗаголовок</name>
-              <id>312</id>
+              <id>322</id>
               <title>
                 <key>ru</key>
                 <value>Удалить</value>
@@ -2685,6 +2756,47 @@
         <name>ШапкаПодвала</name>
         <id>92</id>
         <items xsi:type="form:FormField">
+          <name>КонтекстВыполненияЗапроса</name>
+          <id>311</id>
+          <visible>true</visible>
+          <enabled>true</enabled>
+          <userVisible>
+            <common>true</common>
+          </userVisible>
+          <dataPath xsi:type="form:DataPath">
+            <segments>КонтекстВыполненияЗапроса</segments>
+          </dataPath>
+          <title>
+            <key>ru</key>
+            <value>Выполнен</value>
+          </title>
+          <titleLocation>Left</titleLocation>
+          <extendedTooltip>
+            <name>КонтекстВыполненияЗапросаРасширеннаяПодсказка</name>
+            <id>312</id>
+            <type>Label</type>
+            <autoMaxWidth>true</autoMaxWidth>
+            <autoMaxHeight>true</autoMaxHeight>
+            <extInfo xsi:type="form:LabelDecorationExtInfo">
+              <horizontalAlign>Left</horizontalAlign>
+            </extInfo>
+          </extendedTooltip>
+          <contextMenu>
+            <name>КонтекстВыполненияЗапросаКонтекстноеМеню</name>
+            <id>313</id>
+            <autoFill>true</autoFill>
+          </contextMenu>
+          <type>LabelField</type>
+          <editMode>Enter</editMode>
+          <showInHeader>true</showInHeader>
+          <headerHorizontalAlign>Left</headerHorizontalAlign>
+          <showInFooter>true</showInFooter>
+          <extInfo xsi:type="form:LabelFieldExtInfo">
+            <autoMaxWidth>true</autoMaxWidth>
+            <autoMaxHeight>true</autoMaxHeight>
+          </extInfo>
+        </items>
+        <items xsi:type="form:FormField">
           <name>ВремяВыполненияЗапроса</name>
           <id>94</id>
           <visible>true</visible>
@@ -3365,7 +3477,7 @@
     <name>ПриЗакрытии</name>
   </handlers>
   <saveWindowSettings>true</saveWindowSettings>
-  <autoTitle>true</autoTitle>
+  <autoTitle>false</autoTitle>
   <autoUrl>true</autoUrl>
   <group>AlwaysHorizontal</group>
   <horizontalSpacing>Single</horizontalSpacing>
@@ -3378,7 +3490,7 @@
     <name>Объект</name>
     <id>1</id>
     <valueType>
-      <types>ExternalDataProcessor.GetManHTTP_v_1_3_17</types>
+      <types>ExternalDataProcessor.GetManHTTP</types>
     </valueType>
     <view>
       <common>true</common>
@@ -3399,6 +3511,66 @@
       <types>String</types>
       <stringQualifiers>
         <length>8</length>
+      </stringQualifiers>
+    </valueType>
+    <view>
+      <common>true</common>
+    </view>
+    <edit>
+      <common>true</common>
+    </edit>
+  </attributes>
+  <attributes>
+    <name>РежимОтправкиЗапроса</name>
+    <title>
+      <key>ru</key>
+      <value>Контекст отправки</value>
+    </title>
+    <id>317</id>
+    <valueType>
+      <types>String</types>
+      <stringQualifiers>
+        <length>10</length>
+      </stringQualifiers>
+    </valueType>
+    <view>
+      <common>true</common>
+    </view>
+    <edit>
+      <common>true</common>
+    </edit>
+  </attributes>
+  <attributes>
+    <name>КонтекстВыполненияЗапроса</name>
+    <title>
+      <key>ru</key>
+      <value>Контекст выполнения</value>
+    </title>
+    <id>315</id>
+    <valueType>
+      <types>String</types>
+      <stringQualifiers>
+        <length>10</length>
+      </stringQualifiers>
+    </valueType>
+    <view>
+      <common>true</common>
+    </view>
+    <edit>
+      <common>true</common>
+    </edit>
+  </attributes>
+  <attributes>
+    <name>РежимОтправкиПоУмолчанию</name>
+    <title>
+      <key>ru</key>
+      <value>Режим отправки по умолчанию</value>
+    </title>
+    <id>316</id>
+    <valueType>
+      <types>String</types>
+      <stringQualifiers>
+        <length>10</length>
       </stringQualifiers>
     </valueType>
     <view>
@@ -4517,7 +4689,6 @@
     <use>
       <common>true</common>
     </use>
-    <shortcut>Ins</shortcut>
     <picture xsi:type="core:PictureRef">
       <picture>StdPicture.CreateListItem</picture>
     </picture>
@@ -4588,7 +4759,6 @@
     <use>
       <common>true</common>
     </use>
-    <shortcut>Del</shortcut>
     <picture xsi:type="core:PictureRef">
       <picture>StdPicture.Delete</picture>
     </picture>

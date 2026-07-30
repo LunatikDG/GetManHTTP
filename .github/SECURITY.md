@@ -50,6 +50,16 @@ We will acknowledge receipt as soon as practicable and work on a fix. Coordinate
 
 This tool can send requests to URLs you choose and may persist headers and tokens in form settings. Use only in environments where external processors are permitted, and avoid storing production secrets on shared machines.
 
+### Server execution mode (SSRF-style risk)
+
+When a request is set to **Server** context, HTTP is performed by the **1C application server**, not the user’s workstation. A user who can run this processor may therefore:
+
+- Reach **internal hosts** (RFC1918, localhost, metadata endpoints) that are unreachable from their PC but reachable from the server;
+- Use the **server’s egress IP** and TLS trust store;
+- Trigger requests that appear to originate from the **server OS account** running the 1C worker.
+
+Treat server mode like granting the user a server-side HTTP client. Restrict who may use external processors, segment networks, and do not expose this tool to untrusted users on production clusters without review.
+
 ---
 
 <a name="русский"></a>
@@ -94,3 +104,13 @@ This tool can send requests to URLs you choose and may persist headers and token
 ### Безопасное использование
 
 Обработка выполняет запросы по указанным вами адресам и может сохранять заголовки и токены в настройках формы. Используйте только там, где разрешены внешние обработки, и не храните боевые секреты на общих рабочих местах.
+
+### Режим выполнения «Сервер» (риск обхода сетевых ограничений)
+
+Если для запроса выбран контекст **Сервер**, HTTP выполняется **сервером 1С**, а не рабочей станцией пользователя. Пользователь с доступом к обработке может:
+
+- обращаться к **внутренним хостам** (частные сети, localhost, служебные URL), недоступным с его ПК, но доступным с сервера;
+- использовать **исходящий IP и хранилище сертификатов сервера**;
+- инициировать запросы от имени **учётной записи процесса** 1С.
+
+Относитесь к режиму «Сервер» как к выдаче пользователю HTTP-клиента на стороне сервера. Ограничивайте право на внешние обработки, сегментируйте сеть и не давайте инструмент ненадёжным пользователям на боевых кластерах без оценки рисков.

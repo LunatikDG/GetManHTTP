@@ -8,38 +8,80 @@ on:
 permissions:
   contents: write
 
+env:
+  # Match DT-INF/PROJECT.PMF Runtime-Version (8.3.27) and EDT used for export.
+  V8_VERSION: "8.3.27.2130"
+  EDT_VERSION: "2025.1.6"
+
 jobs:
-  release:
-    name: Create GitHub Release
-    runs-on: ubuntu-latest
+  build-and-release:
+    name: Build EPF and publish release
+    runs-on: windows-latest
+    timeout-minutes: 90
+
     steps:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Resolve version and artifact
+      - name: Resolve release metadata
         id: meta
         shell: bash
         run: |
           TAG="${GITHUB_REF_NAME}"
-          EPF="bin/GetManHTTP_${TAG}.epf"
-
-          if [[ ! -f "${EPF}" ]]; then
-            echo "::error::File not found: ${EPF}"
-            echo "Put the built processor at bin/GetManHTTP_${TAG}.epf before pushing the tag."
-            ls -la bin || true
-            exit 1
-          fi
-
-          # v_1_2_12 -> 1.2.12
           VERSION="${TAG#v_}"
           VERSION="${VERSION//_/.}"
-
+          EPF="bin/GetManHTTP.epf"
           {
             echo "tag=${TAG}"
             echo "version=${VERSION}"
             echo "epf=${EPF}"
-            echo "asset_name=GetManHTTP_${TAG}.epf"
+            echo "asset_name=GetManHTTP.epf"
           } >> "${GITHUB_OUTPUT}"
+
+      - name: Install 1C platform
+        uses: 1CDevFlow/onec-setup-action@main
+        with:
+          type: onec
+          onec_version: ${{ env.V8_VERSION }}
+          cache: true
+        env:
+          ONEC_USERNAME: ${{ secrets.ONEC_USERNAME }}
+          ONEC_PASSWORD: ${{ secrets.ONEC_PASSWORD }}
+
+      - name: Install 1C EDT
+        uses: 1CDevFlow/onec-setup-action@main
+        with:
+          type: edt
+          edt_version: ${{ env.EDT_VERSION }}
+          cache: true
+        env:
+          ONEC_USERNAME: ${{ secrets.ONEC_USERNAME }}
+          ONEC_PASSWORD: ${{ secrets.ONEC_PASSWORD }}
+
+      - name: Configure 1C conf.cfg
+        shell: pwsh
+        run: |
+          New-Item -ItemType Directory -Force -Path "C:\Program Files\1cv8\conf" | Out-Null
+          $conf = @(
+            'DisableUnsafeActionProtection=.*'
+            'SystemLanguage=System'
+          ) -join "`n"
+          Set-Content -Path "C:\Program Files\1cv8\conf\conf.cfg" -Value $conf -Encoding ascii -NoNewline
+          Add-Content -Path "C:\Program Files\1cv8\conf\conf.cfg" -Value "" -Encoding ascii
+
+      - name: Install 1C license file
+        if: ${{ secrets.ONEC_LICENCE }}
+        shell: pwsh
+        env:
+          ONEC_LICENCE: ${{ secrets.ONEC_LICENCE }}
+        run: |
+          New-Item -ItemType Directory -Force -Path "C:\ProgramData\1C\licenses" | Out-Null
+          $Env:ONEC_LICENCE | Out-File -FilePath "C:\ProgramData\1C\licenses\licence.lic" -Encoding ascii
+
+      - name: Build EPF
+        shell: pwsh
+        run: |
+          .\scripts\build-epf.ps1 -OutputEpf "${{ steps.meta.outputs.epf }}"
 
       - name: Create release
         uses: softprops/action-gh-release@v2
@@ -52,8 +94,14 @@ jobs:
           body: |
             ## 🇬🇧 English
 
-            ### Installation
+            ### Highlights
+            - **Send context:** run HTTP requests on the **client** or **1C server** (toggle next to the method; default in settings; stored per request).
+            - Result footer shows **Executed: client / server**.
+            - Form title includes version (`GetManHTTP v${{ steps.meta.outputs.version }}`).
+            - The release asset is always **`GetManHTTP.epf`**. The version number appears in the release **tag**, the **form title**, and the **in-app help**.
+            - The **`bin/`** folder is excluded from the repository and is no longer stored in git. Added `scripts/build-epf.ps1` for local builds (**requires 1C:EDT and an installed 1C:Enterprise platform**).
 
+            ### Installation
             1. Download `${{ steps.meta.outputs.asset_name }}` from this release
             2. Open it in 1C via *File → Open*
 
@@ -61,8 +109,14 @@ jobs:
 
             ## 🇷🇺 Русский
 
-            ### Установка
+            ### Главное
+            - **Контекст отправки:** запрос на **клиенте** или на **сервере 1С** (переключатель у метода; значение по умолчанию в настройках; хранится у каждого запроса).
+            - В подвале ответа: **Выполнен: клиент / сервер**.
+            - В заголовке формы — версия (`GetManHTTP v${{ steps.meta.outputs.version }}`).
+            - Релиз теперь всегда формируется файлом **`GetManHTTP.epf`**, а номер версии можно увидеть в **теге** релиза, в **заголовке формы** и в **справке**.
+            - Каталог **`bin/`** исключён из репозитория и больше не хранится; добавлен скрипт автоматической сборки `scripts/build-epf.ps1` для локальной сборки (**необходимы EDT и установленная платформа**).
 
+            ### Установка
             1. Скачайте `${{ steps.meta.outputs.asset_name }}` из этого релиза
             2. Откройте в 1С через *Файл → Открыть*
         env:

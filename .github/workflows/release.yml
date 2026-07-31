@@ -24,18 +24,19 @@ jobs:
 
       - name: Resolve release metadata
         id: meta
-        shell: pwsh
+        shell: powershell
         run: |
           $tag = $Env:GITHUB_REF_NAME
           $version = $tag -replace '^v_', '' -replace '_', '.'
           $epf = "bin/GetManHTTP.epf"
-          "tag=$tag" >> $Env:GITHUB_OUTPUT
-          "version=$version" >> $Env:GITHUB_OUTPUT
-          "epf=$epf" >> $Env:GITHUB_OUTPUT
-          "asset_name=GetManHTTP.epf" >> $Env:GITHUB_OUTPUT
+          # PowerShell 5.1 ">>" writes UTF-16; Actions requires UTF-8 for GITHUB_OUTPUT.
+          Add-Content -Path $Env:GITHUB_OUTPUT -Value "tag=$tag" -Encoding utf8
+          Add-Content -Path $Env:GITHUB_OUTPUT -Value "version=$version" -Encoding utf8
+          Add-Content -Path $Env:GITHUB_OUTPUT -Value "epf=$epf" -Encoding utf8
+          Add-Content -Path $Env:GITHUB_OUTPUT -Value "asset_name=GetManHTTP.epf" -Encoding utf8
 
       - name: Build EPF
-        shell: pwsh
+        shell: powershell
         run: |
           .\scripts\build-epf.ps1 -OutputEpf "${{ steps.meta.outputs.epf }}"
         # Optional if defaults do not resolve on the runner host:

@@ -110,6 +110,7 @@ function Find-EdtCli {
 	}
 	$searchRoots = @(
 		"$env:ProgramFiles\1C\1CE\components"
+		"$env:ProgramData\1C\edt"
 		"$env:LOCALAPPDATA\1C\1cedtstart\installations"
 	)
 	$candidates = @()

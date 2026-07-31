@@ -37,11 +37,10 @@ jobs:
       - name: Build EPF
         # Bypass: the runner Windows service account often has a restricted
         # PowerShell execution policy (scripts disabled).
-        # ONEC_* paths: service account does not see per-user EDT under AppData;
-        # override via C:\actions-runner\.env on the host if your install differs.
+        # EDT is installed for the build host under ProgramData (readable by NETWORK SERVICE).
         shell: cmd
         env:
-          ONEC_EDT_CLI: C:\Users\mob_d\AppData\Local\1C\1cedtstart\installations\1C_EDT (Lite) 2025.1\1cedt\1cedtcli.exe
+          ONEC_EDT_CLI: C:\ProgramData\1C\edt\1C_EDT_Lite_2025.1\1cedt\1cedtcli.exe
           ONEC_V8_EXE: C:\Program Files (x86)\1cv8\8.3.27.2130\bin\1cv8.exe
           ONEC_EDT_VERSION: "2025.1"
           ONEC_V8_VERSION: "8.3.27"

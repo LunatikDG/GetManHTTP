@@ -103,7 +103,9 @@ GitHub-hosted runners cannot use a device-bound 1C license. Register a runner on
 On that machine you need:
 
 - 1C:Enterprise (Designer) and a working license / license server
-- 1C:EDT with `1cedtcli` (prefer **2025.1.x**; see script defaults below)
+- 1C:EDT with `1cedtcli` (prefer **2025.1.x** under a machine-wide path such as
+  `C:\ProgramData\1C\edt\...`, not only under a user `AppData` profile — the
+  runner service account must be able to read it)
 - Optional env if auto-detect fails: `ONEC_EDT_CLI`, `ONEC_V8_EXE`, `ONEC_EDT_VERSION`, `ONEC_V8_VERSION`, `ONEC_EDT_DATA`
 - If you prefer native `shell: powershell` steps, set machine policy once (admin):
   `Set-ExecutionPolicy RemoteSigned -Scope LocalMachine` — the Release workflow
@@ -250,7 +252,9 @@ GetManHTTP — это HTTP-клиент, оформленный как **вне�
 На этой машине должны быть:
 
 - 1С:Предприятие (Конфигуратор) и рабочая лицензия / сервер лицензий
-- 1C:EDT с `1cedtcli` (желательно **2025.1.x**)
+- 1C:EDT с `1cedtcli` (желательно **2025.1.x** в общем каталоге вроде
+  `C:\ProgramData\1C\edt\...`, а не только в `AppData` пользователя — учётка
+  службы runner должна иметь доступ на чтение)
 - при необходимости: `ONEC_EDT_CLI`, `ONEC_V8_EXE`, `ONEC_EDT_VERSION`, `ONEC_V8_VERSION`, `ONEC_EDT_DATA`
 - по желанию (для обычных `shell: powershell`): от администратора
   `Set-ExecutionPolicy RemoteSigned -Scope LocalMachine` — в Release уже стоит

@@ -24,21 +24,22 @@ jobs:
 
       - name: Resolve release metadata
         id: meta
-        shell: powershell
+        shell: cmd
         run: |
-          $tag = $Env:GITHUB_REF_NAME
-          $version = $tag -replace '^v_', '' -replace '_', '.'
-          $epf = "bin/GetManHTTP.epf"
-          # PowerShell 5.1 ">>" writes UTF-16; Actions requires UTF-8 for GITHUB_OUTPUT.
-          Add-Content -Path $Env:GITHUB_OUTPUT -Value "tag=$tag" -Encoding utf8
-          Add-Content -Path $Env:GITHUB_OUTPUT -Value "version=$version" -Encoding utf8
-          Add-Content -Path $Env:GITHUB_OUTPUT -Value "epf=$epf" -Encoding utf8
-          Add-Content -Path $Env:GITHUB_OUTPUT -Value "asset_name=GetManHTTP.epf" -Encoding utf8
+          set "TAG=%GITHUB_REF_NAME%"
+          set "VERSION=%TAG:v_=%"
+          set "VERSION=%VERSION:_=.%"
+          echo tag=%TAG%>> "%GITHUB_OUTPUT%"
+          echo version=%VERSION%>> "%GITHUB_OUTPUT%"
+          echo epf=bin/GetManHTTP.epf>> "%GITHUB_OUTPUT%"
+          echo asset_name=GetManHTTP.epf>> "%GITHUB_OUTPUT%"
 
       - name: Build EPF
-        shell: powershell
+        # Bypass: the runner Windows service account often has a restricted
+        # PowerShell execution policy (scripts disabled).
+        shell: cmd
         run: |
-          .\scripts\build-epf.ps1 -OutputEpf "${{ steps.meta.outputs.epf }}"
+          powershell -NoProfile -ExecutionPolicy Bypass -File .\scripts\build-epf.ps1 -OutputEpf "${{ steps.meta.outputs.epf }}"
         # Optional if defaults do not resolve on the runner host:
         # env:
         #   ONEC_EDT_CLI: C:\path\to\1cedtcli.exe

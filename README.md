@@ -105,6 +105,9 @@ On that machine you need:
 - 1C:Enterprise (Designer) and a working license / license server
 - 1C:EDT with `1cedtcli` (prefer **2025.1.x**; see script defaults below)
 - Optional env if auto-detect fails: `ONEC_EDT_CLI`, `ONEC_V8_EXE`, `ONEC_EDT_VERSION`, `ONEC_V8_VERSION`, `ONEC_EDT_DATA`
+- If you prefer native `shell: powershell` steps, set machine policy once (admin):
+  `Set-ExecutionPolicy RemoteSigned -Scope LocalMachine` — the Release workflow
+  itself uses `cmd` + `ExecutionPolicy Bypass` so this is optional
 
 No `ONEC_USERNAME` / `ONEC_PASSWORD` / `ONEC_LICENCE` secrets are required for Release when tools and licenses are already on the runner host. `GITHUB_TOKEN` is provided automatically for creating the release.
 
@@ -249,6 +252,9 @@ GetManHTTP — это HTTP-клиент, оформленный как **вне�
 - 1С:Предприятие (Конфигуратор) и рабочая лицензия / сервер лицензий
 - 1C:EDT с `1cedtcli` (желательно **2025.1.x**)
 - при необходимости: `ONEC_EDT_CLI`, `ONEC_V8_EXE`, `ONEC_EDT_VERSION`, `ONEC_V8_VERSION`, `ONEC_EDT_DATA`
+- по желанию (для обычных `shell: powershell`): от администратора
+  `Set-ExecutionPolicy RemoteSigned -Scope LocalMachine` — в Release уже стоит
+  обход через `cmd` + `ExecutionPolicy Bypass`
 
 Секреты `ONEC_USERNAME` / `ONEC_PASSWORD` / `ONEC_LICENCE` для Release **не нужны**, если инструменты и лицензии уже на хосте runner. `GITHUB_TOKEN` выдаётся автоматически для публикации релиза.
 

@@ -11,7 +11,7 @@ permissions:
 env:
   # Match DT-INF/PROJECT.PMF Runtime-Version (8.3.27) and EDT used for export.
   V8_VERSION: "8.3.27.2130"
-  EDT_VERSION: "2025.1.6"
+  EDT_VERSION: "2025.1.5"
 
 jobs:
   build-and-release:

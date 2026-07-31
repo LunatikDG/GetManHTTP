@@ -88,7 +88,7 @@ cd GetManHTTP_v_1_1_1
 # or: .\scripts\build-epf.ps1 -OutputEpf "bin\GetManHTTP.epf"
 ```
 
-Or `scripts\build-epf.cmd`. Match **1C:EDT** and platform to `.github/workflows/release.yml` (`EDT_VERSION` **2025.1.6**, `V8_VERSION` **8.3.27**). If only EDT 2024.x is installed, the script warns and may fail on export — install EDT 2025.1 or set `ONEC_EDT_CLI` to its `1cedtcli.exe`.
+Or `scripts\build-epf.cmd`. Match **1C:EDT** and platform to `.github/workflows/release.yml` (`EDT_VERSION` **2025.1.5**, `V8_VERSION` **8.3.27**). If only EDT 2024.x is installed, the script warns and may fail on export — install EDT 2025.1 or set `ONEC_EDT_CLI` to its `1cedtcli.exe`.
 
 Close **1C:EDT** before building. The script auto-detects the workspace in the parent folder (`GetManHTTP` with `.metadata`) and exports via `--project-name` (recommended on your machine). First CLI export in a fresh workspace can take **10–30+ minutes**.
 
@@ -195,7 +195,7 @@ cd GetManHTTP_v_1_1_1
 # or: .\scripts\build-epf.ps1 -OutputEpf "bin\GetManHTTP.epf"
 ```
 
-Или `scripts\build-epf.cmd`. Версии **1C:EDT** и платформы — как в `.github/workflows/release.yml` (`EDT_VERSION` **2025.1.6**, `V8_VERSION` **8.3.27**). Если установлен только EDT 2024.x, будет предупреждение и export может падать — поставьте EDT 2025.1 или укажите `ONEC_EDT_CLI`.
+Или `scripts\build-epf.cmd`. Версии **1C:EDT** и платформы — как в `.github/workflows/release.yml` (`EDT_VERSION` **2025.1.5**, `V8_VERSION` **8.3.27**). Если установлен только EDT 2024.x, будет предупреждение и export может падать — поставьте EDT 2025.1 или укажите `ONEC_EDT_CLI`.
 
 Перед сборкой **закройте 1C:EDT**. Скрипт сам находит рабочую область в родительской папке (`GetManHTTP` с `.metadata`) и делает export через `--project-name`. В чистом workspace первый export может занять **10–30+ минут**.
 

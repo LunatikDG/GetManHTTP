@@ -37,15 +37,16 @@ jobs:
       - name: Build EPF
         # Bypass: the runner Windows service account often has a restricted
         # PowerShell execution policy (scripts disabled).
+        # ONEC_* paths: service account does not see per-user EDT under AppData;
+        # override via C:\actions-runner\.env on the host if your install differs.
         shell: cmd
+        env:
+          ONEC_EDT_CLI: C:\Users\mob_d\AppData\Local\1C\1cedtstart\installations\1C_EDT (Lite) 2025.1\1cedt\1cedtcli.exe
+          ONEC_V8_EXE: C:\Program Files (x86)\1cv8\8.3.27.2130\bin\1cv8.exe
+          ONEC_EDT_VERSION: "2025.1"
+          ONEC_V8_VERSION: "8.3.27"
         run: |
           powershell -NoProfile -ExecutionPolicy Bypass -File .\scripts\build-epf.ps1 -OutputEpf "${{ steps.meta.outputs.epf }}"
-        # Optional if defaults do not resolve on the runner host:
-        # env:
-        #   ONEC_EDT_CLI: C:\path\to\1cedtcli.exe
-        #   ONEC_V8_EXE: C:\Program Files (x86)\1cv8\8.3.27.xxxx\bin\1cv8.exe
-        #   ONEC_EDT_VERSION: "2025.1"
-        #   ONEC_V8_VERSION: "8.3.27"
 
       - name: Create release
         uses: softprops/action-gh-release@v2

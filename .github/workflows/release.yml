@@ -103,17 +103,13 @@ jobs:
           body: |
             ## 🇬🇧 English
 
-            ### What's New
-            - **Hierarchical authorization** — auth can be set on collection, folder, or request; default for folders/requests is *Inherit from owner* (collection → folder → request).
-            - **Collection settings** — left tabs *General* / *Authorization* for collection-wide auth.
-            - Auth UI rebuilt around a parameter schema (Basic / Token); switching auth type clears previous field values.
-
             ### Bug Fixes
-            - Fixed incomplete clearing of authorization fields when changing auth type (#3).
+            - **JSON response beautify** — responses with hyphenated object keys (e.g. `user-agent`, `x-forwarded-proto` from postman-echo) are formatted again. Objects are read into a Map instead of a Structure. Fixes #10.
 
             ### Other
-            - Version **${{ steps.meta.outputs.version }}**; settings format **7**.
-            - Form title includes version (GetManHTTP v${{ steps.meta.outputs.version }}).
+            - Version **${{ steps.meta.outputs.version }}**.
+            - README / contributing docs and screenshots under `docs/images/`.
+            - CI: Liberica JDK 17 with JavaFX for headless EDT in the Release workflow.
             - The release asset is always GetManHTTP.epf.
 
             ### Installation
@@ -124,17 +120,13 @@ jobs:
 
             ## 🇷🇺 Русский
 
-            ### Что нового
-            - **Иерархическая авторизация** — на уровне коллекции, папки и запроса; для папок/запросов по умолчанию «Наследовать от владельца» (коллекция → папка → запрос).
-            - **Настройки коллекции** — вкладки слева *Общие* / *Авторизация*.
-            - UI авторизации на схеме параметров (Basic / Token); при смене типа поля предыдущего типа очищаются.
-
             ### Исправления
-            - Исправлена неполная очистка полей авторизации при смене типа (#3).
+            - **Бьютификация JSON** — ответы с ключами вроде `user-agent` / `x-forwarded-proto` снова форматируются (чтение в Соответствие, а не Структуру). Fixes #10.
 
             ### Прочее
-            - Версия **${{ steps.meta.outputs.version }}**; формат настроек **7**.
-            - В заголовке формы — версия (GetManHTTP v${{ steps.meta.outputs.version }}).
+            - Версия **${{ steps.meta.outputs.version }}**.
+            - Обновлены README / contributing и скриншоты в `docs/images/`.
+            - CI: Liberica JDK 17 + JavaFX для headless EDT в Release.
             - Релиз всегда формируется файлом GetManHTTP.epf.
 
             ### Установка

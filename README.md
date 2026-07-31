@@ -2,7 +2,7 @@
 
 [![License](https://img.shields.io/badge/license-GPL--3.0-blue)](https://github.com/LunatikDG/GetManHTTP/blob/main/LICENSE.txt)
 [![1C Version](https://img.shields.io/badge/1С-8.3.26%2B-orange)](#)
-[![Release](https://img.shields.io/badge/release-1.3.21-red)](https://github.com/LunatikDG/GetManHTTP/releases)
+[![Release](https://img.shields.io/badge/release-1.3.22-red)](https://github.com/LunatikDG/GetManHTTP/releases)
 [![BSL Lint](https://github.com/LunatikDG/GetManHTTP/actions/workflows/bsl-lint.yml/badge.svg)](https://github.com/LunatikDG/GetManHTTP/actions/workflows/bsl-lint.yml)
 
 <p align="center">
@@ -17,30 +17,54 @@
 
 ### Description
 
-An HTTP client external data processor for **1C:Enterprise**. Built for
-integrating 1C with external services, REST APIs, and web applications —
-something the platform doesn't handle well out of the box.
+GetManHTTP is an HTTP client **external data processor** for **1C:Enterprise** —
+something like Postman or Insomnia, but running inside 1C itself. Build a
+request, send it, inspect the response, save it for later — without leaving
+the platform.
 
-### Features
+What sets it apart from "just calling `HTTPСоединение` in code":
 
-- Sends **GET**, **POST**, **PUT**, **DELETE**, **PATCH** requests
-- Multiple saved requests in a hierarchical sidebar tree with folders (add / rename / delete / switch)
-- Custom headers and query parameters
-- JSON, XML, form-data and binary request body support
-- Option to send a request without a body
-- Response and status code handling
-- Save response body to a file (auto-selects JSON/XML/HTML by Content-Type)
-- Settings form with configurable HTTP timeout and autosave interval
-- Authorization support (Basic, Bearer Token)
-- HTTPS support
-- Persists all request list items and their data between 1C sessions
-- Optional auto-save while the form is open (off by default; interval configurable in settings)
-- Safe settings persistence on form close (skips save on platform shutdown)
-- Request execution time measurement
-- Detailed response inspection (response headers, status code, request body)
-- Automatic JSON/XML response formatting
-- **Client / Server** execution context per request (toolbar switch); default context in settings
-- Result panel shows where the request ran (**Executed: client** / **server**)
+- Requests are organized in a **folder tree with collections**, not a single
+  throwaway form — build up a library of requests and keep it between 1C
+  sessions.
+- Each request can run either from the **client** machine or from the
+  **application server** — a distinction that matters a lot in 1C and has no
+  equivalent in a browser-based REST client. See
+  [HTTP execution context](#http-execution-context) below.
+- It's a single `.epf` file — no configuration changes, no extension,
+  drag it into any infobase via *File → Open*.
+
+### Screenshots
+
+**Main request form** — method, URL, headers/params/body/auth tabs, and the
+request tree on the left.
+
+![Main request form](docs/images/main-form.png)
+
+**Response panel** — status code, execution time, "Executed: client/server"
+indicator, response headers and formatted body.
+
+![Response panel](docs/images/response-panel.png)
+
+**Authorization** — type selector (Basic / Token) with fields that adapt to
+the chosen type.
+
+![Authorization fields](docs/images/auth-fields.png)
+
+**Request tree & collections** — folders, right-click menu (add / rename /
+delete), a collection selected with its own settings.
+
+![Collections tree](docs/images/collections-tree.png)
+
+**Settings form** — HTTP timeout, auto-save interval, default execution
+context.
+
+![Settings form](docs/images/settings-form.png)
+
+**Demo GIF** (optional but recommended) — record ~15–20 seconds: open the
+form, create a request, pick a method, send it, show the response arriving.
+
+![Demo](docs/images/demo.gif)
 
 ### HTTP execution context
 
@@ -70,7 +94,7 @@ Older saved requests without a stored mode default to **Client** (unchanged beha
 1. Push sources to `main` (folder `bin/` is gitignored; `.epf` is not stored in the repo).
 2. Create and push a tag: `git tag -a v_X_Y_Z -m "GetManHTTP vX.Y.Z"` then `git push origin v_X_Y_Z`
 3. Workflow **Release** builds `bin/GetManHTTP.epf` on GitHub and attaches it to the release (version is in the git tag only).
-4. Before tagging, bump `ВерсияОбработки()` in `Forms/Форма/Module.bsl` (form title) and the version line in form help / README badge to match the tag (`v_1_3_21` → `1.3.21`).
+4. Before tagging, bump `ВерсияОбработки()` in `Forms/Форма/Module.bsl` (form title) and the version line in form help / README badge to match the tag (`v_1_3_21` → `1.3.21`), and move the `[Unreleased]` entries in [CHANGELOG.md](CHANGELOG.md) under the new version.
 
 **GitHub repository secrets** (Settings → Secrets and variables → Actions):
 
@@ -109,6 +133,16 @@ Or: `scripts\bsl-lint.cmd`, or `./scripts/bsl-lint.sh` (Git Bash/WSL). JAR and r
 - Internet access
 - Permission to use external data processors
 
+### Contributing
+
+Bug fixes and features are welcome — see [CONTRIBUTING.md](CONTRIBUTING.md)
+for the project layout, build/lint prerequisites, and PR process. Bugs and
+ideas: [issue templates](.github/ISSUE_TEMPLATE/).
+
+### Changelog
+
+Release history lives in [CHANGELOG.md](CHANGELOG.md).
+
 ### Contact
 
 Feedback, suggestions and bug reports are welcome:
@@ -123,32 +157,55 @@ Feedback, suggestions and bug reports are welcome:
 
 ### Описание
 
-Данная обработка предназначена для отправки HTTP-запросов из
-1С:Предприятие. Подходит для интеграций с внешними сервисами, API и
-веб-приложениями.
+GetManHTTP — это HTTP-клиент, оформленный как **внешняя обработка** для
+**1С:Предприятие** — что-то вроде Postman или Insomnia, но работающее прямо
+внутри 1С. Собрать запрос, отправить, посмотреть ответ, сохранить на
+будущее — не выходя из платформы.
 
-### Возможности
+Чем это отличается от «просто вызвать `HTTPСоединение` в коде»:
 
-- Отправка **GET**, **POST**, **PUT**, **DELETE**, **PATCH** запросов
-- Несколько сохранённых запросов в иерархическом дереве слева с папками (добавление / переименование / удаление / переключение)
-- Передача заголовков и параметров
-- Поддержка JSON-, XML-, form-data- и двоичных тел запросов
-- Вариант отправки без тела запроса
-- Отправка двоичных файлов
-- Обработка ответа и кода состояния
-- Сохранение тела ответа в файл (автовыбор JSON/XML/HTML по Content-Type)
-- Форма настроек с настраиваемым таймаутом HTTP и интервалом автосохранения
-- Работа с авторизацией (Basic, Bearer Token)
-- Поддержка HTTPS
-- Сохраняет все элементы списка запросов и их данные между сеансами 1С
-- Опциональное автосохранение при открытой форме (по умолчанию выключено; интервал задаётся в настройках)
-- Безопасное сохранение настроек при закрытии (без ошибки при завершении работы платформы)
-- Поддержка замера времени выполнения запроса
-- Отображение детальной информации результата запроса (заголовки ответа,
-  код ответа, тело запроса)
-- Автоматическое форматирование JSON/XML в ответе
-- Контекст выполнения **Клиент / Сервер** для каждого запроса (переключатель у метода); значение по умолчанию — в настройках
-- В панели результата отображается, где выполнен запрос (**Выполнен: клиент** / **сервер**)
+- Запросы организованы в **дерево папок с коллекциями**, а не в одноразовую
+  форму — можно накапливать библиотеку запросов, она сохраняется между
+  сеансами 1С.
+- Каждый запрос может выполняться либо с **клиента**, либо на **сервере
+  приложений** — различие, которое в 1С имеет реальное значение и которого
+  нет у браузерных REST-клиентов. Подробнее — раздел [Контекст выполнения
+  HTTP](#контекст-выполнения-http) ниже.
+- Это один файл `.epf` — не нужно менять конфигурацию или ставить
+  расширение, просто перетащите его в любую базу через *Файл → Открыть*.
+
+### Скриншоты
+
+**Главная форма запроса** — метод, URL, вкладки заголовков/параметров/тела/
+авторизации и дерево запросов слева.
+
+![Главная форма запроса](docs/images/main-form.png)
+
+**Панель ответа** — код состояния, время выполнения, индикатор «Выполнен:
+клиент/сервер», заголовки ответа и форматированное тело.
+
+![Панель ответа](docs/images/response-panel.png)
+
+**Авторизация** — выбор типа (Basic / Token) с полями, которые меняются в
+зависимости от выбранного типа.
+
+![Поля авторизации](docs/images/auth-fields.png)
+
+**Дерево запросов и коллекции** — папки, контекстное меню (добавить /
+переименовать / удалить), выбранная коллекция с собственными настройками.
+
+![Дерево коллекций](docs/images/collections-tree.png)
+
+**Форма настроек** — таймаут HTTP, интервал автосохранения, контекст
+выполнения по умолчанию.
+
+![Форма настроек](docs/images/settings-form.png)
+
+**GIF-демонстрация** (не обязательно, но желательно) — запишите 15–20
+секунд: открыли форму, создали запрос, выбрали метод, отправили, показали
+пришедший ответ.
+
+![Демонстрация](docs/images/demo.gif)
 
 ### Контекст выполнения HTTP
 
@@ -177,7 +234,7 @@ Feedback, suggestions and bug reports are welcome:
 1. Исходники в `main` (каталог `bin/` в git не хранится; `.epf` только в релизах).
 2. Создайте и запушьте тег: `git tag -a v_X_Y_Z -m "GetManHTTP vX.Y.Z"` затем `git push origin v_X_Y_Z`
 3. Workflow **Release** собирает `bin/GetManHTTP.epf` на GitHub и прикладывает к релизу (номер версии — только в теге).
-4. Перед тегом обновите `ВерсияОбработки()` в `Forms/Форма/Module.bsl` (заголовок формы) и строку версии в справке формы / бейдже README под тег (`v_1_3_21` → `1.3.21`).
+4. Перед тегом обновите `ВерсияОбработки()` в `Forms/Форма/Module.bsl` (заголовок формы) и строку версии в справке формы / бейдже README под тег (`v_1_3_21` → `1.3.21`), а также перенесите записи из `[Unreleased]` в [CHANGELOG.md](CHANGELOG.md) под новую версию.
 
 **Секреты репозитория** (Settings → Secrets and variables → Actions):
 
@@ -215,6 +272,17 @@ cd GetManHTTP_v_1_1_1
 - 1С:Предприятие 8.3.26 (на более ранних версиях не тестировалось) и выше
 - Доступ в интернет
 - Разрешение на использование внешних обработок
+
+### Контрибьютинг
+
+Багфиксы и новые фичи приветствуются — структура проекта, требования к
+окружению для сборки/линта и порядок PR описаны в
+[CONTRIBUTING.md](CONTRIBUTING.md). Баги и идеи — через
+[шаблоны issue](.github/ISSUE_TEMPLATE/).
+
+### История изменений
+
+Список релизов — в [CHANGELOG.md](CHANGELOG.md).
 
 ### Связь
 

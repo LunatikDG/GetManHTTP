@@ -15,6 +15,9 @@ the language already used in this repository's commit history.
 - Release workflow builds `.epf` on a **self-hosted** Windows runner
   (`onec-build`) with local 1C:EDT/platform/license server instead of
   GitHub-hosted `windows-latest` (device-bound 1C licenses cannot activate there).
+- Maintainer docs: EDT Lite stays in the user profile (`AppData` + `.p2`); the
+  runner service needs ACL (or to run as that user). A bare copy under
+  `ProgramData` is not sufficient for EDT Lite.
 
 ## [1.3.22] - 2026-07-31
 

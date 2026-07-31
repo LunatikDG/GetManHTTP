@@ -103,13 +103,23 @@ GitHub-hosted runners cannot use a device-bound 1C license. Register a runner on
 On that machine you need:
 
 - 1C:Enterprise (Designer) and a working license / license server
-- 1C:EDT with `1cedtcli` (prefer **2025.1.x** under a machine-wide path such as
-  `C:\ProgramData\1C\edt\...`, not only under a user `AppData` profile — the
-  runner service account must be able to read it)
-- Optional env if auto-detect fails: `ONEC_EDT_CLI`, `ONEC_V8_EXE`, `ONEC_EDT_VERSION`, `ONEC_V8_VERSION`, `ONEC_EDT_DATA`
-- If you prefer native `shell: powershell` steps, set machine policy once (admin):
-  `Set-ExecutionPolicy RemoteSigned -Scope LocalMachine` — the Release workflow
-  itself uses `cmd` + `ExecutionPolicy Bypass` so this is optional
+- **1C:EDT 2025.1** with `1cedtcli` (EDT Lite under the interactive user profile is fine).
+  EDT Lite is **not** a portable copy: `1cedt.ini` points at that user's
+  `%USERPROFILE%\.p2` pool, so simply moving the install to `ProgramData` does not
+  work for CI.
+- The Release job runs as the runner Windows service (default
+  `NT AUTHORITY\NETWORK SERVICE`). That account must be able to read/execute the
+  EDT install **and** the `.p2` pool. On this maintainer host that means ACL grants
+  on the user EDT tree and `.p2` (path traverse on parent folders as needed).
+  Alternatively run the runner service as the same Windows user that owns the EDT
+  install.
+- `.github/workflows/release.yml` sets `ONEC_EDT_CLI` / `ONEC_V8_EXE` to the
+  concrete paths on this build PC — update those env values if the install location
+  changes. Optional overrides: `ONEC_EDT_VERSION`, `ONEC_V8_VERSION`, `ONEC_EDT_DATA`
+  (also via `C:\actions-runner\.env` on the host).
+- The workflow uses `cmd` + `powershell -ExecutionPolicy Bypass` so a machine-wide
+  `Set-ExecutionPolicy` is optional (only needed if you switch steps to
+  `shell: powershell`).
 
 No `ONEC_USERNAME` / `ONEC_PASSWORD` / `ONEC_LICENCE` secrets are required for Release when tools and licenses are already on the runner host. `GITHUB_TOKEN` is provided automatically for creating the release.
 
@@ -252,13 +262,21 @@ GetManHTTP — это HTTP-клиент, оформленный как **вне�
 На этой машине должны быть:
 
 - 1С:Предприятие (Конфигуратор) и рабочая лицензия / сервер лицензий
-- 1C:EDT с `1cedtcli` (желательно **2025.1.x** в общем каталоге вроде
-  `C:\ProgramData\1C\edt\...`, а не только в `AppData` пользователя — учётка
-  службы runner должна иметь доступ на чтение)
-- при необходимости: `ONEC_EDT_CLI`, `ONEC_V8_EXE`, `ONEC_EDT_VERSION`, `ONEC_V8_VERSION`, `ONEC_EDT_DATA`
-- по желанию (для обычных `shell: powershell`): от администратора
-  `Set-ExecutionPolicy RemoteSigned -Scope LocalMachine` — в Release уже стоит
-  обход через `cmd` + `ExecutionPolicy Bypass`
+- **1C:EDT 2025.1** с `1cedtcli` (EDT Lite в профиле интерактивного пользователя —
+  нормальный вариант). Lite **не портативен**: в `1cedt.ini` прописан пул
+  `%USERPROFILE%\.p2` этого пользователя, поэтому простое копирование в
+  `ProgramData` для CI не подходит.
+- Job Release выполняется от службы runner (по умолчанию
+  `NT AUTHORITY\NETWORK SERVICE`). У этой учётки должны быть права на чтение/запуск
+  установки EDT **и** пула `.p2`. На сборочном хосте мейнтейнера это сделано ACL
+  на дерево EDT в профиле и на `.p2` (плюс обход родительских каталогов). Альтернатива —
+  запускать службу runner от того же Windows-пользователя, у которого стоит EDT.
+- В `.github/workflows/release.yml` заданы конкретные `ONEC_EDT_CLI` / `ONEC_V8_EXE`
+  для этого ПК — при смене путей обновите их. Дополнительно: `ONEC_EDT_VERSION`,
+  `ONEC_V8_VERSION`, `ONEC_EDT_DATA` (или файл `C:\actions-runner\.env` на хосте).
+- Workflow использует `cmd` + `powershell -ExecutionPolicy Bypass`, поэтому
+  машинный `Set-ExecutionPolicy` не обязателен (нужен только если переведёте шаги
+  на `shell: powershell`).
 
 Секреты `ONEC_USERNAME` / `ONEC_PASSWORD` / `ONEC_LICENCE` для Release **не нужны**, если инструменты и лицензии уже на хосте runner. `GITHUB_TOKEN` выдаётся автоматически для публикации релиза.
 

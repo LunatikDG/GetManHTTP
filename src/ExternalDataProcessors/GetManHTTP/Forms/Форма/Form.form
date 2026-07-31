@@ -2,7 +2,7 @@
 <form:Form xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:core="http://g5.1c.ru/v8/dt/mcore" xmlns:form="http://g5.1c.ru/v8/dt/form">
   <title>
     <key>ru</key>
-    <value>GetManHTTP (HTTP-клиент): v1.3.19</value>
+    <value>GetManHTTP (HTTP-клиент): v1.3.21</value>
   </title>
   <items xsi:type="form:FormGroup">
     <name>ГруппаЛево</name>
@@ -1164,7 +1164,7 @@
             <id>316</id>
             <title>
               <key>ru</key>
-              <value>Вкл.</value>
+              <value>Активен</value>
             </title>
             <visible>true</visible>
             <enabled>true</enabled>
@@ -1912,97 +1912,109 @@
       </items>
       <items xsi:type="form:FormGroup">
         <name>СтраницаАвторизация</name>
-        <id>42</id>
-        <items xsi:type="form:FormField">
-          <name>ТипАвторизации</name>
-          <id>44</id>
-          <visible>true</visible>
-          <enabled>true</enabled>
-          <userVisible>
-            <common>true</common>
-          </userVisible>
-          <dataPath xsi:type="form:DataPath">
-            <segments>ТипАвторизации</segments>
-          </dataPath>
-          <handlers>
-            <event>OnChange</event>
-            <name>ТипАвторизацииПриИзменении</name>
-          </handlers>
-          <extendedTooltip>
-            <name>ТипАвторизацииРасширеннаяПодсказка</name>
-            <id>46</id>
-            <type>Label</type>
-            <autoMaxWidth>true</autoMaxWidth>
-            <autoMaxHeight>true</autoMaxHeight>
-            <extInfo xsi:type="form:LabelDecorationExtInfo">
-              <horizontalAlign>Left</horizontalAlign>
-            </extInfo>
-          </extendedTooltip>
-          <contextMenu>
-            <name>ТипАвторизацииКонтекстноеМеню</name>
-            <id>45</id>
-            <autoFill>true</autoFill>
-          </contextMenu>
-          <type>InputField</type>
-          <editMode>Enter</editMode>
-          <showInHeader>true</showInHeader>
-          <headerHorizontalAlign>Left</headerHorizontalAlign>
-          <showInFooter>true</showInFooter>
-          <extInfo xsi:type="form:InputFieldExtInfo">
-            <autoMaxWidth>true</autoMaxWidth>
-            <autoMaxHeight>true</autoMaxHeight>
-            <wrap>true</wrap>
-            <dropListButton>true</dropListButton>
-            <listChoiceMode>true</listChoiceMode>
-            <chooseType>true</chooseType>
-            <typeDomainEnabled>true</typeDomainEnabled>
-            <textEdit>true</textEdit>
-            <choiceList>
-              <presentation>
-                <key>ru</key>
-                <value>Без авторизации</value>
-              </presentation>
-              <value xsi:type="core:StringValue">
-                <value>NoAuth</value>
-              </value>
-            </choiceList>
-            <choiceList>
-              <presentation>
-                <key>ru</key>
-                <value>Базовая авторизация (логин+пароль)</value>
-              </presentation>
-              <value xsi:type="core:StringValue">
-                <value>BasicAuth</value>
-              </value>
-            </choiceList>
-            <choiceList>
-              <presentation>
-                <key>ru</key>
-                <value>Авторизация по токену</value>
-              </presentation>
-              <value xsi:type="core:StringValue">
-                <value>Token</value>
-              </value>
-            </choiceList>
-          </extInfo>
-        </items>
+        <id>361</id>
         <items xsi:type="form:FormGroup">
-          <name>ЛогинПароль</name>
-          <id>50</id>
-          <items xsi:type="form:FormField">
-            <name>ЛогинBasicAuth</name>
-            <id>52</id>
+          <name>ГруппаАвторизацияКонтент</name>
+          <id>363</id>
+          <items xsi:type="form:FormGroup">
+            <name>ГруппаАвторизацияЛево</name>
+            <id>330</id>
+            <items xsi:type="form:FormField">
+              <name>ТипАвторизации</name>
+              <id>44</id>
+              <visible>true</visible>
+              <enabled>true</enabled>
+              <userVisible>
+                <common>true</common>
+              </userVisible>
+              <dataPath xsi:type="form:DataPath">
+                <segments>ТипАвторизации</segments>
+              </dataPath>
+              <titleLocation>Top</titleLocation>
+              <handlers>
+                <event>OnChange</event>
+                <name>ТипАвторизацииПриИзменении</name>
+              </handlers>
+              <extendedTooltip>
+                <name>ТипАвторизацииРасширеннаяПодсказка</name>
+                <id>46</id>
+                <type>Label</type>
+                <autoMaxWidth>true</autoMaxWidth>
+                <autoMaxHeight>true</autoMaxHeight>
+                <extInfo xsi:type="form:LabelDecorationExtInfo">
+                  <horizontalAlign>Left</horizontalAlign>
+                </extInfo>
+              </extendedTooltip>
+              <contextMenu>
+                <name>ТипАвторизацииКонтекстноеМеню</name>
+                <id>45</id>
+                <autoFill>true</autoFill>
+              </contextMenu>
+              <type>InputField</type>
+              <editMode>Enter</editMode>
+              <showInHeader>true</showInHeader>
+              <headerHorizontalAlign>Left</headerHorizontalAlign>
+              <showInFooter>true</showInFooter>
+              <extInfo xsi:type="form:InputFieldExtInfo">
+                <width>28</width>
+                <autoMaxWidth>true</autoMaxWidth>
+                <autoMaxHeight>true</autoMaxHeight>
+                <wrap>true</wrap>
+                <dropListButton>true</dropListButton>
+                <listChoiceMode>true</listChoiceMode>
+                <chooseType>true</chooseType>
+                <typeDomainEnabled>true</typeDomainEnabled>
+                <textEdit>true</textEdit>
+                <choiceList>
+                  <presentation>
+                    <key>ru</key>
+                    <value>Без авторизации</value>
+                  </presentation>
+                  <value xsi:type="core:StringValue">
+                    <value>NoAuth</value>
+                  </value>
+                </choiceList>
+                <choiceList>
+                  <presentation>
+                    <key>ru</key>
+                    <value>Наследовать от владельца</value>
+                  </presentation>
+                  <value xsi:type="core:StringValue">
+                    <value>InheritFromOwner</value>
+                  </value>
+                </choiceList>
+                <choiceList>
+                  <presentation>
+                    <key>ru</key>
+                    <value>Базовая авторизация (логин+пароль)</value>
+                  </presentation>
+                  <value xsi:type="core:StringValue">
+                    <value>BasicAuth</value>
+                  </value>
+                </choiceList>
+                <choiceList>
+                  <presentation>
+                    <key>ru</key>
+                    <value>Авторизация по токену</value>
+                  </presentation>
+                  <value xsi:type="core:StringValue">
+                    <value>Token</value>
+                  </value>
+                </choiceList>
+              </extInfo>
+            </items>
             <visible>true</visible>
             <enabled>true</enabled>
             <userVisible>
               <common>true</common>
             </userVisible>
-            <dataPath xsi:type="form:DataPath">
-              <segments>ЛогинBasicAuth</segments>
-            </dataPath>
+            <title>
+              <key>ru</key>
+              <value>Тип</value>
+            </title>
             <extendedTooltip>
-              <name>ЛогинBasicAuthРасширеннаяПодсказка</name>
-              <id>54</id>
+              <name>ГруппаАвторизацияЛевоРасширеннаяПодсказка</name>
+              <id>331</id>
               <type>Label</type>
               <autoMaxWidth>true</autoMaxWidth>
               <autoMaxHeight>true</autoMaxHeight>
@@ -2010,39 +2022,315 @@
                 <horizontalAlign>Left</horizontalAlign>
               </extInfo>
             </extendedTooltip>
-            <contextMenu>
-              <name>ЛогинBasicAuthКонтекстноеМеню</name>
-              <id>53</id>
-              <autoFill>true</autoFill>
-            </contextMenu>
-            <type>InputField</type>
-            <editMode>Enter</editMode>
-            <showInHeader>true</showInHeader>
-            <headerHorizontalAlign>Left</headerHorizontalAlign>
-            <showInFooter>true</showInFooter>
-            <extInfo xsi:type="form:InputFieldExtInfo">
-              <autoMaxWidth>true</autoMaxWidth>
-              <autoMaxHeight>true</autoMaxHeight>
-              <wrap>true</wrap>
-              <chooseType>true</chooseType>
-              <typeDomainEnabled>true</typeDomainEnabled>
-              <textEdit>true</textEdit>
+            <type>UsualGroup</type>
+            <extInfo xsi:type="form:UsualGroupExtInfo">
+              <group>Vertical</group>
+              <behavior>Auto</behavior>
+              <representation>None</representation>
+              <showLeftMargin>true</showLeftMargin>
+              <united>true</united>
+              <showTitle>false</showTitle>
+              <throughAlign>Auto</throughAlign>
+              <currentRowUse>Auto</currentRowUse>
             </extInfo>
           </items>
-          <items xsi:type="form:FormField">
-            <name>ПарольBasicAuth</name>
-            <id>55</id>
+          <items xsi:type="form:FormGroup">
+            <name>ГруппаАвторизацияПраво</name>
+            <id>332</id>
+            <items xsi:type="form:FormField">
+              <name>ПолеАвторизации1</name>
+              <id>333</id>
+              <visible>false</visible>
+              <enabled>true</enabled>
+              <userVisible>
+                <common>true</common>
+              </userVisible>
+              <dataPath xsi:type="form:DataPath">
+                <segments>ЗначениеАвторизации1</segments>
+              </dataPath>
+              <titleLocation>Top</titleLocation>
+              <handlers>
+                <event>OnChange</event>
+                <name>ПолеАвторизацииПриИзменении</name>
+              </handlers>
+              <extendedTooltip>
+                <name>ПолеАвторизации1РасширеннаяПодсказка</name>
+                <id>334</id>
+                <type>Label</type>
+                <autoMaxWidth>true</autoMaxWidth>
+                <autoMaxHeight>true</autoMaxHeight>
+                <extInfo xsi:type="form:LabelDecorationExtInfo">
+                  <horizontalAlign>Left</horizontalAlign>
+                </extInfo>
+              </extendedTooltip>
+              <contextMenu>
+                <name>ПолеАвторизации1КонтекстноеМеню</name>
+                <id>335</id>
+                <autoFill>true</autoFill>
+              </contextMenu>
+              <type>InputField</type>
+              <editMode>Enter</editMode>
+              <showInHeader>true</showInHeader>
+              <headerHorizontalAlign>Left</headerHorizontalAlign>
+              <showInFooter>true</showInFooter>
+              <extInfo xsi:type="form:InputFieldExtInfo">
+                <autoMaxWidth>true</autoMaxWidth>
+                <height>1</height>
+                <autoMaxHeight>true</autoMaxHeight>
+                <horizontalStretch>true</horizontalStretch>
+                <wrap>true</wrap>
+                <chooseType>true</chooseType>
+                <typeDomainEnabled>true</typeDomainEnabled>
+                <textEdit>true</textEdit>
+              </extInfo>
+            </items>
+            <items xsi:type="form:FormField">
+              <name>ПолеАвторизации2</name>
+              <id>336</id>
+              <visible>false</visible>
+              <enabled>true</enabled>
+              <userVisible>
+                <common>true</common>
+              </userVisible>
+              <dataPath xsi:type="form:DataPath">
+                <segments>ЗначениеАвторизации2</segments>
+              </dataPath>
+              <titleLocation>Top</titleLocation>
+              <handlers>
+                <event>OnChange</event>
+                <name>ПолеАвторизацииПриИзменении</name>
+              </handlers>
+              <extendedTooltip>
+                <name>ПолеАвторизации2РасширеннаяПодсказка</name>
+                <id>337</id>
+                <type>Label</type>
+                <autoMaxWidth>true</autoMaxWidth>
+                <autoMaxHeight>true</autoMaxHeight>
+                <extInfo xsi:type="form:LabelDecorationExtInfo">
+                  <horizontalAlign>Left</horizontalAlign>
+                </extInfo>
+              </extendedTooltip>
+              <contextMenu>
+                <name>ПолеАвторизации2КонтекстноеМеню</name>
+                <id>338</id>
+                <autoFill>true</autoFill>
+              </contextMenu>
+              <type>InputField</type>
+              <editMode>Enter</editMode>
+              <showInHeader>true</showInHeader>
+              <headerHorizontalAlign>Left</headerHorizontalAlign>
+              <showInFooter>true</showInFooter>
+              <extInfo xsi:type="form:InputFieldExtInfo">
+                <autoMaxWidth>true</autoMaxWidth>
+                <height>1</height>
+                <autoMaxHeight>true</autoMaxHeight>
+                <horizontalStretch>true</horizontalStretch>
+                <wrap>true</wrap>
+                <chooseType>true</chooseType>
+                <typeDomainEnabled>true</typeDomainEnabled>
+                <textEdit>true</textEdit>
+              </extInfo>
+            </items>
+            <items xsi:type="form:FormField">
+              <name>ПолеАвторизации3</name>
+              <id>339</id>
+              <visible>false</visible>
+              <enabled>true</enabled>
+              <userVisible>
+                <common>true</common>
+              </userVisible>
+              <dataPath xsi:type="form:DataPath">
+                <segments>ЗначениеАвторизации3</segments>
+              </dataPath>
+              <titleLocation>Top</titleLocation>
+              <handlers>
+                <event>OnChange</event>
+                <name>ПолеАвторизацииПриИзменении</name>
+              </handlers>
+              <extendedTooltip>
+                <name>ПолеАвторизации3РасширеннаяПодсказка</name>
+                <id>340</id>
+                <type>Label</type>
+                <autoMaxWidth>true</autoMaxWidth>
+                <autoMaxHeight>true</autoMaxHeight>
+                <extInfo xsi:type="form:LabelDecorationExtInfo">
+                  <horizontalAlign>Left</horizontalAlign>
+                </extInfo>
+              </extendedTooltip>
+              <contextMenu>
+                <name>ПолеАвторизации3КонтекстноеМеню</name>
+                <id>341</id>
+                <autoFill>true</autoFill>
+              </contextMenu>
+              <type>InputField</type>
+              <editMode>Enter</editMode>
+              <showInHeader>true</showInHeader>
+              <headerHorizontalAlign>Left</headerHorizontalAlign>
+              <showInFooter>true</showInFooter>
+              <extInfo xsi:type="form:InputFieldExtInfo">
+                <autoMaxWidth>true</autoMaxWidth>
+                <height>1</height>
+                <autoMaxHeight>true</autoMaxHeight>
+                <horizontalStretch>true</horizontalStretch>
+                <wrap>true</wrap>
+                <chooseType>true</chooseType>
+                <typeDomainEnabled>true</typeDomainEnabled>
+                <textEdit>true</textEdit>
+              </extInfo>
+            </items>
+            <items xsi:type="form:FormField">
+              <name>ПолеАвторизации4</name>
+              <id>342</id>
+              <visible>false</visible>
+              <enabled>true</enabled>
+              <userVisible>
+                <common>true</common>
+              </userVisible>
+              <dataPath xsi:type="form:DataPath">
+                <segments>ЗначениеАвторизации4</segments>
+              </dataPath>
+              <titleLocation>Top</titleLocation>
+              <handlers>
+                <event>OnChange</event>
+                <name>ПолеАвторизацииПриИзменении</name>
+              </handlers>
+              <extendedTooltip>
+                <name>ПолеАвторизации4РасширеннаяПодсказка</name>
+                <id>343</id>
+                <type>Label</type>
+                <autoMaxWidth>true</autoMaxWidth>
+                <autoMaxHeight>true</autoMaxHeight>
+                <extInfo xsi:type="form:LabelDecorationExtInfo">
+                  <horizontalAlign>Left</horizontalAlign>
+                </extInfo>
+              </extendedTooltip>
+              <contextMenu>
+                <name>ПолеАвторизации4КонтекстноеМеню</name>
+                <id>344</id>
+                <autoFill>true</autoFill>
+              </contextMenu>
+              <type>InputField</type>
+              <editMode>Enter</editMode>
+              <showInHeader>true</showInHeader>
+              <headerHorizontalAlign>Left</headerHorizontalAlign>
+              <showInFooter>true</showInFooter>
+              <extInfo xsi:type="form:InputFieldExtInfo">
+                <autoMaxWidth>true</autoMaxWidth>
+                <height>1</height>
+                <autoMaxHeight>true</autoMaxHeight>
+                <horizontalStretch>true</horizontalStretch>
+                <wrap>true</wrap>
+                <chooseType>true</chooseType>
+                <typeDomainEnabled>true</typeDomainEnabled>
+                <textEdit>true</textEdit>
+              </extInfo>
+            </items>
+            <items xsi:type="form:FormField">
+              <name>ПолеАвторизации5</name>
+              <id>345</id>
+              <visible>false</visible>
+              <enabled>true</enabled>
+              <userVisible>
+                <common>true</common>
+              </userVisible>
+              <dataPath xsi:type="form:DataPath">
+                <segments>ЗначениеАвторизации5</segments>
+              </dataPath>
+              <titleLocation>Top</titleLocation>
+              <handlers>
+                <event>OnChange</event>
+                <name>ПолеАвторизацииПриИзменении</name>
+              </handlers>
+              <extendedTooltip>
+                <name>ПолеАвторизации5РасширеннаяПодсказка</name>
+                <id>346</id>
+                <type>Label</type>
+                <autoMaxWidth>true</autoMaxWidth>
+                <autoMaxHeight>true</autoMaxHeight>
+                <extInfo xsi:type="form:LabelDecorationExtInfo">
+                  <horizontalAlign>Left</horizontalAlign>
+                </extInfo>
+              </extendedTooltip>
+              <contextMenu>
+                <name>ПолеАвторизации5КонтекстноеМеню</name>
+                <id>347</id>
+                <autoFill>true</autoFill>
+              </contextMenu>
+              <type>InputField</type>
+              <editMode>Enter</editMode>
+              <showInHeader>true</showInHeader>
+              <headerHorizontalAlign>Left</headerHorizontalAlign>
+              <showInFooter>true</showInFooter>
+              <extInfo xsi:type="form:InputFieldExtInfo">
+                <autoMaxWidth>true</autoMaxWidth>
+                <height>1</height>
+                <autoMaxHeight>true</autoMaxHeight>
+                <horizontalStretch>true</horizontalStretch>
+                <wrap>true</wrap>
+                <chooseType>true</chooseType>
+                <typeDomainEnabled>true</typeDomainEnabled>
+                <textEdit>true</textEdit>
+              </extInfo>
+            </items>
+            <items xsi:type="form:FormField">
+              <name>ПолеАвторизации6</name>
+              <id>348</id>
+              <visible>false</visible>
+              <enabled>true</enabled>
+              <userVisible>
+                <common>true</common>
+              </userVisible>
+              <dataPath xsi:type="form:DataPath">
+                <segments>ЗначениеАвторизации6</segments>
+              </dataPath>
+              <titleLocation>Top</titleLocation>
+              <handlers>
+                <event>OnChange</event>
+                <name>ПолеАвторизацииПриИзменении</name>
+              </handlers>
+              <extendedTooltip>
+                <name>ПолеАвторизации6РасширеннаяПодсказка</name>
+                <id>349</id>
+                <type>Label</type>
+                <autoMaxWidth>true</autoMaxWidth>
+                <autoMaxHeight>true</autoMaxHeight>
+                <extInfo xsi:type="form:LabelDecorationExtInfo">
+                  <horizontalAlign>Left</horizontalAlign>
+                </extInfo>
+              </extendedTooltip>
+              <contextMenu>
+                <name>ПолеАвторизации6КонтекстноеМеню</name>
+                <id>350</id>
+                <autoFill>true</autoFill>
+              </contextMenu>
+              <type>InputField</type>
+              <editMode>Enter</editMode>
+              <showInHeader>true</showInHeader>
+              <headerHorizontalAlign>Left</headerHorizontalAlign>
+              <showInFooter>true</showInFooter>
+              <extInfo xsi:type="form:InputFieldExtInfo">
+                <autoMaxWidth>true</autoMaxWidth>
+                <height>1</height>
+                <autoMaxHeight>true</autoMaxHeight>
+                <horizontalStretch>true</horizontalStretch>
+                <wrap>true</wrap>
+                <chooseType>true</chooseType>
+                <typeDomainEnabled>true</typeDomainEnabled>
+                <textEdit>true</textEdit>
+              </extInfo>
+            </items>
             <visible>true</visible>
             <enabled>true</enabled>
             <userVisible>
               <common>true</common>
             </userVisible>
-            <dataPath xsi:type="form:DataPath">
-              <segments>ПарольBasicAuth</segments>
-            </dataPath>
+            <title>
+              <key>ru</key>
+              <value>Параметры</value>
+            </title>
             <extendedTooltip>
-              <name>ПарольBasicAuthРасширеннаяПодсказка</name>
-              <id>57</id>
+              <name>ГруппаАвторизацияПравоРасширеннаяПодсказка</name>
+              <id>351</id>
               <type>Label</type>
               <autoMaxWidth>true</autoMaxWidth>
               <autoMaxHeight>true</autoMaxHeight>
@@ -2050,37 +2338,30 @@
                 <horizontalAlign>Left</horizontalAlign>
               </extInfo>
             </extendedTooltip>
-            <contextMenu>
-              <name>ПарольBasicAuthКонтекстноеМеню</name>
-              <id>56</id>
-              <autoFill>true</autoFill>
-            </contextMenu>
-            <type>InputField</type>
-            <editMode>Enter</editMode>
-            <showInHeader>true</showInHeader>
-            <headerHorizontalAlign>Left</headerHorizontalAlign>
-            <showInFooter>true</showInFooter>
-            <extInfo xsi:type="form:InputFieldExtInfo">
-              <autoMaxWidth>true</autoMaxWidth>
-              <autoMaxHeight>true</autoMaxHeight>
-              <wrap>true</wrap>
-              <passwordMode>true</passwordMode>
-              <chooseType>true</chooseType>
-              <typeDomainEnabled>true</typeDomainEnabled>
-              <textEdit>true</textEdit>
+            <type>UsualGroup</type>
+            <extInfo xsi:type="form:UsualGroupExtInfo">
+              <group>Vertical</group>
+              <behavior>Auto</behavior>
+              <representation>None</representation>
+              <showLeftMargin>true</showLeftMargin>
+              <united>true</united>
+              <showTitle>false</showTitle>
+              <throughAlign>Auto</throughAlign>
+              <currentRowUse>Auto</currentRowUse>
             </extInfo>
           </items>
+          <visible>true</visible>
           <enabled>true</enabled>
           <userVisible>
             <common>true</common>
           </userVisible>
           <title>
             <key>ru</key>
-            <value>Базовая авторизация</value>
+            <value>Контент авторизации</value>
           </title>
           <extendedTooltip>
-            <name>ЛогинПарольРасширеннаяПодсказка</name>
-            <id>51</id>
+            <name>ГруппаАвторизацияКонтентРасширеннаяПодсказка</name>
+            <id>364</id>
             <type>Label</type>
             <autoMaxWidth>true</autoMaxWidth>
             <autoMaxHeight>true</autoMaxHeight>
@@ -2090,124 +2371,12 @@
           </extendedTooltip>
           <type>UsualGroup</type>
           <extInfo xsi:type="form:UsualGroupExtInfo">
-            <group>HorizontalIfPossible</group>
+            <group>Horizontal</group>
             <behavior>Auto</behavior>
+            <representation>None</representation>
             <showLeftMargin>true</showLeftMargin>
             <united>true</united>
-            <showTitle>true</showTitle>
-            <throughAlign>Auto</throughAlign>
-            <currentRowUse>Auto</currentRowUse>
-          </extInfo>
-        </items>
-        <items xsi:type="form:FormGroup">
-          <name>ГруппаТокен</name>
-          <id>99</id>
-          <items xsi:type="form:FormField">
-            <name>НаименованиеТокена</name>
-            <id>107</id>
-            <visible>true</visible>
-            <enabled>true</enabled>
-            <userVisible>
-              <common>true</common>
-            </userVisible>
-            <dataPath xsi:type="form:DataPath">
-              <segments>НаименованиеТокена</segments>
-            </dataPath>
-            <toolTip>
-              <key>ru</key>
-              <value>Название токена которое ставится в заголовок Authorization. По умолчанию (в случае пустого поля) это значение = &quot;Token&quot;</value>
-            </toolTip>
-            <toolTipRepresentation>Button</toolTipRepresentation>
-            <extendedTooltip>
-              <name>НаименованиеТокенаРасширеннаяПодсказка</name>
-              <id>109</id>
-              <type>Label</type>
-              <autoMaxWidth>true</autoMaxWidth>
-              <autoMaxHeight>true</autoMaxHeight>
-              <extInfo xsi:type="form:LabelDecorationExtInfo">
-                <horizontalAlign>Left</horizontalAlign>
-              </extInfo>
-            </extendedTooltip>
-            <contextMenu>
-              <name>НаименованиеТокенаКонтекстноеМеню</name>
-              <id>108</id>
-              <autoFill>true</autoFill>
-            </contextMenu>
-            <type>InputField</type>
-            <editMode>Enter</editMode>
-            <showInHeader>true</showInHeader>
-            <headerHorizontalAlign>Left</headerHorizontalAlign>
-            <showInFooter>true</showInFooter>
-            <extInfo xsi:type="form:InputFieldExtInfo">
-              <autoMaxWidth>true</autoMaxWidth>
-              <autoMaxHeight>true</autoMaxHeight>
-              <wrap>true</wrap>
-              <chooseType>true</chooseType>
-              <typeDomainEnabled>true</typeDomainEnabled>
-              <textEdit>true</textEdit>
-            </extInfo>
-          </items>
-          <items xsi:type="form:FormField">
-            <name>ТокенАвторизации</name>
-            <id>110</id>
-            <visible>true</visible>
-            <enabled>true</enabled>
-            <userVisible>
-              <common>true</common>
-            </userVisible>
-            <dataPath xsi:type="form:DataPath">
-              <segments>ТокенАвторизации</segments>
-            </dataPath>
-            <extendedTooltip>
-              <name>ТокенАвторизацииРасширеннаяПодсказка</name>
-              <id>112</id>
-              <type>Label</type>
-              <autoMaxWidth>true</autoMaxWidth>
-              <autoMaxHeight>true</autoMaxHeight>
-              <extInfo xsi:type="form:LabelDecorationExtInfo">
-                <horizontalAlign>Left</horizontalAlign>
-              </extInfo>
-            </extendedTooltip>
-            <contextMenu>
-              <name>ТокенАвторизацииКонтекстноеМеню</name>
-              <id>111</id>
-              <autoFill>true</autoFill>
-            </contextMenu>
-            <type>InputField</type>
-            <editMode>Enter</editMode>
-            <showInHeader>true</showInHeader>
-            <headerHorizontalAlign>Left</headerHorizontalAlign>
-            <showInFooter>true</showInFooter>
-            <extInfo xsi:type="form:InputFieldExtInfo">
-              <autoMaxWidth>true</autoMaxWidth>
-              <autoMaxHeight>true</autoMaxHeight>
-              <wrap>true</wrap>
-              <passwordMode>true</passwordMode>
-              <chooseType>true</chooseType>
-              <typeDomainEnabled>true</typeDomainEnabled>
-              <textEdit>true</textEdit>
-            </extInfo>
-          </items>
-          <enabled>true</enabled>
-          <userVisible>
-            <common>true</common>
-          </userVisible>
-          <extendedTooltip>
-            <name>ГруппаТокенРасширеннаяПодсказка</name>
-            <id>100</id>
-            <type>Label</type>
-            <autoMaxWidth>true</autoMaxWidth>
-            <autoMaxHeight>true</autoMaxHeight>
-            <extInfo xsi:type="form:LabelDecorationExtInfo">
-              <horizontalAlign>Left</horizontalAlign>
-            </extInfo>
-          </extendedTooltip>
-          <type>UsualGroup</type>
-          <extInfo xsi:type="form:UsualGroupExtInfo">
-            <group>HorizontalIfPossible</group>
-            <behavior>Auto</behavior>
-            <showLeftMargin>true</showLeftMargin>
-            <united>true</united>
+            <showTitle>false</showTitle>
             <throughAlign>Auto</throughAlign>
             <currentRowUse>Auto</currentRowUse>
           </extInfo>
@@ -2223,7 +2392,7 @@
         </title>
         <extendedTooltip>
           <name>СтраницаАвторизацияРасширеннаяПодсказка</name>
-          <id>43</id>
+          <id>362</id>
           <type>Label</type>
           <autoMaxWidth>true</autoMaxWidth>
           <autoMaxHeight>true</autoMaxHeight>
@@ -3725,12 +3894,82 @@
     </edit>
   </attributes>
   <attributes>
-    <name>ЛогинBasicAuth</name>
+    <name>ПараметрыАвторизации</name>
     <title>
       <key>ru</key>
-      <value>Логин</value>
+      <value>Параметры авторизации</value>
     </title>
     <id>11</id>
+    <valueType>
+      <types>ValueTable</types>
+    </valueType>
+    <view>
+      <common>true</common>
+    </view>
+    <edit>
+      <common>true</common>
+    </edit>
+    <columns>
+      <name>Ключ</name>
+      <title>
+        <key>ru</key>
+        <value>Ключ</value>
+      </title>
+      <id>352</id>
+      <valueType>
+        <types>String</types>
+        <stringQualifiers/>
+      </valueType>
+      <view>
+        <common>true</common>
+      </view>
+      <edit>
+        <common>true</common>
+      </edit>
+    </columns>
+    <columns>
+      <name>Значение</name>
+      <title>
+        <key>ru</key>
+        <value>Значение</value>
+      </title>
+      <id>353</id>
+      <valueType>
+        <types>String</types>
+        <stringQualifiers/>
+      </valueType>
+      <view>
+        <common>true</common>
+      </view>
+      <edit>
+        <common>true</common>
+      </edit>
+    </columns>
+    <columns>
+      <name>Секретный</name>
+      <title>
+        <key>ru</key>
+        <value>Секретный</value>
+      </title>
+      <id>354</id>
+      <valueType>
+        <types>Boolean</types>
+      </valueType>
+      <view>
+        <common>true</common>
+      </view>
+      <edit>
+        <common>true</common>
+      </edit>
+    </columns>
+  </attributes>
+  <attributes>
+    <name>ЗначениеАвторизации1</name>
+    <title>
+      <key>ru</key>
+      <value>Поле авторизации 1</value>
+    </title>
+    <id>355</id>
     <valueType>
       <types>String</types>
       <stringQualifiers/>
@@ -3743,12 +3982,84 @@
     </edit>
   </attributes>
   <attributes>
-    <name>ПарольBasicAuth</name>
+    <name>ЗначениеАвторизации2</name>
     <title>
       <key>ru</key>
-      <value>Пароль</value>
+      <value>Поле авторизации 2</value>
     </title>
-    <id>12</id>
+    <id>356</id>
+    <valueType>
+      <types>String</types>
+      <stringQualifiers/>
+    </valueType>
+    <view>
+      <common>true</common>
+    </view>
+    <edit>
+      <common>true</common>
+    </edit>
+  </attributes>
+  <attributes>
+    <name>ЗначениеАвторизации3</name>
+    <title>
+      <key>ru</key>
+      <value>Поле авторизации 3</value>
+    </title>
+    <id>357</id>
+    <valueType>
+      <types>String</types>
+      <stringQualifiers/>
+    </valueType>
+    <view>
+      <common>true</common>
+    </view>
+    <edit>
+      <common>true</common>
+    </edit>
+  </attributes>
+  <attributes>
+    <name>ЗначениеАвторизации4</name>
+    <title>
+      <key>ru</key>
+      <value>Поле авторизации 4</value>
+    </title>
+    <id>358</id>
+    <valueType>
+      <types>String</types>
+      <stringQualifiers/>
+    </valueType>
+    <view>
+      <common>true</common>
+    </view>
+    <edit>
+      <common>true</common>
+    </edit>
+  </attributes>
+  <attributes>
+    <name>ЗначениеАвторизации5</name>
+    <title>
+      <key>ru</key>
+      <value>Поле авторизации 5</value>
+    </title>
+    <id>359</id>
+    <valueType>
+      <types>String</types>
+      <stringQualifiers/>
+    </valueType>
+    <view>
+      <common>true</common>
+    </view>
+    <edit>
+      <common>true</common>
+    </edit>
+  </attributes>
+  <attributes>
+    <name>ЗначениеАвторизации6</name>
+    <title>
+      <key>ru</key>
+      <value>Поле авторизации 6</value>
+    </title>
+    <id>360</id>
     <valueType>
       <types>String</types>
       <stringQualifiers/>
@@ -3899,42 +4210,6 @@
       <stringQualifiers>
         <length>8</length>
       </stringQualifiers>
-    </valueType>
-    <view>
-      <common>true</common>
-    </view>
-    <edit>
-      <common>true</common>
-    </edit>
-  </attributes>
-  <attributes>
-    <name>ТокенАвторизации</name>
-    <title>
-      <key>ru</key>
-      <value>Токен авторизации</value>
-    </title>
-    <id>20</id>
-    <valueType>
-      <types>String</types>
-      <stringQualifiers/>
-    </valueType>
-    <view>
-      <common>true</common>
-    </view>
-    <edit>
-      <common>true</common>
-    </edit>
-  </attributes>
-  <attributes>
-    <name>НаименованиеТокена</name>
-    <title>
-      <key>ru</key>
-      <value>Наименование токена</value>
-    </title>
-    <id>22</id>
-    <valueType>
-      <types>String</types>
-      <stringQualifiers/>
     </valueType>
     <view>
       <common>true</common>
@@ -4514,6 +4789,44 @@
         <value>Данные списка</value>
       </title>
       <id>285</id>
+      <valueType>
+        <types>String</types>
+        <stringQualifiers/>
+      </valueType>
+      <view>
+        <common>true</common>
+      </view>
+      <edit>
+        <common>true</common>
+      </edit>
+    </columns>
+    <columns>
+      <name>ТипАвторизации</name>
+      <title>
+        <key>ru</key>
+        <value>Тип авторизации</value>
+      </title>
+      <id>365</id>
+      <valueType>
+        <types>String</types>
+        <stringQualifiers>
+          <length>64</length>
+        </stringQualifiers>
+      </valueType>
+      <view>
+        <common>true</common>
+      </view>
+      <edit>
+        <common>true</common>
+      </edit>
+    </columns>
+    <columns>
+      <name>ПараметрыАвторизации</name>
+      <title>
+        <key>ru</key>
+        <value>Параметры авторизации</value>
+      </title>
+      <id>366</id>
       <valueType>
         <types>String</types>
         <stringQualifiers/>

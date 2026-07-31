@@ -94,12 +94,18 @@ jobs:
           body: |
             ## 🇬🇧 English
 
-            ### Highlights
-            - **Send context:** run HTTP requests on the **client** or **1C server** (toggle next to the method; default in settings; stored per request).
-            - Result footer shows **Executed: client / server**.
+            ### What's New
+            - **Hierarchical authorization** — auth can be set on collection, folder, or request; default for folders/requests is *Inherit from owner* (collection → folder → request).
+            - **Collection settings** — left tabs *General* / *Authorization* for collection-wide auth.
+            - Auth UI rebuilt around a parameter schema (Basic / Token); switching auth type clears previous field values.
+
+            ### Bug Fixes
+            - Fixed incomplete clearing of authorization fields when changing auth type (#3).
+
+            ### Other
+            - Version **${{ steps.meta.outputs.version }}**; settings format **7**.
             - Form title includes version (GetManHTTP v${{ steps.meta.outputs.version }}).
-            - The release asset is always GetManHTTP.epf. The version number appears in the release tag, the form title, and the in-app help.
-            - The bin/ folder is excluded from the repository and is no longer stored in git. Added scripts/build-epf.ps1 for local builds (requires 1C:EDT and an installed 1C:Enterprise platform).
+            - The release asset is always GetManHTTP.epf.
 
             ### Installation
             1. Download ${{ steps.meta.outputs.asset_name }} from this release
@@ -109,12 +115,18 @@ jobs:
 
             ## 🇷🇺 Русский
 
-            ### Главное
-            - **Контекст отправки:** запрос на **клиенте** или на **сервере 1С** (переключатель у метода; значение по умолчанию в настройках; хранится у каждого запроса).
-            - В подвале ответа: **Выполнен: клиент / сервер**.
+            ### Что нового
+            - **Иерархическая авторизация** — на уровне коллекции, папки и запроса; для папок/запросов по умолчанию «Наследовать от владельца» (коллекция → папка → запрос).
+            - **Настройки коллекции** — вкладки слева *Общие* / *Авторизация*.
+            - UI авторизации на схеме параметров (Basic / Token); при смене типа поля предыдущего типа очищаются.
+
+            ### Исправления
+            - Исправлена неполная очистка полей авторизации при смене типа (#3).
+
+            ### Прочее
+            - Версия **${{ steps.meta.outputs.version }}**; формат настроек **7**.
             - В заголовке формы — версия (GetManHTTP v${{ steps.meta.outputs.version }}).
-            - Релиз теперь всегда формируется файлом GetManHTTP.epf, а номер версии можно увидеть в теге релиза, в заголовке формы и в справке.
-            - Каталог bin/ исключён из репозитория и больше не хранится; добавлен скрипт автоматической сборки scripts/build-epf.ps1 для локальной сборки (необходимы EDT и установленная платформа).
+            - Релиз всегда формируется файлом GetManHTTP.epf.
 
             ### Установка
             1. Скачайте ${{ steps.meta.outputs.asset_name }} из этого релиза

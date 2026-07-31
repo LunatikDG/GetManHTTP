@@ -246,8 +246,11 @@ function Export-EdtProjectToDesignerXml {
 	)
 
 	if ($UseExistingWorkspace) {
-		Write-Host "Exporting from existing EDT workspace (--project-name $EdtProjectName)..."
-		$exportArgs += @("--project-name", $EdtProjectName)
+		# Always pass --project with the on-disk path so Form.form / Module.bsl
+		# edits made outside EDT (e.g. in Cursor) are picked up. --project-name
+		# alone can export a stale in-memory form model from the workspace.
+		Write-Host "Exporting from EDT workspace with on-disk project refresh (--project)..."
+		$exportArgs += @("--project", $EdtProjectPath)
 	} else {
 		Write-Host "Exporting EDT project to Designer XML (first run may take 10-30 minutes)..."
 		$exportArgs += @("--project", $EdtProjectPath)
@@ -326,6 +329,36 @@ try {
 			$processorXml = $found[0].FullName
 		} else {
 			throw "Processor XML not found: $processorXml"
+		}
+	}
+
+	# Ensure collection form pages use left tabs. EDT may export as None/TabsOnTop;
+	# Designer 8.3.27 expects TabsOnLeftHorizontal (not TabsOnLeft).
+	$formsRoot = Join-Path $exportPath "ExternalDataProcessors\$ProcessorName\Forms"
+	if (Test-Path -LiteralPath $formsRoot) {
+		foreach ($candidate in (Get-ChildItem -Path $formsRoot -Recurse -Filter "Form.xml" -ErrorAction SilentlyContinue)) {
+			$bytes = [System.IO.File]::ReadAllBytes($candidate.FullName)
+			$hasBom = ($bytes.Length -ge 3 -and $bytes[0] -eq 0xEF -and $bytes[1] -eq 0xBB -and $bytes[2] -eq 0xBF)
+			$text = if ($hasBom) {
+				[System.Text.Encoding]::UTF8.GetString($bytes, 3, $bytes.Length - 3)
+			} else {
+				[System.Text.Encoding]::UTF8.GetString($bytes)
+			}
+			if ($text -notmatch 'id="100"' -or $text -notmatch 'id="103"' -or $text -notmatch 'BasicAuth') {
+				continue
+			}
+			$current = [regex]::Match($text, '<PagesRepresentation>([^<]+)</PagesRepresentation>').Groups[1].Value
+			if ($current -ne '' -and $current -ne 'TabsOnLeftHorizontal') {
+				$text = [regex]::Replace(
+					$text,
+					'<PagesRepresentation>[^<]+</PagesRepresentation>',
+					'<PagesRepresentation>TabsOnLeftHorizontal</PagesRepresentation>')
+				$utf8Bom = New-Object System.Text.UTF8Encoding $true
+				$text = $text -replace "`r`n", "`n" -replace "`n", "`r`n"
+				[System.IO.File]::WriteAllText($candidate.FullName, $text, $utf8Bom)
+				Write-Host "Patched collection form pagesRepresentation $current -> TabsOnLeftHorizontal"
+			}
+			break
 		}
 	}
 

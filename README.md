@@ -2,7 +2,7 @@
 
 [![License](https://img.shields.io/badge/license-GPL--3.0-blue)](https://github.com/LunatikDG/GetManHTTP/blob/main/LICENSE.txt)
 [![1C Version](https://img.shields.io/badge/1С-8.3.26%2B-orange)](#)
-[![Release](https://img.shields.io/badge/release-1.3.19-red)](https://github.com/LunatikDG/GetManHTTP/releases)
+[![Release](https://img.shields.io/badge/release-1.3.21-red)](https://github.com/LunatikDG/GetManHTTP/releases)
 [![BSL Lint](https://github.com/LunatikDG/GetManHTTP/actions/workflows/bsl-lint.yml/badge.svg)](https://github.com/LunatikDG/GetManHTTP/actions/workflows/bsl-lint.yml)
 
 <p align="center">
@@ -70,7 +70,7 @@ Older saved requests without a stored mode default to **Client** (unchanged beha
 1. Push sources to `main` (folder `bin/` is gitignored; `.epf` is not stored in the repo).
 2. Create and push a tag: `git tag -a v_X_Y_Z -m "GetManHTTP vX.Y.Z"` then `git push origin v_X_Y_Z`
 3. Workflow **Release** builds `bin/GetManHTTP.epf` on GitHub and attaches it to the release (version is in the git tag only).
-4. Before tagging, bump `ВерсияОбработки()` in `Forms/Форма/Module.bsl` (form title) and the version line in form help / README badge to match the tag (`v_1_3_19` → `1.3.19`).
+4. Before tagging, bump `ВерсияОбработки()` in `Forms/Форма/Module.bsl` (form title) and the version line in form help / README badge to match the tag (`v_1_3_21` → `1.3.21`).
 
 **GitHub repository secrets** (Settings → Secrets and variables → Actions):
 
@@ -177,7 +177,7 @@ Feedback, suggestions and bug reports are welcome:
 1. Исходники в `main` (каталог `bin/` в git не хранится; `.epf` только в релизах).
 2. Создайте и запушьте тег: `git tag -a v_X_Y_Z -m "GetManHTTP vX.Y.Z"` затем `git push origin v_X_Y_Z`
 3. Workflow **Release** собирает `bin/GetManHTTP.epf` на GitHub и прикладывает к релизу (номер версии — только в теге).
-4. Перед тегом обновите `ВерсияОбработки()` в `Forms/Форма/Module.bsl` (заголовок формы) и строку версии в справке формы / бейдже README под тег (`v_1_3_19` → `1.3.19`).
+4. Перед тегом обновите `ВерсияОбработки()` в `Forms/Форма/Module.bsl` (заголовок формы) и строку версии в справке формы / бейдже README под тег (`v_1_3_21` → `1.3.21`).
 
 **Секреты репозитория** (Settings → Secrets and variables → Actions):
 

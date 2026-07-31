@@ -94,7 +94,8 @@ common module; that option doesn't exist here.
    [Releasing](README.md#releasing-maintainers) section, done once a set of changes is
    ready to ship.
 6. Don't commit `bin/` or the built `.epf` — it's gitignored and only ever
-   produced by the Release CI workflow.
+   produced by the Release workflow on the maintainer's **self-hosted**
+   runner (or a local `scripts\build-epf.ps1` smoke-test).
 
 ### License
 
@@ -187,7 +188,8 @@ src/ExternalDataProcessors/GetManHTTP/
    разделе README [Релиз](README.md#релиз-для-мейнтейнеров), выполняется, когда набор
    изменений готов к выпуску.
 6. Не коммитьте `bin/` или собранный `.epf` — каталог в `.gitignore`, файл
-   собирается только CI-воркфлоу релиза.
+   собирается workflow релиза на **self-hosted** runner мейнтейнера (или
+   локально через `scripts\build-epf.ps1` для проверки).
 
 ### Лицензия
 

@@ -92,19 +92,23 @@ Older saved requests without a stored mode default to **Client** (unchanged beha
 ### Releasing (maintainers)
 
 1. Push sources to `main` (folder `bin/` is gitignored; `.epf` is not stored in the repo).
-2. Create and push a tag: `git tag -a v_X_Y_Z -m "GetManHTTP vX.Y.Z"` then `git push origin v_X_Y_Z`
-3. Workflow **Release** builds `bin/GetManHTTP.epf` on GitHub and attaches it to the release (version is in the git tag only).
-4. Before tagging, bump `ВерсияОбработки()` in `Forms/Форма/Module.bsl` (form title) and the version line in form help / README badge to match the tag (`v_1_3_21` → `1.3.21`), and move the `[Unreleased]` entries in [CHANGELOG.md](CHANGELOG.md) under the new version.
+2. Before tagging, bump `ВерсияОбработки()` in `Forms/Форма/Module.bsl` (form title) and the version line in form help / README badge to match the tag (`v_1_3_21` → `1.3.21`), and move the `[Unreleased]` entries in [CHANGELOG.md](CHANGELOG.md) under the new version.
+3. Create and push a tag: `git tag -a v_X_Y_Z -m "GetManHTTP vX.Y.Z"` then `git push origin v_X_Y_Z`
+4. Workflow **Release** runs on a **self-hosted** Windows runner (`runs-on: [self-hosted, Windows, onec-build]`), builds `bin/GetManHTTP.epf` with local 1C:EDT + platform + license server, and attaches it to the GitHub release.
 
-**GitHub repository secrets** (Settings → Secrets and variables → Actions):
+**Self-hosted runner (required for `.epf` builds)**
 
-| Secret | Purpose |
-|--------|---------|
-| `ONEC_USERNAME` | Login for [releases.1c.ru](https://releases.1c.ru) (platform + EDT download in CI) |
-| `ONEC_PASSWORD` | Password for releases.1c.ru |
-| `ONEC_LICENCE` | Optional: contents of `licence.lic` for the Windows CI runner |
+GitHub-hosted runners cannot use a device-bound 1C license. Register a runner on the build PC (repo or org): [Adding self-hosted runners](https://docs.github.com/en/actions/hosting-your-own-runners/managing-self-hosted-runners/adding-self-hosted-runners). Use labels **`self-hosted`**, **`Windows`**, **`onec-build`** (must match `.github/workflows/release.yml`). Install the runner as a Windows service so tag pushes build when you are not logged into a console session.
 
-Local build (1C:EDT + platform installed):
+On that machine you need:
+
+- 1C:Enterprise (Designer) and a working license / license server
+- 1C:EDT with `1cedtcli` (prefer **2025.1.x**; see script defaults below)
+- Optional env if auto-detect fails: `ONEC_EDT_CLI`, `ONEC_V8_EXE`, `ONEC_EDT_VERSION`, `ONEC_V8_VERSION`, `ONEC_EDT_DATA`
+
+No `ONEC_USERNAME` / `ONEC_PASSWORD` / `ONEC_LICENCE` secrets are required for Release when tools and licenses are already on the runner host. `GITHUB_TOKEN` is provided automatically for creating the release.
+
+Local smoke-test (same host as the runner):
 
 ```powershell
 cd GetManHTTP_v_1_1_1
@@ -112,9 +116,9 @@ cd GetManHTTP_v_1_1_1
 # or: .\scripts\build-epf.ps1 -OutputEpf "bin\GetManHTTP.epf"
 ```
 
-Or `scripts\build-epf.cmd`. Match **1C:EDT** and platform to `.github/workflows/release.yml` (`EDT_VERSION` **2025.1.5**, `V8_VERSION` **8.3.27**). If only EDT 2024.x is installed, the script warns and may fail on export — install EDT 2025.1 or set `ONEC_EDT_CLI` to its `1cedtcli.exe`.
+Or `scripts\build-epf.cmd`. Prefer **1C:EDT 2025.1** and platform **8.3.27** (from `DT-INF/PROJECT.PMF`). If only EDT 2024.x is installed, the script warns and may fail on export — install EDT 2025.1 or set `ONEC_EDT_CLI` to its `1cedtcli.exe`.
 
-Close **1C:EDT** before building. The script auto-detects the workspace in the parent folder (`GetManHTTP` with `.metadata`) and exports via `--project-name` (recommended on your machine). First CLI export in a fresh workspace can take **10–30+ minutes**.
+Close **1C:EDT** before building. The script auto-detects the workspace in the parent folder (`GetManHTTP` with `.metadata`) when present. First CLI export in a fresh workspace can take **10–30+ minutes**.
 
 Optional: `ONEC_EDT_DATA`, `ONEC_EDT_VERSION`, `ONEC_EDT_CLI`, `ONEC_V8_EXE`, `ONEC_V8_VERSION`. For the `.epf` step the script defaults to **8.3.27** from `DT-INF/PROJECT.PMF`, not the newest installed platform (e.g. 8.5.x).
 Pushes and pull requests to `main` that touch `src/` run **BSL Language Server** static analysis (see `.github/workflows/bsl-lint.yml` and `.bsl-language-server.json`).
@@ -232,19 +236,23 @@ GetManHTTP — это HTTP-клиент, оформленный как **вне�
 ### Релиз (для мейнтейнеров)
 
 1. Исходники в `main` (каталог `bin/` в git не хранится; `.epf` только в релизах).
-2. Создайте и запушьте тег: `git tag -a v_X_Y_Z -m "GetManHTTP vX.Y.Z"` затем `git push origin v_X_Y_Z`
-3. Workflow **Release** собирает `bin/GetManHTTP.epf` на GitHub и прикладывает к релизу (номер версии — только в теге).
-4. Перед тегом обновите `ВерсияОбработки()` в `Forms/Форма/Module.bsl` (заголовок формы) и строку версии в справке формы / бейдже README под тег (`v_1_3_21` → `1.3.21`), а также перенесите записи из `[Unreleased]` в [CHANGELOG.md](CHANGELOG.md) под новую версию.
+2. Перед тегом обновите `ВерсияОбработки()` в `Forms/Форма/Module.bsl` (заголовок формы) и строку версии в справке формы / бейдже README под тег (`v_1_3_21` → `1.3.21`), а также перенесите записи из `[Unreleased]` в [CHANGELOG.md](CHANGELOG.md) под новую версию.
+3. Создайте и запушьте тег: `git tag -a v_X_Y_Z -m "GetManHTTP vX.Y.Z"` затем `git push origin v_X_Y_Z`
+4. Workflow **Release** выполняется на **self-hosted** Windows-runner (`runs-on: [self-hosted, Windows, onec-build]`), собирает `bin/GetManHTTP.epf` локальными EDT + платформой + сервером лицензий и прикладывает файл к GitHub Release.
 
-**Секреты репозитория** (Settings → Secrets and variables → Actions):
+**Self-hosted runner (нужен для сборки `.epf`)**
 
-| Секрет | Назначение |
-|--------|------------|
-| `ONEC_USERNAME` | Логин [releases.1c.ru](https://releases.1c.ru) (скачивание платформы и EDT в CI) |
-| `ONEC_PASSWORD` | Пароль releases.1c.ru |
-| `ONEC_LICENCE` | Необязательно: содержимое файла `licence.lic` для Windows-раннера |
+На GitHub-hosted runner программная лицензия 1С с вашего ПК не работает. Зарегистрируйте runner на сборочном ПК (репозиторий или организация): [Adding self-hosted runners](https://docs.github.com/en/actions/hosting-your-own-runners/managing-self-hosted-runners/adding-self-hosted-runners). Labels: **`self-hosted`**, **`Windows`**, **`onec-build`** (как в `.github/workflows/release.yml`). Установите runner как службу Windows, чтобы сборка по тегу шла без интерактивной сессии.
 
-Локальная сборка (нужны 1C:EDT и платформа):
+На этой машине должны быть:
+
+- 1С:Предприятие (Конфигуратор) и рабочая лицензия / сервер лицензий
+- 1C:EDT с `1cedtcli` (желательно **2025.1.x**)
+- при необходимости: `ONEC_EDT_CLI`, `ONEC_V8_EXE`, `ONEC_EDT_VERSION`, `ONEC_V8_VERSION`, `ONEC_EDT_DATA`
+
+Секреты `ONEC_USERNAME` / `ONEC_PASSWORD` / `ONEC_LICENCE` для Release **не нужны**, если инструменты и лицензии уже на хосте runner. `GITHUB_TOKEN` выдаётся автоматически для публикации релиза.
+
+Проверка на том же ПК:
 
 ```powershell
 cd GetManHTTP_v_1_1_1
@@ -252,9 +260,9 @@ cd GetManHTTP_v_1_1_1
 # or: .\scripts\build-epf.ps1 -OutputEpf "bin\GetManHTTP.epf"
 ```
 
-Или `scripts\build-epf.cmd`. Версии **1C:EDT** и платформы — как в `.github/workflows/release.yml` (`EDT_VERSION` **2025.1.5**, `V8_VERSION` **8.3.27**). Если установлен только EDT 2024.x, будет предупреждение и export может падать — поставьте EDT 2025.1 или укажите `ONEC_EDT_CLI`.
+Или `scripts\build-epf.cmd`. Ориентир — **1C:EDT 2025.1** и платформа **8.3.27** (из `DT-INF/PROJECT.PMF`). Если установлен только EDT 2024.x, будет предупреждение и export может падать — поставьте EDT 2025.1 или укажите `ONEC_EDT_CLI`.
 
-Перед сборкой **закройте 1C:EDT**. Скрипт сам находит рабочую область в родительской папке (`GetManHTTP` с `.metadata`) и делает export через `--project-name`. В чистом workspace первый export может занять **10–30+ минут**.
+Перед сборкой **закройте 1C:EDT**. Скрипт сам находит рабочую область в родительской папке (`GetManHTTP` с `.metadata`), если она есть. В чистом workspace первый export может занять **10–30+ минут**.
 
 Опционально: `ONEC_EDT_DATA`, `ONEC_EDT_VERSION`, `ONEC_EDT_CLI`, `ONEC_V8_EXE`, `ONEC_V8_VERSION`. Для сборки `.epf` скрипт по умолчанию берёт платформу **8.3.27** из `DT-INF/PROJECT.PMF`, а не самую новую установленную (8.5.x).
 При push и pull request в `main`, если меняется `src/`, запускается статический анализ **BSL Language Server** (см. `.github/workflows/bsl-lint.yml` и `.bsl-language-server.json`).

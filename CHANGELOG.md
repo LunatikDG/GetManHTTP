@@ -10,6 +10,12 @@ the language already used in this repository's commit history.
 
 ## [Unreleased]
 
+### Changed
+
+- Release workflow builds `.epf` on a **self-hosted** Windows runner
+  (`onec-build`) with local 1C:EDT/platform/license server instead of
+  GitHub-hosted `windows-latest` (device-bound 1C licenses cannot activate there).
+
 ## [1.3.22] - 2026-07-31
 
 ### Fixed

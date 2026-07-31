@@ -8,18 +8,15 @@ on:
 permissions:
   contents: write
 
-env:
-  # Match DT-INF/PROJECT.PMF Runtime-Version (8.3.27) and EDT used for export.
-  V8_VERSION: "8.3.27.2130"
-  EDT_VERSION: "2025.1.5"
-
 jobs:
   build-and-release:
     name: Build EPF and publish release
-    runs-on: windows-latest
+    # Self-hosted Windows machine with 1C:Enterprise, 1C:EDT CLI, and a working
+    # license (local activation and/or 1C license server on the same host).
+    # Register the runner with labels: self-hosted, Windows, onec-build
+    # (GitHub → Settings → Actions → Runners, or org-level runner).
+    runs-on: [self-hosted, Windows, onec-build]
     timeout-minutes: 90
-    env:
-      ONEC_LICENCE: ${{ secrets.ONEC_LICENCE }}
 
     steps:
       - name: Checkout
@@ -27,70 +24,26 @@ jobs:
 
       - name: Resolve release metadata
         id: meta
-        shell: bash
-        run: |
-          TAG="${GITHUB_REF_NAME}"
-          VERSION="${TAG#v_}"
-          VERSION="${VERSION//_/.}"
-          EPF="bin/GetManHTTP.epf"
-          {
-            echo "tag=${TAG}"
-            echo "version=${VERSION}"
-            echo "epf=${EPF}"
-            echo "asset_name=GetManHTTP.epf"
-          } >> "${GITHUB_OUTPUT}"
-
-      # EDT 2025.x requires JDK 17 Full with JavaFX. Without it, 1cedtcli fails with
-      # javafx/application/Platform ClassNotFoundException and project registration timeout.
-      - name: Setup Liberica JDK with JavaFX
-        uses: actions/setup-java@v4
-        with:
-          distribution: liberica
-          java-version: "17"
-          java-package: jdk+fx
-
-      - name: Install 1C platform
-        uses: 1CDevFlow/onec-setup-action@main
-        with:
-          type: onec
-          onec_version: ${{ env.V8_VERSION }}
-          cache: true
-        env:
-          ONEC_USERNAME: ${{ secrets.ONEC_USERNAME }}
-          ONEC_PASSWORD: ${{ secrets.ONEC_PASSWORD }}
-
-      - name: Install 1C EDT
-        uses: 1CDevFlow/onec-setup-action@main
-        with:
-          type: edt
-          edt_version: ${{ env.EDT_VERSION }}
-          cache: true
-        env:
-          ONEC_USERNAME: ${{ secrets.ONEC_USERNAME }}
-          ONEC_PASSWORD: ${{ secrets.ONEC_PASSWORD }}
-
-      - name: Configure 1C conf.cfg
         shell: pwsh
         run: |
-          New-Item -ItemType Directory -Force -Path "C:\Program Files\1cv8\conf" | Out-Null
-          $conf = @(
-            'DisableUnsafeActionProtection=.*'
-            'SystemLanguage=System'
-          ) -join "`n"
-          Set-Content -Path "C:\Program Files\1cv8\conf\conf.cfg" -Value $conf -Encoding ascii -NoNewline
-          Add-Content -Path "C:\Program Files\1cv8\conf\conf.cfg" -Value "" -Encoding ascii
-
-      - name: Install 1C license file
-        if: env.ONEC_LICENCE != ''
-        shell: pwsh
-        run: |
-          New-Item -ItemType Directory -Force -Path "C:\ProgramData\1C\licenses" | Out-Null
-          $Env:ONEC_LICENCE | Out-File -FilePath "C:\ProgramData\1C\licenses\licence.lic" -Encoding ascii
+          $tag = $Env:GITHUB_REF_NAME
+          $version = $tag -replace '^v_', '' -replace '_', '.'
+          $epf = "bin/GetManHTTP.epf"
+          "tag=$tag" >> $Env:GITHUB_OUTPUT
+          "version=$version" >> $Env:GITHUB_OUTPUT
+          "epf=$epf" >> $Env:GITHUB_OUTPUT
+          "asset_name=GetManHTTP.epf" >> $Env:GITHUB_OUTPUT
 
       - name: Build EPF
         shell: pwsh
         run: |
           .\scripts\build-epf.ps1 -OutputEpf "${{ steps.meta.outputs.epf }}"
+        # Optional if defaults do not resolve on the runner host:
+        # env:
+        #   ONEC_EDT_CLI: C:\path\to\1cedtcli.exe
+        #   ONEC_V8_EXE: C:\Program Files (x86)\1cv8\8.3.27.xxxx\bin\1cv8.exe
+        #   ONEC_EDT_VERSION: "2025.1"
+        #   ONEC_V8_VERSION: "8.3.27"
 
       - name: Create release
         uses: softprops/action-gh-release@v2
@@ -103,34 +56,20 @@ jobs:
           body: |
             ## 🇬🇧 English
 
-            ### Bug Fixes
-            - **JSON response beautify** — responses with hyphenated object keys (e.g. `user-agent`, `x-forwarded-proto` from postman-echo) are formatted again. Objects are read into a Map instead of a Structure. Fixes #10.
-
-            ### Other
-            - Version **${{ steps.meta.outputs.version }}**.
-            - README / contributing docs and screenshots under `docs/images/`.
-            - CI: Liberica JDK 17 with JavaFX for headless EDT in the Release workflow.
-            - The release asset is always GetManHTTP.epf.
+            Version **${{ steps.meta.outputs.version }}**. See [CHANGELOG.md](https://github.com/LunatikDG/GetManHTTP/blob/main/CHANGELOG.md) for details.
 
             ### Installation
-            1. Download ${{ steps.meta.outputs.asset_name }} from this release
-            2. Open in 1C via File → Open
+            1. Download `${{ steps.meta.outputs.asset_name }}` from this release
+            2. Open in 1C via *File → Open*
 
             ---
 
             ## 🇷🇺 Русский
 
-            ### Исправления
-            - **Бьютификация JSON** — ответы с ключами вроде `user-agent` / `x-forwarded-proto` снова форматируются (чтение в Соответствие, а не Структуру). Fixes #10.
-
-            ### Прочее
-            - Версия **${{ steps.meta.outputs.version }}**.
-            - Обновлены README / contributing и скриншоты в `docs/images/`.
-            - CI: Liberica JDK 17 + JavaFX для headless EDT в Release.
-            - Релиз всегда формируется файлом GetManHTTP.epf.
+            Версия **${{ steps.meta.outputs.version }}**. Подробности — в [CHANGELOG.md](https://github.com/LunatikDG/GetManHTTP/blob/main/CHANGELOG.md).
 
             ### Установка
-            1. Скачайте ${{ steps.meta.outputs.asset_name }} из этого релиза
-            2. Откройте в 1С через Файл → Открыть
+            1. Скачайте `${{ steps.meta.outputs.asset_name }}` из этого релиза
+            2. Откройте в 1С через *Файл → Открыть*
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

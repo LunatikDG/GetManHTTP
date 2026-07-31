@@ -146,7 +146,7 @@ function Invoke-EdtCli([string]$FilePath, [string[]]$Arguments, [string]$LogFile
 	}
 }
 
-function Invoke-Platform([string]$FilePath, [string[]]$Arguments) {
+function Invoke-Platform([string]$FilePath, [string[]]$Arguments, [string]$LogFilePath = "") {
 	$argumentLine = ($Arguments | ForEach-Object { Escape-ProcessArgument $_ }) -join ' '
 	Write-Host "> $FilePath $argumentLine"
 	$psi = New-Object System.Diagnostics.ProcessStartInfo
@@ -159,6 +159,10 @@ function Invoke-Platform([string]$FilePath, [string[]]$Arguments) {
 		throw "Command timed out after 3600s : $FilePath"
 	}
 	if ($process.ExitCode -ne 0) {
+		if (-not [string]::IsNullOrWhiteSpace($LogFilePath) -and (Test-Path -LiteralPath $LogFilePath)) {
+			Write-Host "--- designer.log ---"
+			Get-Content -LiteralPath $LogFilePath -Encoding UTF8 -ErrorAction SilentlyContinue | Write-Host
+		}
 		throw "Command failed with exit code $($process.ExitCode) : $FilePath"
 	}
 }
@@ -371,7 +375,7 @@ try {
 		$outputPath,
 		"/Out",
 		$designerLog
-	)
+	) -LogFilePath $designerLog
 
 	if (-not (Test-Path -LiteralPath $outputPath)) {
 		if (Test-Path -LiteralPath $designerLog) {
@@ -385,7 +389,11 @@ try {
 catch {
 	if (Test-Path -LiteralPath $edtCliLog) {
 		Write-Host "--- edtcli.log (last lines) ---"
-		Get-Content -LiteralPath $edtCliLog -Tail 50 | Write-Host
+		Get-Content -LiteralPath $edtCliLog -Tail 50 -ErrorAction SilentlyContinue | Write-Host
+	}
+	if (Test-Path -LiteralPath $designerLog) {
+		Write-Host "--- designer.log ---"
+		Get-Content -LiteralPath $designerLog -Encoding UTF8 -ErrorAction SilentlyContinue | Write-Host
 	}
 	throw
 }

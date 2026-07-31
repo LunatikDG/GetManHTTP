@@ -40,6 +40,15 @@ jobs:
             echo "asset_name=GetManHTTP.epf"
           } >> "${GITHUB_OUTPUT}"
 
+      # EDT 2025.x requires JDK 17 Full with JavaFX. Without it, 1cedtcli fails with
+      # javafx/application/Platform ClassNotFoundException and project registration timeout.
+      - name: Setup Liberica JDK with JavaFX
+        uses: actions/setup-java@v4
+        with:
+          distribution: liberica
+          java-version: "17"
+          java-package: jdk+fx
+
       - name: Install 1C platform
         uses: 1CDevFlow/onec-setup-action@main
         with:

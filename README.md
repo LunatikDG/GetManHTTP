@@ -113,10 +113,12 @@ On that machine you need:
   on the user EDT tree and `.p2` (path traverse on parent folders as needed).
   Alternatively run the runner service as the same Windows user that owns the EDT
   install.
-- `.github/workflows/release.yml` sets `ONEC_EDT_CLI` / `ONEC_V8_EXE` to the
-  concrete paths on this build PC — update those env values if the install location
-  changes. Optional overrides: `ONEC_EDT_VERSION`, `ONEC_V8_VERSION`, `ONEC_EDT_DATA`
-  (also via `C:\actions-runner\.env` on the host).
+- Set host-specific tool paths on the **runner**, not in the committed workflow:
+  create `C:\actions-runner\.env` (loaded when the runner service starts) with
+  `ONEC_EDT_CLI`, `ONEC_V8_EXE`, and optionally `ONEC_EDT_VERSION`,
+  `ONEC_V8_VERSION`, `ONEC_EDT_DATA`. `scripts\build-epf.ps1` also auto-detects
+  common install locations when these are unset. Restart the runner service after
+  changing `.env`.
 - The workflow uses `cmd` + `powershell -ExecutionPolicy Bypass` so a machine-wide
   `Set-ExecutionPolicy` is optional (only needed if you switch steps to
   `shell: powershell`).
@@ -271,9 +273,12 @@ GetManHTTP — это HTTP-клиент, оформленный как **вне�
   установки EDT **и** пула `.p2`. На сборочном хосте мейнтейнера это сделано ACL
   на дерево EDT в профиле и на `.p2` (плюс обход родительских каталогов). Альтернатива —
   запускать службу runner от того же Windows-пользователя, у которого стоит EDT.
-- В `.github/workflows/release.yml` заданы конкретные `ONEC_EDT_CLI` / `ONEC_V8_EXE`
-  для этого ПК — при смене путей обновите их. Дополнительно: `ONEC_EDT_VERSION`,
-  `ONEC_V8_VERSION`, `ONEC_EDT_DATA` (или файл `C:\actions-runner\.env` на хосте).
+- Пути к инструментам задавайте на **runner**, а не в закоммиченном workflow:
+  файл `C:\actions-runner\.env` (подхватывается при старте службы) с
+  `ONEC_EDT_CLI`, `ONEC_V8_EXE` и при необходимости `ONEC_EDT_VERSION`,
+  `ONEC_V8_VERSION`, `ONEC_EDT_DATA`. `scripts\build-epf.ps1` также ищет типовые
+  каталоги установки, если переменные не заданы. После правки `.env` перезапустите
+  службу runner.
 - Workflow использует `cmd` + `powershell -ExecutionPolicy Bypass`, поэтому
   машинный `Set-ExecutionPolicy` не обязателен (нужен только если переведёте шаги
   на `shell: powershell`).

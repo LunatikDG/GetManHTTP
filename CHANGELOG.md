@@ -17,7 +17,9 @@ the language already used in this repository's commit history.
   GitHub-hosted `windows-latest` (device-bound 1C licenses cannot activate there).
 - Maintainer docs: EDT Lite stays in the user profile (`AppData` + `.p2`); the
   runner service needs ACL (or to run as that user). A bare copy under
-  `ProgramData` is not sufficient for EDT Lite.
+  `ProgramData` is not sufficient for EDT Lite. Host tool paths
+  (`ONEC_EDT_CLI`, …) are set on the runner via `C:\actions-runner\.env`, not in
+  the committed workflow YAML.
 
 ## [1.3.22] - 2026-07-31
 

@@ -37,14 +37,9 @@ jobs:
       - name: Build EPF
         # Bypass: the runner Windows service account often has a restricted
         # PowerShell execution policy (scripts disabled).
-        # EDT Lite lives under the interactive user profile and uses ~/.p2;
-        # NETWORK SERVICE was granted ACL on that tree (see maintainer setup).
+        # Host-specific ONEC_EDT_CLI / ONEC_V8_EXE / ONEC_* go in the runner
+        # environment (C:\actions-runner\.env), not in this committed workflow.
         shell: cmd
-        env:
-          ONEC_EDT_CLI: C:\Users\mob_d\AppData\Local\1C\1cedtstart\installations\1C_EDT (Lite) 2025.1\1cedt\1cedtcli.exe
-          ONEC_V8_EXE: C:\Program Files (x86)\1cv8\8.3.27.2130\bin\1cv8.exe
-          ONEC_EDT_VERSION: "2025.1"
-          ONEC_V8_VERSION: "8.3.27"
         run: |
           powershell -NoProfile -ExecutionPolicy Bypass -File .\scripts\build-epf.ps1 -OutputEpf "${{ steps.meta.outputs.epf }}"
 

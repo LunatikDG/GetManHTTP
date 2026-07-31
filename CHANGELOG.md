@@ -4,7 +4,7 @@ All notable changes to **GetManHTTP** are documented in this file.
 
 The format loosely follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 Versions correspond to git tags (`v_X_Y_Z` tag → `X.Y.Z` version); see
-[Releasing](README.md#installation) in the README for how releases are cut.
+[Releasing](README.md#releasing-maintainers) in the README for how releases are cut.
 Entries are written in English regardless of the (bilingual) README, matching
 the language already used in this repository's commit history.
 

@@ -93,7 +93,7 @@ Older saved requests without a stored mode default to **Client** (unchanged beha
 ### Releasing (maintainers)
 
 1. Push sources to `main` (folder `bin/` is gitignored; `.epf` is not stored in the repo).
-2. Before tagging, bump `ВерсияОбработки()` in `Forms/Форма/Module.bsl` (form title) and the version line in form help / README badge to match the tag (`v_1_3_21` → `1.3.21`), and move the `[Unreleased]` entries in [CHANGELOG.md](CHANGELOG.md) under the new version.
+2. Before tagging, bump `ВерсияОбработки()` in `Forms/Форма/Module.bsl` (form title) and the version line in form help / README badge to match the tag (`v_1_3_21` → `1.3.21`), and move the `[Unreleased]` entries in [CHANGELOG.md](CHANGELOG.md) under the new version **in both English and Russian** sections. Add anchors `changelog-X-Y-Z-en` / `changelog-X-Y-Z-ru` for the release notes links.
 3. Create and push a tag: `git tag -a v_X_Y_Z -m "GetManHTTP vX.Y.Z"` then `git push origin v_X_Y_Z`
 4. Workflow **Release** runs on a **self-hosted** Windows runner (`runs-on: [self-hosted, Windows, onec-build]`), builds `bin/GetManHTTP.epf` with local 1C:EDT + platform + license server, and attaches it to the GitHub release.
 
@@ -163,7 +163,8 @@ ideas: [issue templates](.github/ISSUE_TEMPLATE/).
 
 ### Changelog
 
-Release history lives in [CHANGELOG.md](CHANGELOG.md).
+Release history lives in bilingual [CHANGELOG.md](CHANGELOG.md)
+([English](CHANGELOG.md#english) / [Русский](CHANGELOG.md#русский)).
 
 ### Contact
 
@@ -255,7 +256,7 @@ GetManHTTP — это HTTP-клиент, оформленный как **вне�
 ### Релиз (для мейнтейнеров)
 
 1. Исходники в `main` (каталог `bin/` в git не хранится; `.epf` только в релизах).
-2. Перед тегом обновите `ВерсияОбработки()` в `Forms/Форма/Module.bsl` (заголовок формы) и строку версии в справке формы / бейдже README под тег (`v_1_3_21` → `1.3.21`), а также перенесите записи из `[Unreleased]` в [CHANGELOG.md](CHANGELOG.md) под новую версию.
+2. Перед тегом обновите `ВерсияОбработки()` в `Forms/Форма/Module.bsl` (заголовок формы) и строку версии в справке формы / бейдже README под тег (`v_1_3_21` → `1.3.21`), а также перенесите записи из `[Unreleased]` в [CHANGELOG.md](CHANGELOG.md) под новую версию **в английском и русском** разделах. Добавьте якоря `changelog-X-Y-Z-en` / `changelog-X-Y-Z-ru` для ссылок в описании релиза.
 3. Создайте и запушьте тег: `git tag -a v_X_Y_Z -m "GetManHTTP vX.Y.Z"` затем `git push origin v_X_Y_Z`
 4. Workflow **Release** выполняется на **self-hosted** Windows-runner (`runs-on: [self-hosted, Windows, onec-build]`), собирает `bin/GetManHTTP.epf` локальными EDT + платформой + сервером лицензий и прикладывает файл к GitHub Release.
 
@@ -325,7 +326,8 @@ cd GetManHTTP
 
 ### История изменений
 
-Список релизов — в [CHANGELOG.md](CHANGELOG.md).
+Список релизов — в двуязычном [CHANGELOG.md](CHANGELOG.md)
+([English](CHANGELOG.md#english) / [Русский](CHANGELOG.md#русский)).
 
 ### Связь
 

@@ -29,8 +29,10 @@ jobs:
           set "TAG=%GITHUB_REF_NAME%"
           set "VERSION=%TAG:v_=%"
           set "VERSION=%VERSION:_=.%"
+          set "VERSION_SLUG=%VERSION:.=-%"
           echo tag=%TAG%>> "%GITHUB_OUTPUT%"
           echo version=%VERSION%>> "%GITHUB_OUTPUT%"
+          echo version_slug=%VERSION_SLUG%>> "%GITHUB_OUTPUT%"
           echo epf=bin/GetManHTTP.epf>> "%GITHUB_OUTPUT%"
           echo asset_name=GetManHTTP.epf>> "%GITHUB_OUTPUT%"
 
@@ -54,7 +56,7 @@ jobs:
           body: |
             ## 🇬🇧 English
 
-            Version **${{ steps.meta.outputs.version }}**. See [CHANGELOG.md](https://github.com/LunatikDG/GetManHTTP/blob/main/CHANGELOG.md) for details.
+            Version **${{ steps.meta.outputs.version }}**. See the [English changelog](https://github.com/LunatikDG/GetManHTTP/blob/main/CHANGELOG.md#changelog-${{ steps.meta.outputs.version_slug }}-en) for details.
 
             ### Installation
             1. Download `${{ steps.meta.outputs.asset_name }}` from this release
@@ -64,7 +66,7 @@ jobs:
 
             ## 🇷🇺 Русский
 
-            Версия **${{ steps.meta.outputs.version }}**. Подробности — в [CHANGELOG.md](https://github.com/LunatikDG/GetManHTTP/blob/main/CHANGELOG.md).
+            Версия **${{ steps.meta.outputs.version }}**. Подробности — в [русском разделе CHANGELOG](https://github.com/LunatikDG/GetManHTTP/blob/main/CHANGELOG.md#changelog-${{ steps.meta.outputs.version_slug }}-ru).
 
             ### Установка
             1. Скачайте `${{ steps.meta.outputs.asset_name }}` из этого релиза

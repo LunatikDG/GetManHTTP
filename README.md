@@ -2,7 +2,7 @@
 
 [![License](https://img.shields.io/badge/license-GPL--3.0-blue)](https://github.com/LunatikDG/GetManHTTP/blob/main/LICENSE.txt)
 [![1C Version](https://img.shields.io/badge/1С-8.3.26%2B-orange)](#)
-[![Release](https://img.shields.io/badge/release-1.3.22-red)](https://github.com/LunatikDG/GetManHTTP/releases)
+[![Release](https://img.shields.io/badge/release-1.3.23-red)](https://github.com/LunatikDG/GetManHTTP/releases)
 [![BSL Lint](https://github.com/LunatikDG/GetManHTTP/actions/workflows/bsl-lint.yml/badge.svg)](https://github.com/LunatikDG/GetManHTTP/actions/workflows/bsl-lint.yml)
 
 <p align="center">
@@ -26,7 +26,8 @@ What sets it apart from "just calling `HTTPСоединение` in code":
 
 - Requests are organized in a **folder tree with collections**, not a single
   throwaway form — build up a library of requests and keep it between 1C
-  sessions.
+  sessions. Share a collection via **import/export** (native JSON or Postman
+  Collection v2.1) from the collection settings dialog.
 - Each request can run either from the **client** machine or from the
   **application server** — a distinction that matters a lot in 1C and has no
   equivalent in a browser-based REST client. See
@@ -128,7 +129,7 @@ No `ONEC_USERNAME` / `ONEC_PASSWORD` / `ONEC_LICENCE` secrets are required for R
 Local smoke-test (same host as the runner):
 
 ```powershell
-cd GetManHTTP_v_1_1_1
+cd GetManHTTP
 .\scripts\build-epf.ps1
 # or: .\scripts\build-epf.ps1 -OutputEpf "bin\GetManHTTP.epf"
 ```
@@ -187,7 +188,8 @@ GetManHTTP — это HTTP-клиент, оформленный как **вне�
 
 - Запросы организованы в **дерево папок с коллекциями**, а не в одноразовую
   форму — можно накапливать библиотеку запросов, она сохраняется между
-  сеансами 1С.
+  сеансами 1С. Коллекцию можно **импортировать и экспортировать** (свой JSON
+  или Postman Collection v2.1) из формы настроек коллекции.
 - Каждый запрос может выполняться либо с **клиента**, либо на **сервере
   приложений** — различие, которое в 1С имеет реальное значение и которого
   нет у браузерных REST-клиентов. Подробнее — раздел [Контекст выполнения
@@ -288,7 +290,7 @@ GetManHTTP — это HTTP-клиент, оформленный как **вне�
 Проверка на том же ПК:
 
 ```powershell
-cd GetManHTTP_v_1_1_1
+cd GetManHTTP
 .\scripts\build-epf.ps1
 # or: .\scripts\build-epf.ps1 -OutputEpf "bin\GetManHTTP.epf"
 ```

@@ -10,6 +10,24 @@ the language already used in this repository's commit history.
 
 ## [Unreleased]
 
+## [1.3.23] - 2026-08-02
+
+### Added
+
+- Collection import/export from the **collection settings** form (GetManHTTP native JSON
+  schema v1 and Postman Collection v2.1). Collection and item UUIDs are
+  preserved for round-trip; unsupported Postman features (scripts, JWT,
+  API key auth, saved responses, …) are ignored.
+- Bilingual [CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md) (Contributor Covenant 2.1).
+
+### Fixed
+
+- Dragging a request/folder onto a request crashed with
+  `Метод объекта не обнаружен (ПолучитьРодитель)` during post-drag
+  normalization. Form tree rows use `ПолучитьРодителя()`; invalid nesting
+  (anything under a request) is still flattened so a request’s parent can
+  only be a folder.
+
 ### Changed
 
 - Release workflow builds `.epf` on a **self-hosted** Windows runner
@@ -20,6 +38,7 @@ the language already used in this repository's commit history.
   `ProgramData` is not sufficient for EDT Lite. Host tool paths
   (`ONEC_EDT_CLI`, …) are set on the runner via `C:\actions-runner\.env`, not in
   the committed workflow YAML.
+- EDT project renamed from `GetManHTTP_v_1_1_1` to `GetManHTTP`.
 
 ## [1.3.22] - 2026-07-31
 
@@ -148,7 +167,8 @@ the language already used in this repository's commit history.
 
 - Various stability fixes.
 
-[Unreleased]: https://github.com/LunatikDG/GetManHTTP/compare/v_1_3_22...HEAD
+[Unreleased]: https://github.com/LunatikDG/GetManHTTP/compare/v_1_3_23...HEAD
+[1.3.23]: https://github.com/LunatikDG/GetManHTTP/compare/v_1_3_22...v_1_3_23
 [1.3.22]: https://github.com/LunatikDG/GetManHTTP/compare/v_1_3_21...v_1_3_22
 [1.3.21]: https://github.com/LunatikDG/GetManHTTP/compare/v_1_3_19...v_1_3_21
 [1.3.19]: https://github.com/LunatikDG/GetManHTTP/compare/v_1_3_17...v_1_3_19

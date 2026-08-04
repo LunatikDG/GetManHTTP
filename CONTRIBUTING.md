@@ -38,6 +38,9 @@ src/ExternalDataProcessors/GetManHTTP/
   Forms/Форма/                — main request form + Module.bsl
   Forms/ФормаКоллекцииЗапросов/ — collections form + Module.bsl
   Forms/ФормаНастроек/         — settings form + Module.bsl
+docs/
+  collection-format.md       — native GetManHTTP.Collection JSON schema
+  images/                    — README screenshots
 ```
 
 **Important platform constraint:** an external data processor cannot contain
@@ -48,6 +51,10 @@ duplicated between `Forms/Форма/Module.bsl` and
 `Forms/ФормаКоллекцииЗапросов/Module.bsl`. If you change one, **change the
 other to match** — this isn't an oversight to "clean up" by introducing a
 common module; that option doesn't exist here.
+
+If you change native collection import/export fields or semantics, update
+[docs/collection-format.md](docs/collection-format.md) in the same PR (and bump
+`schemaVersion` when the change is breaking).
 
 ### Prerequisites
 
@@ -135,6 +142,9 @@ src/ExternalDataProcessors/GetManHTTP/
   Forms/Форма/                — основная форма запроса + Module.bsl
   Forms/ФормаКоллекцииЗапросов/ — форма коллекций + Module.bsl
   Forms/ФормаНастроек/         — форма настроек + Module.bsl
+docs/
+  collection-format.md       — схема нативного JSON GetManHTTP.Collection
+  images/                    — скриншоты для README
 ```
 
 **Важное платформенное ограничение:** внешняя обработка не может содержать
@@ -144,6 +154,10 @@ src/ExternalDataProcessors/GetManHTTP/
 между `Forms/Форма/Module.bsl` и `Forms/ФормаКоллекцииЗапросов/Module.bsl`.
 Если меняете одно место — **меняйте и второе синхронно**. Это не недосмотр,
 который нужно «убрать» через общий модуль — такой вариант здесь недоступен.
+
+При изменении полей или семантики нативного импорта/экспорта коллекций
+обновляйте [docs/collection-format.md](docs/collection-format.md) в том же PR
+(и увеличивайте `schemaVersion` при ломающих изменениях).
 
 ### Требования к окружению
 

@@ -24,6 +24,27 @@ Versions correspond to git tags (`v_X_Y_Z` tag → `X.Y.Z` version); see
 
 ## [Unreleased]
 
+## [1.3.24] - 2026-08-04
+
+<a name="changelog-1-3-24-en"></a>
+
+### Added
+
+- Authorization type **API Key** (`key` / `value` / add to Header or Query) on the
+  main request form and collection settings, including Postman `apikey` import/export.
+- Bilingual specification of the native collection JSON format
+  ([docs/collection-format.md](docs/collection-format.md)) — `GetManHTTP.Collection`
+  schema v1.
+- **form-data file parts** (issue #9): each field can be Text or File (multiple
+  files + text in one multipart body), binary body assembly with a **50 MB**
+  in-memory limit, optional Content-Type override, client/server send modes, and
+  native/Postman import-export of `type=file` parts.
+
+### Fixed
+
+- Auth form fields (`ЗначениеАвторизации1..6`) are reset to the new schema defaults
+  when the authorization type changes (no stale values carried over by matching keys).
+
 ## [1.3.23] - 2026-08-02
 
 <a name="changelog-1-3-23-en"></a>
@@ -191,6 +212,29 @@ Versions correspond to git tags (`v_X_Y_Z` tag → `X.Y.Z` version); see
 
 ## [Unreleased]
 
+## [1.3.24] - 2026-08-04
+
+<a name="changelog-1-3-24-ru"></a>
+
+### Добавлено
+
+- Тип авторизации **API Key** (`key` / `value` / добавить в Header или Query) на
+  основной форме запроса и в настройках коллекции, включая импорт/экспорт Postman
+  `apikey`.
+- Двуязычная спецификация нативного JSON-формата коллекций
+  ([docs/collection-format.md](docs/collection-format.md)) — схема
+  `GetManHTTP.Collection` v1.
+- **Файлы в form-data** (issue #9): у каждого поля тип Текст или Файл (несколько
+  файлов и текст в одном multipart), двоичная сборка тела с лимитом **50 МБ**,
+  ручной Content-Type, режимы клиент/сервер, импорт/экспорт `type=file` в
+  native и Postman.
+
+### Исправлено
+
+- Поля авторизации на форме (`ЗначениеАвторизации1..6`) сбрасываются к значениям
+  по умолчанию новой схемы при смене типа (без переноса устаревших значений по
+  совпадающим ключам).
+
 ## [1.3.23] - 2026-08-02
 
 <a name="changelog-1-3-23-ru"></a>
@@ -352,7 +396,8 @@ Versions correspond to git tags (`v_X_Y_Z` tag → `X.Y.Z` version); see
 
 - Разные исправления стабильности.
 
-[Unreleased]: https://github.com/LunatikDG/GetManHTTP/compare/v_1_3_23...HEAD
+[Unreleased]: https://github.com/LunatikDG/GetManHTTP/compare/v_1_3_24...HEAD
+[1.3.24]: https://github.com/LunatikDG/GetManHTTP/compare/v_1_3_23...v_1_3_24
 [1.3.23]: https://github.com/LunatikDG/GetManHTTP/compare/v_1_3_22...v_1_3_23
 [1.3.22]: https://github.com/LunatikDG/GetManHTTP/compare/v_1_3_21...v_1_3_22
 [1.3.21]: https://github.com/LunatikDG/GetManHTTP/compare/v_1_3_19...v_1_3_21

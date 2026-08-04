@@ -239,6 +239,15 @@
                   <value>Token</value>
                 </value>
               </choiceList>
+              <choiceList>
+                <presentation>
+                  <key>ru</key>
+                  <value>API Key</value>
+                </presentation>
+                <value xsi:type="core:StringValue">
+                  <value>ApiKey</value>
+                </value>
+              </choiceList>
             </extInfo>
           </items>
           <visible>true</visible>

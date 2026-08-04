@@ -2,7 +2,7 @@
 <form:Form xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:core="http://g5.1c.ru/v8/dt/mcore" xmlns:form="http://g5.1c.ru/v8/dt/form">
   <title>
     <key>ru</key>
-    <value>GetManHTTP (HTTP-клиент): v1.3.23</value>
+    <value>GetManHTTP (HTTP-клиент): v1.3.24</value>
   </title>
   <items xsi:type="form:FormGroup">
     <name>ГруппаЛево</name>
@@ -2001,6 +2001,15 @@
                     <value>Token</value>
                   </value>
                 </choiceList>
+                <choiceList>
+                  <presentation>
+                    <key>ru</key>
+                    <value>API Key</value>
+                  </presentation>
+                  <value xsi:type="core:StringValue">
+                    <value>ApiKey</value>
+                  </value>
+                </choiceList>
               </extInfo>
             </items>
             <visible>true</visible>
@@ -2573,6 +2582,75 @@
             <segments>ПоляFormData</segments>
           </dataPath>
           <titleLocation>None</titleLocation>
+          <handlers>
+            <event>OnStartEdit</event>
+            <name>ПоляFormDataПриНачалеРедактирования</name>
+          </handlers>
+          <items xsi:type="form:FormField">
+            <name>ПоляFormDataТипПоля</name>
+            <id>5103</id>
+            <visible>true</visible>
+            <enabled>true</enabled>
+            <userVisible>
+              <common>true</common>
+            </userVisible>
+            <dataPath xsi:type="form:DataPath">
+              <segments>ПоляFormData.ТипПоля</segments>
+            </dataPath>
+            <handlers>
+              <event>OnChange</event>
+              <name>ПоляFormDataТипПоляПриИзменении</name>
+            </handlers>
+            <extendedTooltip>
+              <name>ПоляFormDataТипПоляРасширеннаяПодсказка</name>
+              <id>5104</id>
+              <type>Label</type>
+              <autoMaxWidth>true</autoMaxWidth>
+              <autoMaxHeight>true</autoMaxHeight>
+              <extInfo xsi:type="form:LabelDecorationExtInfo">
+                <horizontalAlign>Left</horizontalAlign>
+              </extInfo>
+            </extendedTooltip>
+            <contextMenu>
+              <name>ПоляFormDataТипПоляКонтекстноеМеню</name>
+              <id>5105</id>
+              <autoFill>true</autoFill>
+            </contextMenu>
+            <type>InputField</type>
+            <editMode>Enter</editMode>
+            <showInHeader>true</showInHeader>
+            <headerHorizontalAlign>Left</headerHorizontalAlign>
+            <showInFooter>true</showInFooter>
+            <extInfo xsi:type="form:InputFieldExtInfo">
+              <width>10</width>
+              <autoMaxWidth>true</autoMaxWidth>
+              <autoMaxHeight>true</autoMaxHeight>
+              <wrap>true</wrap>
+              <dropListButton>true</dropListButton>
+              <listChoiceMode>true</listChoiceMode>
+              <chooseType>false</chooseType>
+              <typeDomainEnabled>true</typeDomainEnabled>
+              <textEdit>false</textEdit>
+              <choiceList>
+                <presentation>
+                  <key>ru</key>
+                  <value>Текст</value>
+                </presentation>
+                <value xsi:type="core:StringValue">
+                  <value>text</value>
+                </value>
+              </choiceList>
+              <choiceList>
+                <presentation>
+                  <key>ru</key>
+                  <value>Файл</value>
+                </presentation>
+                <value xsi:type="core:StringValue">
+                  <value>file</value>
+                </value>
+              </choiceList>
+            </extInfo>
+          </items>
           <items xsi:type="form:FormField">
             <name>ПоляFormDataКлюч</name>
             <id>171</id>
@@ -2644,6 +2722,46 @@
             <headerHorizontalAlign>Left</headerHorizontalAlign>
             <showInFooter>true</showInFooter>
             <extInfo xsi:type="form:InputFieldExtInfo">
+              <autoMaxWidth>true</autoMaxWidth>
+              <autoMaxHeight>true</autoMaxHeight>
+              <wrap>true</wrap>
+              <typeDomainEnabled>true</typeDomainEnabled>
+              <textEdit>true</textEdit>
+            </extInfo>
+          </items>
+          <items xsi:type="form:FormField">
+            <name>ПоляFormDataТипСодержимого</name>
+            <id>5106</id>
+            <visible>true</visible>
+            <enabled>true</enabled>
+            <userVisible>
+              <common>true</common>
+            </userVisible>
+            <dataPath xsi:type="form:DataPath">
+              <segments>ПоляFormData.ТипСодержимого</segments>
+            </dataPath>
+            <extendedTooltip>
+              <name>ПоляFormDataТипСодержимогоРасширеннаяПодсказка</name>
+              <id>5107</id>
+              <type>Label</type>
+              <autoMaxWidth>true</autoMaxWidth>
+              <autoMaxHeight>true</autoMaxHeight>
+              <extInfo xsi:type="form:LabelDecorationExtInfo">
+                <horizontalAlign>Left</horizontalAlign>
+              </extInfo>
+            </extendedTooltip>
+            <contextMenu>
+              <name>ПоляFormDataТипСодержимогоКонтекстноеМеню</name>
+              <id>5108</id>
+              <autoFill>true</autoFill>
+            </contextMenu>
+            <type>InputField</type>
+            <editMode>Enter</editMode>
+            <showInHeader>true</showInHeader>
+            <headerHorizontalAlign>Left</headerHorizontalAlign>
+            <showInFooter>true</showInFooter>
+            <extInfo xsi:type="form:InputFieldExtInfo">
+              <width>18</width>
               <autoMaxWidth>true</autoMaxWidth>
               <autoMaxHeight>true</autoMaxHeight>
               <wrap>true</wrap>
@@ -2755,6 +2873,36 @@
               <picture xsi:type="core:PictureRef">
                 <picture>StdPicture.Delete</picture>
               </picture>
+              <representationInContextMenu>Auto</representationInContextMenu>
+              <locationInCommandBar>InCommandBar</locationInCommandBar>
+            </items>
+            <items xsi:type="form:Button">
+              <name>ВыбратьФайлFormData</name>
+              <id>5109</id>
+              <title>
+                <key>ru</key>
+                <value>Файл…</value>
+              </title>
+              <visible>true</visible>
+              <enabled>true</enabled>
+              <userVisible>
+                <common>true</common>
+              </userVisible>
+              <extendedTooltip>
+                <name>ВыбратьФайлFormDataРасширеннаяПодсказка</name>
+                <id>5110</id>
+                <type>Label</type>
+                <autoMaxWidth>true</autoMaxWidth>
+                <autoMaxHeight>true</autoMaxHeight>
+                <extInfo xsi:type="form:LabelDecorationExtInfo">
+                  <horizontalAlign>Left</horizontalAlign>
+                </extInfo>
+              </extendedTooltip>
+              <commandName>Form.Command.ВыбратьФайлFormData</commandName>
+              <representation>Auto</representation>
+              <autoMaxWidth>true</autoMaxWidth>
+              <autoMaxHeight>true</autoMaxHeight>
+              <placementArea>UserCmds</placementArea>
               <representationInContextMenu>Auto</representationInContextMenu>
               <locationInCommandBar>InCommandBar</locationInCommandBar>
             </items>
@@ -4474,6 +4622,26 @@
       <common>true</common>
     </edit>
     <columns>
+      <name>ТипПоля</name>
+      <title>
+        <key>ru</key>
+        <value>Тип</value>
+      </title>
+      <id>367</id>
+      <valueType>
+        <types>String</types>
+        <stringQualifiers>
+          <length>10</length>
+        </stringQualifiers>
+      </valueType>
+      <view>
+        <common>true</common>
+      </view>
+      <edit>
+        <common>true</common>
+      </edit>
+    </columns>
+    <columns>
       <name>Ключ</name>
       <title>
         <key>ru</key>
@@ -4495,9 +4663,27 @@
       <name>Значение</name>
       <title>
         <key>ru</key>
-        <value>Значение</value>
+        <value>Значение / путь</value>
       </title>
       <id>33</id>
+      <valueType>
+        <types>String</types>
+        <stringQualifiers/>
+      </valueType>
+      <view>
+        <common>true</common>
+      </view>
+      <edit>
+        <common>true</common>
+      </edit>
+    </columns>
+    <columns>
+      <name>ТипСодержимого</name>
+      <title>
+        <key>ru</key>
+        <value>Content-Type</value>
+      </title>
+      <id>368</id>
       <valueType>
         <types>String</types>
         <stringQualifiers/>
@@ -4929,6 +5115,27 @@
       </handler>
     </action>
     <currentRowUse>Auto</currentRowUse>
+  </formCommands>
+  <formCommands>
+    <name>ВыбратьФайлFormData</name>
+    <title>
+      <key>ru</key>
+      <value>Выбрать файл</value>
+    </title>
+    <id>370</id>
+    <toolTip>
+      <key>ru</key>
+      <value>Выбрать файл для текущей строки form-data</value>
+    </toolTip>
+    <use>
+      <common>true</common>
+    </use>
+    <action xsi:type="form:FormCommandHandlerContainer">
+      <handler>
+        <name>ВыбратьФайлFormData</name>
+      </handler>
+    </action>
+    <currentRowUse>DontUse</currentRowUse>
   </formCommands>
   <formCommands>
     <name>СохранитьОтветВФайл</name>

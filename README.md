@@ -2,7 +2,7 @@
 
 [![License](https://img.shields.io/badge/license-GPL--3.0-blue)](https://github.com/LunatikDG/GetManHTTP/blob/main/LICENSE.txt)
 [![1C Version](https://img.shields.io/badge/1С-8.3.26%2B-orange)](#)
-[![Release](https://img.shields.io/badge/release-1.3.23-red)](https://github.com/LunatikDG/GetManHTTP/releases)
+[![Release](https://img.shields.io/badge/release-1.3.24-red)](https://github.com/LunatikDG/GetManHTTP/releases)
 [![BSL Lint](https://github.com/LunatikDG/GetManHTTP/actions/workflows/bsl-lint.yml/badge.svg)](https://github.com/LunatikDG/GetManHTTP/actions/workflows/bsl-lint.yml)
 
 <p align="center">
@@ -27,7 +27,8 @@ What sets it apart from "just calling `HTTPСоединение` in code":
 - Requests are organized in a **folder tree with collections**, not a single
   throwaway form — build up a library of requests and keep it between 1C
   sessions. Share a collection via **import/export** (native JSON or Postman
-  Collection v2.1) from the collection settings dialog.
+  Collection v2.1) from the collection settings dialog. Native format:
+  [GetManHTTP Collection schema](docs/collection-format.md#english).
 - Each request can run either from the **client** machine or from the
   **application server** — a distinction that matters a lot in 1C and has no
   equivalent in a browser-based REST client. See
@@ -47,7 +48,7 @@ indicator, response headers and formatted body.
 
 ![Response panel](docs/images/response-panel.png)
 
-**Authorization** — type selector (Basic / Token) with fields that adapt to
+**Authorization** — type selector (Basic / Token / API Key) with fields that adapt to
 the chosen type.
 
 ![Authorization fields](docs/images/auth-fields.png)
@@ -190,7 +191,8 @@ GetManHTTP — это HTTP-клиент, оформленный как **вне�
 - Запросы организованы в **дерево папок с коллекциями**, а не в одноразовую
   форму — можно накапливать библиотеку запросов, она сохраняется между
   сеансами 1С. Коллекцию можно **импортировать и экспортировать** (свой JSON
-  или Postman Collection v2.1) из формы настроек коллекции.
+  или Postman Collection v2.1) из формы настроек коллекции. Нативный формат:
+  [схема GetManHTTP Collection](docs/collection-format.md#русский).
 - Каждый запрос может выполняться либо с **клиента**, либо на **сервере
   приложений** — различие, которое в 1С имеет реальное значение и которого
   нет у браузерных REST-клиентов. Подробнее — раздел [Контекст выполнения
@@ -210,7 +212,7 @@ GetManHTTP — это HTTP-клиент, оформленный как **вне�
 
 ![Панель ответа](docs/images/response-panel.png)
 
-**Авторизация** — выбор типа (Basic / Token) с полями, которые меняются в
+**Авторизация** — выбор типа (Basic / Token / API Key) с полями, которые меняются в
 зависимости от выбранного типа.
 
 ![Поля авторизации](docs/images/auth-fields.png)

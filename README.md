@@ -10,6 +10,15 @@
   <a href="#русский">🇷🇺 Русский</a>
 </p>
 
+<p align="center">
+  <a href="https://infostart.ru/1c/tools/2754850/">
+    <img src="docs/images/infostart-logo.svg" alt="Infostart" height="28">
+  </a><br>
+  <a href="https://infostart.ru/1c/tools/2754850/">Publication on Infostart</a>
+  ·
+  <a href="https://infostart.ru/1c/tools/2754850/">Публикация на Инфостарте</a>
+</p>
+
 ---
 
 <a name="english"></a>
@@ -173,6 +182,7 @@ Feedback, suggestions and bug reports are welcome:
 
 - Email: <main@lunatikdg.ru>
 - Telegram: [@LunatikDG](https://t.me/LunatikDG)
+- Infostart: [article](https://infostart.ru/1c/tools/2754850/)
 
 ---
 
@@ -338,3 +348,4 @@ cd GetManHTTP
 
 - Почта: <main@lunatikdg.ru>
 - Telegram: [@LunatikDG](https://t.me/LunatikDG)
+- Инфостарт: [публикация](https://infostart.ru/1c/tools/2754850/)

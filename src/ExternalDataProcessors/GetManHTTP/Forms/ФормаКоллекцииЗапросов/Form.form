@@ -233,10 +233,19 @@
               <choiceList>
                 <presentation>
                   <key>ru</key>
-                  <value>Авторизация по токену</value>
+                  <value>Токен (свой префикс)</value>
                 </presentation>
                 <value xsi:type="core:StringValue">
                   <value>Token</value>
+                </value>
+              </choiceList>
+              <choiceList>
+                <presentation>
+                  <key>ru</key>
+                  <value>Bearer Token</value>
+                </presentation>
+                <value xsi:type="core:StringValue">
+                  <value>BearerToken</value>
                 </value>
               </choiceList>
               <choiceList>

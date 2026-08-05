@@ -103,6 +103,7 @@ Portable authorization object (collection, folder, or request).
 | `NoAuth` | collection, folder, request | _(none)_ | Explicitly disable auth. |
 | `BasicAuth` | collection, folder, request | `login`, `password` | HTTP Basic. `password` is secret. |
 | `Token` | collection, folder, request | `tokenPrefix`, `token` | Sent as `Authorization: {tokenPrefix} {token}`. Default prefix when empty at apply time: `Token`. `token` is secret. |
+| `BearerToken` | collection, folder, request | `token` | Sent as `Authorization: Bearer {token}` (fixed prefix, RFC 6750). `token` is secret. |
 | `ApiKey` | collection, folder, request | `key`, `value`, `addTo` | `addTo`: `Header` (default) or `Query`. Default `key` name: `X-API-Key`. `value` is secret. |
 | `InheritFromOwner` | folder, request | _(none)_ | Walk up folder → collection auth. **Not** valid as collection root auth (importers coerce unsupported types to the context default). |
 
@@ -150,6 +151,7 @@ Responses, scripts, tests, and environments are **out of scope** for schema v1
 | `value` | string | | Value. |
 | `description` | string | omitted | Optional comment. |
 | `disabled` | boolean | omitted/`false` | When `true`, row is inactive (`Активен = false`). |
+| `auto` | boolean | omitted/`false` | **Headers only.** When `true`, row is managed by the client from body mode / defaults (`Автоматический`). Omitted or `false` means a manual header that sync must not overwrite. Ignored for `query`. |
 
 #### Body
 
@@ -373,6 +375,7 @@ v2.1: файлы Postman определяются отдельно и преоб
 | `NoAuth` | коллекция, папка, запрос | _(нет)_ | Явно без авторизации. |
 | `BasicAuth` | коллекция, папка, запрос | `login`, `password` | HTTP Basic. `password` — секрет. |
 | `Token` | коллекция, папка, запрос | `tokenPrefix`, `token` | Заголовок `Authorization: {tokenPrefix} {token}`. Префикс по умолчанию при применении: `Token`. `token` — секрет. |
+| `BearerToken` | коллекция, папка, запрос | `token` | Заголовок `Authorization: Bearer {token}` (фиксированный префикс, RFC 6750). `token` — секрет. |
 | `ApiKey` | коллекция, папка, запрос | `key`, `value`, `addTo` | `addTo`: `Header` (по умолчанию) или `Query`. Имя ключа по умолчанию: `X-API-Key`. `value` — секрет. |
 | `InheritFromOwner` | папка, запрос | _(нет)_ | Наследование папка → коллекция. На корне коллекции не используется. |
 
@@ -419,6 +422,7 @@ v2.1: файлы Postman определяются отдельно и преоб
 | `value` | string | | Значение. |
 | `description` | string | отсутствует | Необязательный комментарий. |
 | `disabled` | boolean | отсутствует/`false` | При `true` строка неактивна. |
+| `auto` | boolean | отсутствует/`false` | **Только для headers.** При `true` строка управляется клиентом по типу тела / умолчаниям (`Автоматический`). Отсутствие или `false` — ручной заголовок, синхронизатор его не перезаписывает. Для `query` игнорируется. |
 
 #### Body
 

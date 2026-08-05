@@ -57,7 +57,7 @@ indicator, response headers and formatted body.
 
 ![Response panel](docs/images/response-panel.png)
 
-**Authorization** — type selector (Basic / Token / API Key) with fields that adapt to
+**Authorization** — type selector (Basic / Token / Bearer Token / API Key) with fields that adapt to
 the chosen type.
 
 ![Authorization fields](docs/images/auth-fields.png)
@@ -222,7 +222,7 @@ GetManHTTP — это HTTP-клиент, оформленный как **вне�
 
 ![Панель ответа](docs/images/response-panel.png)
 
-**Авторизация** — выбор типа (Basic / Token / API Key) с полями, которые меняются в
+**Авторизация** — выбор типа (Basic / Token / Bearer Token / API Key) с полями, которые меняются в
 зависимости от выбранного типа.
 
 ![Поля авторизации](docs/images/auth-fields.png)

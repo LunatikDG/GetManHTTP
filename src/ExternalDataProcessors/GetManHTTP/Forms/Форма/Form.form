@@ -1584,6 +1584,40 @@
             <extInfo xsi:type="form:CheckBoxFieldExtInfo"/>
           </items>
           <items xsi:type="form:FormField">
+            <name>ЗаголовкиЗапросаАвтоматический</name>
+            <id>5003</id>
+            <visible>true</visible>
+            <enabled>true</enabled>
+            <userVisible>
+              <common>true</common>
+            </userVisible>
+            <dataPath xsi:type="form:DataPath">
+              <segments>ЗаголовкиЗапроса.Автоматический</segments>
+            </dataPath>
+            <readOnly>true</readOnly>
+            <extendedTooltip>
+              <name>ЗаголовкиЗапросаАвтоматическийРасширеннаяПодсказка</name>
+              <id>5004</id>
+              <type>Label</type>
+              <autoMaxWidth>true</autoMaxWidth>
+              <autoMaxHeight>true</autoMaxHeight>
+              <extInfo xsi:type="form:LabelDecorationExtInfo">
+                <horizontalAlign>Left</horizontalAlign>
+              </extInfo>
+            </extendedTooltip>
+            <contextMenu>
+              <name>ЗаголовкиЗапросаАвтоматическийКонтекстноеМеню</name>
+              <id>5005</id>
+              <autoFill>true</autoFill>
+            </contextMenu>
+            <type>CheckBoxField</type>
+            <editMode>Enter</editMode>
+            <showInHeader>true</showInHeader>
+            <headerHorizontalAlign>Left</headerHorizontalAlign>
+            <showInFooter>true</showInFooter>
+            <extInfo xsi:type="form:CheckBoxFieldExtInfo"/>
+          </items>
+          <items xsi:type="form:FormField">
             <name>ЗаголовкиЗапросаКлючЗаголовка</name>
             <id>73</id>
             <visible>true</visible>
@@ -1609,6 +1643,10 @@
               <id>74</id>
               <autoFill>true</autoFill>
             </contextMenu>
+            <handlers>
+              <event>OnChange</event>
+              <name>ЗаголовкиЗапросаКлючЗаголовкаПриИзменении</name>
+            </handlers>
             <type>InputField</type>
             <editMode>Enter</editMode>
             <showInHeader>true</showInHeader>
@@ -1649,6 +1687,10 @@
               <id>77</id>
               <autoFill>true</autoFill>
             </contextMenu>
+            <handlers>
+              <event>OnChange</event>
+              <name>ЗаголовкиЗапросаЗначениеЗаголовкаПриИзменении</name>
+            </handlers>
             <type>InputField</type>
             <editMode>Enter</editMode>
             <showInHeader>true</showInHeader>
@@ -1767,6 +1809,39 @@
               <placementArea>UserCmds</placementArea>
               <picture xsi:type="core:PictureRef">
                 <picture>StdPicture.Delete</picture>
+              </picture>
+              <representationInContextMenu>Auto</representationInContextMenu>
+              <locationInCommandBar>InCommandBar</locationInCommandBar>
+            </items>
+            <items xsi:type="form:Button">
+              <name>ПоказатьАвтозаголовкиЗапроса</name>
+              <id>5201</id>
+              <title>
+                <key>ru</key>
+                <value>Показать автозаголовки</value>
+              </title>
+              <visible>true</visible>
+              <enabled>true</enabled>
+              <userVisible>
+                <common>true</common>
+              </userVisible>
+              <extendedTooltip>
+                <name>ПоказатьАвтозаголовкиЗапросаРасширеннаяПодсказка</name>
+                <id>5202</id>
+                <type>Label</type>
+                <autoMaxWidth>true</autoMaxWidth>
+                <autoMaxHeight>true</autoMaxHeight>
+                <extInfo xsi:type="form:LabelDecorationExtInfo">
+                  <horizontalAlign>Left</horizontalAlign>
+                </extInfo>
+              </extendedTooltip>
+              <commandName>Form.Command.ПоказатьАвтозаголовкиЗапроса</commandName>
+              <representation>Picture</representation>
+              <autoMaxWidth>true</autoMaxWidth>
+              <autoMaxHeight>true</autoMaxHeight>
+              <placementArea>UserCmds</placementArea>
+              <picture xsi:type="core:PictureRef">
+                <picture>StdPicture.ShowPassword</picture>
               </picture>
               <representationInContextMenu>Auto</representationInContextMenu>
               <locationInCommandBar>InCommandBar</locationInCommandBar>
@@ -1995,10 +2070,19 @@
                 <choiceList>
                   <presentation>
                     <key>ru</key>
-                    <value>Авторизация по токену</value>
+                    <value>Токен (свой префикс)</value>
                   </presentation>
                   <value xsi:type="core:StringValue">
                     <value>Token</value>
+                  </value>
+                </choiceList>
+                <choiceList>
+                  <presentation>
+                    <key>ru</key>
+                    <value>Bearer Token</value>
+                  </presentation>
+                  <value xsi:type="core:StringValue">
+                    <value>BearerToken</value>
                   </value>
                 </choiceList>
                 <choiceList>
@@ -4253,6 +4337,23 @@
       </edit>
     </columns>
     <columns>
+      <name>Автоматический</name>
+      <title>
+        <key>ru</key>
+        <value>Авто</value>
+      </title>
+      <id>18</id>
+      <valueType>
+        <types>Boolean</types>
+      </valueType>
+      <view>
+        <common>true</common>
+      </view>
+      <edit>
+        <common>true</common>
+      </edit>
+    </columns>
+    <columns>
       <name>КлючЗаголовка</name>
       <title>
         <key>ru</key>
@@ -4557,6 +4658,23 @@
       <value>Закрытие подтверждено</value>
     </title>
     <id>49</id>
+    <valueType>
+      <types>Boolean</types>
+    </valueType>
+    <view>
+      <common>true</common>
+    </view>
+    <edit>
+      <common>true</common>
+    </edit>
+  </attributes>
+  <attributes>
+    <name>ПоказыватьАвтозаголовкиЗапроса</name>
+    <title>
+      <key>ru</key>
+      <value>Показывать автозаголовки</value>
+    </title>
+    <id>5200</id>
     <valueType>
       <types>Boolean</types>
     </valueType>
@@ -5333,6 +5451,30 @@
     <action xsi:type="form:FormCommandHandlerContainer">
       <handler>
         <name>ДобавитьКоллекциюЗапросов</name>
+      </handler>
+    </action>
+    <currentRowUse>DontUse</currentRowUse>
+  </formCommands>
+  <formCommands>
+    <name>ПоказатьАвтозаголовкиЗапроса</name>
+    <title>
+      <key>ru</key>
+      <value>Показать автозаголовки</value>
+    </title>
+    <id>5203</id>
+    <toolTip>
+      <key>ru</key>
+      <value>Показать или скрыть автоматические заголовки запроса</value>
+    </toolTip>
+    <use>
+      <common>true</common>
+    </use>
+    <picture xsi:type="core:PictureRef">
+      <picture>StdPicture.ShowPassword</picture>
+    </picture>
+    <action xsi:type="form:FormCommandHandlerContainer">
+      <handler>
+        <name>ПоказатьАвтозаголовкиЗапроса</name>
       </handler>
     </action>
     <currentRowUse>DontUse</currentRowUse>

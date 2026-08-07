@@ -83,7 +83,8 @@
 <li>базовая — логин и пароль в HTTP-соединение;</li>
 <li>по токену (свой префикс) — заголовок <code>Authorization</code> (префикс по умолчанию <code>Token</code>);</li>
 <li>Bearer Token — заголовок <code>Authorization: Bearer …</code> (фиксированный префикс);</li>
-<li>API Key — имя и значение ключа с выбором «добавить в заголовок» или «в Query-параметр».</li>
+<li>API Key — имя и значение ключа с выбором «добавить в заголовок» или «в Query-параметр»;</li>
+<li>JWT Bearer — генерация JWT (алгоритмы HS256/HS512), секрет, Claims (JSON), TTL для <code>iat</code>/<code>exp</code>; заголовок <code>Authorization: Bearer …</code>.</li>
 </ul>
 </li>
 <li><strong>Тело запроса</strong> — варианты: отсутствует, JSON, XML, form-data (текстовые и файловые поля, несколько файлов в одном multipart; лимит размера тела 50&nbsp;МБ), двоичные данные (один файл целиком).</li>
@@ -124,7 +125,7 @@
 
 <p>Ошибки и предложения: <a href="https://github.com/LunatikDG/GetManHTTP">репозиторий на GitHub</a>, почта <code>main@lunatikdg.ru</code>, Telegram <a href="https://t.me/LunatikDG">@LunatikDG</a>.</p>
 
-<p><em>Версия обработки: 1.3.24</em></p>
+<p><em>Версия обработки: 1.3.25</em></p>
 
 </body>
 </html>

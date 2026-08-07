@@ -24,6 +24,10 @@ Versions correspond to git tags (`v_X_Y_Z` tag → `X.Y.Z` version); see
 
 ## [Unreleased]
 
+## [1.3.25] - 2026-08-07
+
+<a name="changelog-1-3-25-en"></a>
+
 ### Added
 
 - Automatic request headers (issue #22): `Content-Type` by body mode
@@ -39,6 +43,11 @@ Versions correspond to git tags (`v_X_Y_Z` tag → `X.Y.Z` version); see
   `Authorization: Bearer …` prefix (issue #12). Generic **Token** kept for a custom
   prefix (UI label: «Токен (свой префикс)»). Postman `bearer` import/export maps to
   `BearerToken`.
+- Authorization type **JWT Bearer** (`JwtBearer`, issue #13): HS256/HS512 via
+  platform `ХешированиеДанных` + HMAC (RFC 2104), fields `algorithm` / `secret` /
+  `claims` (JSON) / `ttlSeconds` (`iat`/`exp` when TTL > 0). Auth schema and crypto
+  live in the data processor object module (shared by main and collection forms).
+  Postman `jwt` import/export maps for HS*.
 
 ## [1.3.24] - 2026-08-04
 
@@ -228,6 +237,10 @@ Versions correspond to git tags (`v_X_Y_Z` tag → `X.Y.Z` version); see
 
 ## [Unreleased]
 
+## [1.3.25] - 2026-08-07
+
+<a name="changelog-1-3-25-ru"></a>
+
 ### Добавлено
 
 - Автоматические заголовки запроса (issue #22): `Content-Type` по типу тела
@@ -244,6 +257,11 @@ Versions correspond to git tags (`v_X_Y_Z` tag → `X.Y.Z` version); see
   префикс `Authorization: Bearer …` (issue #12). Generic **Token** сохранён для
   своего префикса (в UI: «Токен (свой префикс)»). Импорт/экспорт Postman `bearer`
   соответствует `BearerToken`.
+- Тип авторизации **JWT Bearer** (`JwtBearer`, issue #13): HS256/HS512 через
+  `ХешированиеДанных` платформы + HMAC (RFC 2104), поля `algorithm` / `secret` /
+  `claims` (JSON) / `ttlSeconds` (`iat`/`exp` при TTL > 0). Схема авторизации и
+  крипто вынесены в модуль объекта обработки (общие для основной формы и
+  коллекции). Импорт/экспорт Postman `jwt` для HS*.
 
 ## [1.3.24] - 2026-08-04
 
@@ -429,7 +447,8 @@ Versions correspond to git tags (`v_X_Y_Z` tag → `X.Y.Z` version); see
 
 - Разные исправления стабильности.
 
-[Unreleased]: https://github.com/LunatikDG/GetManHTTP/compare/v_1_3_24...HEAD
+[Unreleased]: https://github.com/LunatikDG/GetManHTTP/compare/v_1_3_25...HEAD
+[1.3.25]: https://github.com/LunatikDG/GetManHTTP/compare/v_1_3_24...v_1_3_25
 [1.3.24]: https://github.com/LunatikDG/GetManHTTP/compare/v_1_3_23...v_1_3_24
 [1.3.23]: https://github.com/LunatikDG/GetManHTTP/compare/v_1_3_22...v_1_3_23
 [1.3.22]: https://github.com/LunatikDG/GetManHTTP/compare/v_1_3_21...v_1_3_22

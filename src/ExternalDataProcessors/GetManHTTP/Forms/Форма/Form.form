@@ -2,7 +2,7 @@
 <form:Form xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:core="http://g5.1c.ru/v8/dt/mcore" xmlns:form="http://g5.1c.ru/v8/dt/form">
   <title>
     <key>ru</key>
-    <value>GetManHTTP (HTTP-клиент): v1.3.24</value>
+    <value>GetManHTTP (HTTP-клиент): v1.3.25</value>
   </title>
   <items xsi:type="form:FormGroup">
     <name>ГруппаЛево</name>
@@ -2092,6 +2092,15 @@
                   </presentation>
                   <value xsi:type="core:StringValue">
                     <value>ApiKey</value>
+                  </value>
+                </choiceList>
+                <choiceList>
+                  <presentation>
+                    <key>ru</key>
+                    <value>JWT Bearer</value>
+                  </presentation>
+                  <value xsi:type="core:StringValue">
+                    <value>JwtBearer</value>
                   </value>
                 </choiceList>
               </extInfo>

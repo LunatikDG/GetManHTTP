@@ -105,6 +105,7 @@ Portable authorization object (collection, folder, or request).
 | `Token` | collection, folder, request | `tokenPrefix`, `token` | Sent as `Authorization: {tokenPrefix} {token}`. Default prefix when empty at apply time: `Token`. `token` is secret. |
 | `BearerToken` | collection, folder, request | `token` | Sent as `Authorization: Bearer {token}` (fixed prefix, RFC 6750). `token` is secret. |
 | `ApiKey` | collection, folder, request | `key`, `value`, `addTo` | `addTo`: `Header` (default) or `Query`. Default `key` name: `X-API-Key`. `value` is secret. |
+| `JwtBearer` | collection, folder, request | `algorithm`, `secret`, `claims`, `ttlSeconds` | Builds JWT (HS256/HS512) and sends `Authorization: Bearer {jwt}`. `algorithm` default `HS256`; `claims` is a JSON object string; `ttlSeconds` &gt; 0 sets `iat`/`exp` (Unix). `secret` is secret. |
 | `InheritFromOwner` | folder, request | _(none)_ | Walk up folder → collection auth. **Not** valid as collection root auth (importers coerce unsupported types to the context default). |
 
 ---
@@ -377,6 +378,7 @@ v2.1: файлы Postman определяются отдельно и преоб
 | `Token` | коллекция, папка, запрос | `tokenPrefix`, `token` | Заголовок `Authorization: {tokenPrefix} {token}`. Префикс по умолчанию при применении: `Token`. `token` — секрет. |
 | `BearerToken` | коллекция, папка, запрос | `token` | Заголовок `Authorization: Bearer {token}` (фиксированный префикс, RFC 6750). `token` — секрет. |
 | `ApiKey` | коллекция, папка, запрос | `key`, `value`, `addTo` | `addTo`: `Header` (по умолчанию) или `Query`. Имя ключа по умолчанию: `X-API-Key`. `value` — секрет. |
+| `JwtBearer` | коллекция, папка, запрос | `algorithm`, `secret`, `claims`, `ttlSeconds` | Собирает JWT (HS256/HS512) и шлёт `Authorization: Bearer {jwt}`. `algorithm` по умолчанию `HS256`; `claims` — JSON-объект строкой; `ttlSeconds` &gt; 0 задаёт `iat`/`exp` (Unix). `secret` — секрет. |
 | `InheritFromOwner` | папка, запрос | _(нет)_ | Наследование папка → коллекция. На корне коллекции не используется. |
 
 ---

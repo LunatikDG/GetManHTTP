@@ -24,6 +24,22 @@ Versions correspond to git tags (`v_X_Y_Z` tag → `X.Y.Z` version); see
 
 ## [Unreleased]
 
+### Added
+
+- Automatic request headers (issue #22): `Content-Type` by body mode
+  (JSON/XML/`multipart/form-data`/binary MIME from file extension), plus
+  `Accept: */*` and `User-Agent: GetManHTTP/{version}` in the headers table with
+  an **Авто** flag. Manual rows are not overwritten; editing an auto row clears
+  the flag. Auto rows are sorted above manual ones, shown in gray, and hidden by
+  default behind an eye button on the headers table command bar (hidden auto
+  headers are still sent). Native collection JSON stores `"auto": true` on headers; Postman
+  import/export treats headers as manual. `Content-Length` is not set in the
+  table (platform sets it on send). FORM_DATA still gets `boundary` on the wire.
+- Authorization type **Bearer Token** (`BearerToken`): single token field, fixed
+  `Authorization: Bearer …` prefix (issue #12). Generic **Token** kept for a custom
+  prefix (UI label: «Токен (свой префикс)»). Postman `bearer` import/export maps to
+  `BearerToken`.
+
 ## [1.3.24] - 2026-08-04
 
 <a name="changelog-1-3-24-en"></a>
@@ -211,6 +227,23 @@ Versions correspond to git tags (`v_X_Y_Z` tag → `X.Y.Z` version); see
 ## Русский
 
 ## [Unreleased]
+
+### Добавлено
+
+- Автоматические заголовки запроса (issue #22): `Content-Type` по типу тела
+  (JSON/XML/`multipart/form-data`/MIME binary по расширению файла), плюс
+  `Accept: */*` и `User-Agent: GetManHTTP/{version}` в таблице заголовков с
+  флагом **Авто**. Ручные строки не перезаписываются; правка авто-строки снимает
+  флаг. Авто-строки выше ручных, серым текстом и по умолчанию скрыты за кнопкой
+  с иконкой глаза на командной панели таблицы (скрытые автозаголовки всё равно
+  отправляются). В native JSON коллекций у заголовков поле `"auto": true`;
+  Postman импорт/экспорт считает заголовки ручными. `Content-Length` в таблицу
+  не задаётся (его выставляет платформа при отправке). Для FORM_DATA на wire
+  по-прежнему добавляется `boundary`.
+- Тип авторизации **Bearer Token** (`BearerToken`): одно поле токена, фиксированный
+  префикс `Authorization: Bearer …` (issue #12). Generic **Token** сохранён для
+  своего префикса (в UI: «Токен (свой префикс)»). Импорт/экспорт Postman `bearer`
+  соответствует `BearerToken`.
 
 ## [1.3.24] - 2026-08-04
 

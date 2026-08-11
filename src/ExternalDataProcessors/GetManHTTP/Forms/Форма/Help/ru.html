@@ -84,7 +84,7 @@
 <li>по токену (свой префикс) — заголовок <code>Authorization</code> (префикс по умолчанию <code>Token</code>);</li>
 <li>Bearer Token — заголовок <code>Authorization: Bearer …</code> (фиксированный префикс);</li>
 <li>API Key — имя и значение ключа с выбором «добавить в заголовок» или «в Query-параметр»;</li>
-<li>JWT Bearer — генерация JWT через платформенный <code>ТокенДоступа</code>: HS256/HS384/HS512 (поле «Секрет») и RS256/RS384/RS512 (поле «Приватный ключ (PEM)» без пароля, кнопка выбора файла <code>.pem</code>/<code>.txt</code>), Claims (JSON), TTL для <code>iat</code>/<code>exp</code>; заголовок <code>Authorization: Bearer …</code>.</li>
+<li>JWT Bearer — генерация JWT через платформенный <code>ТокенДоступа</code>: HS256/HS384/HS512 (поле «Секрет») и RS256/RS384/RS512, PS256/PS384/PS512, ES256/ES384/ES512 (поле «Приватный ключ (PEM)» без пароля, кнопка выбора файла <code>.pem</code>/<code>.txt</code>), Claims (JSON), TTL для <code>iat</code>/<code>exp</code>; заголовок <code>Authorization: Bearer …</code>.</li>
 </ul>
 </li>
 <li><strong>Тело запроса</strong> — варианты: отсутствует, JSON, XML, form-data (текстовые и файловые поля, несколько файлов в одном multipart; лимит размера тела 50&nbsp;МБ), двоичные данные (один файл целиком).</li>

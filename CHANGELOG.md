@@ -24,6 +24,13 @@ Versions correspond to git tags (`v_X_Y_Z` tag → `X.Y.Z` version); see
 
 ## [Unreleased]
 
+### Changed
+
+- JWT Bearer signing migrated from hand-rolled HMAC (`ХешированиеДанных`) to
+  platform `ТокенДоступа` / `АлгоритмПодписиТокенаДоступа` for **HS256**,
+  **HS384**, and **HS512** (Refs #13). Schema fields unchanged
+  (`algorithm` / `secret` / `claims` / `ttlSeconds`).
+
 ## [1.3.25] - 2026-08-07
 
 <a name="changelog-1-3-25-en"></a>
@@ -236,6 +243,13 @@ Versions correspond to git tags (`v_X_Y_Z` tag → `X.Y.Z` version); see
 ## Русский
 
 ## [Unreleased]
+
+### Изменено
+
+- Подпись JWT Bearer переведена с самописного HMAC (`ХешированиеДанных`) на
+  платформенный `ТокенДоступа` / `АлгоритмПодписиТокенаДоступа` для **HS256**,
+  **HS384** и **HS512** (Refs #13). Поля схемы без изменений
+  (`algorithm` / `secret` / `claims` / `ttlSeconds`).
 
 ## [1.3.25] - 2026-08-07
 

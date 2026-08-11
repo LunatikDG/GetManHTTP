@@ -58,7 +58,8 @@ indicator, response headers and formatted body.
 ![Response panel](docs/images/response-panel.png)
 
 **Authorization** — type selector (Basic / Token / Bearer Token / API Key / JWT Bearer) with fields that adapt to
-the selected scheme. JWT Bearer signs HS256/HS384/HS512 via platform `ТокенДоступа`.
+the selected scheme. JWT Bearer signs HS256/HS384/HS512 (HMAC secret) and
+RS256/RS384/RS512 (PEM private key, no passphrase) via platform `ТокенДоступа`.
 
 ![Authorization fields](docs/images/auth-fields.png)
 
@@ -223,7 +224,8 @@ GetManHTTP — это HTTP-клиент, оформленный как **вне�
 ![Панель ответа](docs/images/response-panel.png)
 
 **Авторизация** — выбор типа (Basic / Token / Bearer Token / API Key / JWT Bearer) с полями, которые меняются в
-зависимости от схемы. JWT Bearer подписывает HS256/HS384/HS512 через платформенный `ТокенДоступа`.
+зависимости от схемы. JWT Bearer подписывает HS256/HS384/HS512 (HMAC-секрет) и
+RS256/RS384/RS512 (PEM приватный ключ без пароля) через платформенный `ТокенДоступа`.
 
 ![Поля авторизации](docs/images/auth-fields.png)
 

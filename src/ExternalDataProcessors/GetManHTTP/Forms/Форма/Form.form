@@ -2155,6 +2155,10 @@
                 <event>OnChange</event>
                 <name>ПолеАвторизацииПриИзменении</name>
               </handlers>
+              <handlers>
+                <event>StartChoice</event>
+                <name>ПолеАвторизацииНачалоВыбора</name>
+              </handlers>
               <extendedTooltip>
                 <name>ПолеАвторизации1РасширеннаяПодсказка</name>
                 <id>334</id>
@@ -2181,7 +2185,11 @@
                 <autoMaxHeight>true</autoMaxHeight>
                 <horizontalStretch>true</horizontalStretch>
                 <wrap>true</wrap>
-                <chooseType>true</chooseType>
+                <choiceButton>false</choiceButton>
+                <choiceButtonPicture xsi:type="core:PictureRef">
+                  <picture>StdPicture.OpenFile</picture>
+                </choiceButtonPicture>
+                <chooseType>false</chooseType>
                 <typeDomainEnabled>true</typeDomainEnabled>
                 <textEdit>true</textEdit>
               </extInfo>
@@ -2201,6 +2209,10 @@
               <handlers>
                 <event>OnChange</event>
                 <name>ПолеАвторизацииПриИзменении</name>
+              </handlers>
+              <handlers>
+                <event>StartChoice</event>
+                <name>ПолеАвторизацииНачалоВыбора</name>
               </handlers>
               <extendedTooltip>
                 <name>ПолеАвторизации2РасширеннаяПодсказка</name>
@@ -2228,7 +2240,11 @@
                 <autoMaxHeight>true</autoMaxHeight>
                 <horizontalStretch>true</horizontalStretch>
                 <wrap>true</wrap>
-                <chooseType>true</chooseType>
+                <choiceButton>false</choiceButton>
+                <choiceButtonPicture xsi:type="core:PictureRef">
+                  <picture>StdPicture.OpenFile</picture>
+                </choiceButtonPicture>
+                <chooseType>false</chooseType>
                 <typeDomainEnabled>true</typeDomainEnabled>
                 <textEdit>true</textEdit>
               </extInfo>
@@ -2248,6 +2264,10 @@
               <handlers>
                 <event>OnChange</event>
                 <name>ПолеАвторизацииПриИзменении</name>
+              </handlers>
+              <handlers>
+                <event>StartChoice</event>
+                <name>ПолеАвторизацииНачалоВыбора</name>
               </handlers>
               <extendedTooltip>
                 <name>ПолеАвторизации3РасширеннаяПодсказка</name>
@@ -2275,7 +2295,11 @@
                 <autoMaxHeight>true</autoMaxHeight>
                 <horizontalStretch>true</horizontalStretch>
                 <wrap>true</wrap>
-                <chooseType>true</chooseType>
+                <choiceButton>false</choiceButton>
+                <choiceButtonPicture xsi:type="core:PictureRef">
+                  <picture>StdPicture.OpenFile</picture>
+                </choiceButtonPicture>
+                <chooseType>false</chooseType>
                 <typeDomainEnabled>true</typeDomainEnabled>
                 <textEdit>true</textEdit>
               </extInfo>
@@ -2295,6 +2319,10 @@
               <handlers>
                 <event>OnChange</event>
                 <name>ПолеАвторизацииПриИзменении</name>
+              </handlers>
+              <handlers>
+                <event>StartChoice</event>
+                <name>ПолеАвторизацииНачалоВыбора</name>
               </handlers>
               <extendedTooltip>
                 <name>ПолеАвторизации4РасширеннаяПодсказка</name>
@@ -2322,7 +2350,11 @@
                 <autoMaxHeight>true</autoMaxHeight>
                 <horizontalStretch>true</horizontalStretch>
                 <wrap>true</wrap>
-                <chooseType>true</chooseType>
+                <choiceButton>false</choiceButton>
+                <choiceButtonPicture xsi:type="core:PictureRef">
+                  <picture>StdPicture.OpenFile</picture>
+                </choiceButtonPicture>
+                <chooseType>false</chooseType>
                 <typeDomainEnabled>true</typeDomainEnabled>
                 <textEdit>true</textEdit>
               </extInfo>
@@ -2342,6 +2374,10 @@
               <handlers>
                 <event>OnChange</event>
                 <name>ПолеАвторизацииПриИзменении</name>
+              </handlers>
+              <handlers>
+                <event>StartChoice</event>
+                <name>ПолеАвторизацииНачалоВыбора</name>
               </handlers>
               <extendedTooltip>
                 <name>ПолеАвторизации5РасширеннаяПодсказка</name>
@@ -2369,7 +2405,11 @@
                 <autoMaxHeight>true</autoMaxHeight>
                 <horizontalStretch>true</horizontalStretch>
                 <wrap>true</wrap>
-                <chooseType>true</chooseType>
+                <choiceButton>false</choiceButton>
+                <choiceButtonPicture xsi:type="core:PictureRef">
+                  <picture>StdPicture.OpenFile</picture>
+                </choiceButtonPicture>
+                <chooseType>false</chooseType>
                 <typeDomainEnabled>true</typeDomainEnabled>
                 <textEdit>true</textEdit>
               </extInfo>
@@ -2389,6 +2429,10 @@
               <handlers>
                 <event>OnChange</event>
                 <name>ПолеАвторизацииПриИзменении</name>
+              </handlers>
+              <handlers>
+                <event>StartChoice</event>
+                <name>ПолеАвторизацииНачалоВыбора</name>
               </handlers>
               <extendedTooltip>
                 <name>ПолеАвторизации6РасширеннаяПодсказка</name>
@@ -2416,7 +2460,11 @@
                 <autoMaxHeight>true</autoMaxHeight>
                 <horizontalStretch>true</horizontalStretch>
                 <wrap>true</wrap>
-                <chooseType>true</chooseType>
+                <choiceButton>false</choiceButton>
+                <choiceButtonPicture xsi:type="core:PictureRef">
+                  <picture>StdPicture.OpenFile</picture>
+                </choiceButtonPicture>
+                <chooseType>false</chooseType>
                 <typeDomainEnabled>true</typeDomainEnabled>
                 <textEdit>true</textEdit>
               </extInfo>

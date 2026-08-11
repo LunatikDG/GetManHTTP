@@ -24,12 +24,20 @@ Versions correspond to git tags (`v_X_Y_Z` tag → `X.Y.Z` version); see
 
 ## [Unreleased]
 
+### Added
+
+- JWT Bearer **RS256**, **RS384**, and **RS512** via platform `ТокенДоступа`
+  (Refs #13): schema field `privateKey` (PEM, unencrypted); HS* still uses
+  `secret`. Choice button loads `.pem`/`.txt` into the private key field.
+  Postman `jwt` import/export round-trips `privateKey`.
+
 ### Changed
 
+- JWT Bearer form shows **Secret** only for HS* and **Private key (PEM)** only for
+  RS* (Postman-like); both keys remain in the params table for round-trip.
 - JWT Bearer signing migrated from hand-rolled HMAC (`ХешированиеДанных`) to
   platform `ТокенДоступа` / `АлгоритмПодписиТокенаДоступа` for **HS256**,
-  **HS384**, and **HS512** (Refs #13). Schema fields unchanged
-  (`algorithm` / `secret` / `claims` / `ttlSeconds`).
+  **HS384**, and **HS512** (Refs #13).
 
 ## [1.3.25] - 2026-08-07
 
@@ -244,12 +252,21 @@ Versions correspond to git tags (`v_X_Y_Z` tag → `X.Y.Z` version); see
 
 ## [Unreleased]
 
+### Добавлено
+
+- JWT Bearer **RS256**, **RS384** и **RS512** через платформенный `ТокенДоступа`
+  (Refs #13): поле схемы `privateKey` (PEM без пароля); для HS* по-прежнему
+  `secret`. Кнопка выбора загружает `.pem`/`.txt` в поле приватного ключа.
+  Импорт/экспорт Postman `jwt` сохраняет `privateKey`.
+
 ### Изменено
 
+- В форме JWT Bearer поле **Секрет** только для HS*, **Приватный ключ (PEM)**
+  только для RS* (как в Postman); оба ключа остаются в таблице параметров для
+  round-trip.
 - Подпись JWT Bearer переведена с самописного HMAC (`ХешированиеДанных`) на
   платформенный `ТокенДоступа` / `АлгоритмПодписиТокенаДоступа` для **HS256**,
-  **HS384** и **HS512** (Refs #13). Поля схемы без изменений
-  (`algorithm` / `secret` / `claims` / `ttlSeconds`).
+  **HS384** и **HS512** (Refs #13).
 
 ## [1.3.25] - 2026-08-07
 

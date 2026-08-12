@@ -2,7 +2,7 @@
 
 [![License](https://img.shields.io/badge/license-GPL--3.0-blue)](https://github.com/LunatikDG/GetManHTTP/blob/main/LICENSE.txt)
 [![1C Version](https://img.shields.io/badge/1С-8.3.26%2B-orange)](#)
-[![Release](https://img.shields.io/badge/release-1.3.25-red)](https://github.com/LunatikDG/GetManHTTP/releases)
+[![Release](https://img.shields.io/badge/release-1.3.26-red)](https://github.com/LunatikDG/GetManHTTP/releases)
 [![BSL Lint](https://github.com/LunatikDG/GetManHTTP/actions/workflows/bsl-lint.yml/badge.svg)](https://github.com/LunatikDG/GetManHTTP/actions/workflows/bsl-lint.yml)
 
 <p align="center">
@@ -58,7 +58,9 @@ indicator, response headers and formatted body.
 ![Response panel](docs/images/response-panel.png)
 
 **Authorization** — type selector (Basic / Token / Bearer Token / API Key / JWT Bearer) with fields that adapt to
-the selected scheme. JWT Bearer signs HS256/HS512 locally (no crypto provider required).
+the selected scheme. JWT Bearer signs HS256/HS384/HS512 (HMAC secret) and
+RS256/RS384/RS512, PS256/PS384/PS512, ES256/ES384/ES512 (PEM private key, no
+passphrase) via platform `ТокенДоступа`.
 
 ![Authorization fields](docs/images/auth-fields.png)
 
@@ -223,7 +225,9 @@ GetManHTTP — это HTTP-клиент, оформленный как **вне�
 ![Панель ответа](docs/images/response-panel.png)
 
 **Авторизация** — выбор типа (Basic / Token / Bearer Token / API Key / JWT Bearer) с полями, которые меняются в
-зависимости от схемы. JWT Bearer подписывает HS256/HS512 локально (криптопровайдер не нужен).
+зависимости от схемы. JWT Bearer подписывает HS256/HS384/HS512 (HMAC-секрет) и
+RS256/RS384/RS512, PS256/PS384/PS512, ES256/ES384/ES512 (PEM приватный ключ без
+пароля) через платформенный `ТокенДоступа`.
 
 ![Поля авторизации](docs/images/auth-fields.png)
 

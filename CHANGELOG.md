@@ -24,6 +24,30 @@ Versions correspond to git tags (`v_X_Y_Z` tag → `X.Y.Z` version); see
 
 ## [Unreleased]
 
+## [1.3.26] - 2026-08-12
+
+<a name="changelog-1-3-26-en"></a>
+
+### Added
+
+- JWT Bearer **RS256**, **RS384**, and **RS512** via platform `ТокенДоступа`
+  (Closes #13): schema field `privateKey` (PEM, unencrypted); HS* still uses
+  `secret`. Choice button loads `.pem`/`.txt` into the private key field.
+  Postman `jwt` import/export round-trips `privateKey`.
+- JWT Bearer **PS256**, **PS384**, and **PS512** (RSA-PSS) via the same
+  `privateKey` PEM field (Closes #13).
+- JWT Bearer **ES256**, **ES384**, and **ES512** (ECDSA) via the same
+  `privateKey` PEM field (Closes #13).
+
+### Changed
+
+- JWT Bearer form shows **Secret** only for HS* and **Private key (PEM)** for
+  RS*/PS*/ES* (Postman-like); both keys remain in the params table for round-trip.
+- JWT Bearer signing migrated from hand-rolled HMAC (`ХешированиеДанных`) to
+  platform `ТокенДоступа` / `АлгоритмПодписиТокенаДоступа` for **HS256**,
+  **HS384**, and **HS512** (Closes #13).
+- Updated README demo GIF and main form screenshot for JWT Bearer.
+
 ## [1.3.25] - 2026-08-07
 
 <a name="changelog-1-3-25-en"></a>
@@ -237,6 +261,31 @@ Versions correspond to git tags (`v_X_Y_Z` tag → `X.Y.Z` version); see
 
 ## [Unreleased]
 
+## [1.3.26] - 2026-08-12
+
+<a name="changelog-1-3-26-ru"></a>
+
+### Добавлено
+
+- JWT Bearer **RS256**, **RS384** и **RS512** через платформенный `ТокенДоступа`
+  (Closes #13): поле схемы `privateKey` (PEM без пароля); для HS* по-прежнему
+  `secret`. Кнопка выбора загружает `.pem`/`.txt` в поле приватного ключа.
+  Импорт/экспорт Postman `jwt` сохраняет `privateKey`.
+- JWT Bearer **PS256**, **PS384** и **PS512** (RSA-PSS) через то же поле
+  `privateKey` (Closes #13).
+- JWT Bearer **ES256**, **ES384** и **ES512** (ECDSA) через то же поле
+  `privateKey` (Closes #13).
+
+### Изменено
+
+- В форме JWT Bearer поле **Секрет** только для HS*, **Приватный ключ (PEM)**
+  для RS*/PS*/ES* (как в Postman); оба ключа остаются в таблице параметров для
+  round-trip.
+- Подпись JWT Bearer переведена с самописного HMAC (`ХешированиеДанных`) на
+  платформенный `ТокенДоступа` / `АлгоритмПодписиТокенаДоступа` для **HS256**,
+  **HS384** и **HS512** (Closes #13).
+- Обновлены demo GIF и скриншот главной формы в README под JWT Bearer.
+
 ## [1.3.25] - 2026-08-07
 
 <a name="changelog-1-3-25-ru"></a>
@@ -447,7 +496,8 @@ Versions correspond to git tags (`v_X_Y_Z` tag → `X.Y.Z` version); see
 
 - Разные исправления стабильности.
 
-[Unreleased]: https://github.com/LunatikDG/GetManHTTP/compare/v_1_3_25...HEAD
+[Unreleased]: https://github.com/LunatikDG/GetManHTTP/compare/v_1_3_26...HEAD
+[1.3.26]: https://github.com/LunatikDG/GetManHTTP/compare/v_1_3_25...v_1_3_26
 [1.3.25]: https://github.com/LunatikDG/GetManHTTP/compare/v_1_3_24...v_1_3_25
 [1.3.24]: https://github.com/LunatikDG/GetManHTTP/compare/v_1_3_23...v_1_3_24
 [1.3.23]: https://github.com/LunatikDG/GetManHTTP/compare/v_1_3_22...v_1_3_23

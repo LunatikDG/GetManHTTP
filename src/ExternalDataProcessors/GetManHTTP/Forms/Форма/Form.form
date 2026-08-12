@@ -2,7 +2,7 @@
 <form:Form xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:core="http://g5.1c.ru/v8/dt/mcore" xmlns:form="http://g5.1c.ru/v8/dt/form">
   <title>
     <key>ru</key>
-    <value>GetManHTTP (HTTP-клиент): v1.3.25</value>
+    <value>GetManHTTP (HTTP-клиент): v1.3.26</value>
   </title>
   <items xsi:type="form:FormGroup">
     <name>ГруппаЛево</name>

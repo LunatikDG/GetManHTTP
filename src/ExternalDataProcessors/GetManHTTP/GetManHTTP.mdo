@@ -60,4 +60,13 @@
     <usePurposes>PersonalComputer</usePurposes>
     <usePurposes>MobileDevice</usePurposes>
   </forms>
+  <forms uuid="e7c4a91b-5d2f-4e8a-9b1c-3f6d8a0e2c14">
+    <name>ФормаНастроекЗапроса</name>
+    <synonym>
+      <key>ru</key>
+      <value>Настройки запроса</value>
+    </synonym>
+    <usePurposes>PersonalComputer</usePurposes>
+    <usePurposes>MobileDevice</usePurposes>
+  </forms>
 </mdclass:ExternalDataProcessor>

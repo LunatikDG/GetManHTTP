@@ -38,6 +38,7 @@ src/ExternalDataProcessors/GetManHTTP/
   Forms/Форма/                — main request form + Module.bsl
   Forms/ФормаКоллекцииЗапросов/ — collections form + Module.bsl
   Forms/ФормаНастроек/         — settings form + Module.bsl
+  Forms/ФормаНастроекЗапроса/  — per-request settings form + Module.bsl
 docs/
   collection-format.md       — native GetManHTTP.Collection JSON schema
   images/                    — README screenshots
@@ -142,6 +143,7 @@ src/ExternalDataProcessors/GetManHTTP/
   Forms/Форма/                — основная форма запроса + Module.bsl
   Forms/ФормаКоллекцииЗапросов/ — форма коллекций + Module.bsl
   Forms/ФормаНастроек/         — форма настроек + Module.bsl
+  Forms/ФормаНастроекЗапроса/  — форма настроек запроса + Module.bsl
 docs/
   collection-format.md       — схема нативного JSON GetManHTTP.Collection
   images/                    — скриншоты для README

@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suppress:SuppressGenericObject xmlns:suppress="http://g5.1c.ru/v8/dt/check/suppress/model" fqn="ExternalDataProcessor.GetManHTTP.Form.ФормаНастроекЗапроса.Form">
+  <suppressions key="com.e1c.g5.dt.core.legacy:form-legacy-emf-check" value="true"/>
+</suppress:SuppressGenericObject>

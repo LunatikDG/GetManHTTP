@@ -136,10 +136,23 @@ Every entry in `items` / `children` has:
 | `method` | string | `GET` | HTTP method (stored uppercased). |
 | `url` | string | `""` | Request URL / URI (query string may also be mirrored in `query`). |
 | `sendMode` | string | `Клиент` | Execution context: `Клиент` or `Сервер`. |
+| `timeout` | object | inherit | Per-request HTTP timeout (same shape as collection `timeout`). When `useDefault` is `true`, use collection timeout if set, otherwise the processor default. |
+| `port` | object | inherit | Per-request TCP port override. When `useDefault` is `true`, use the port from `url` or **443** (https) / **80** (http). |
 | `auth` | Auth | `InheritFromOwner` | Request auth. |
 | `headers` | array of KeyValue | `[]` | Request headers. |
 | `query` | array of KeyValue | `[]` | Query parameters. |
 | `body` | Body | see below | Request body. |
+
+#### Request `timeout`
+
+Same fields as collection [`timeout`](#timeout): `useDefault` (boolean, default `true`) and `seconds` (number, default `0`).
+
+#### Request `port`
+
+| Field | Type | Default | Description |
+| --- | --- | --- | --- |
+| `useDefault` | boolean | `true` | When `true`, ignore `number` and use URI / scheme defaults. |
+| `number` | number | `0` | TCP port (1–65535) when `useDefault` is `false`. |
 
 Responses, scripts, tests, and environments are **out of scope** for schema v1
 (not exported).
@@ -409,10 +422,23 @@ v2.1: файлы Postman определяются отдельно и преоб
 | `method` | string | `GET` | HTTP-метод (сохраняется в верхнем регистре). |
 | `url` | string | `""` | URL / URI. |
 | `sendMode` | string | `Клиент` | Контекст выполнения: `Клиент` или `Сервер`. |
+| `timeout` | object | наследовать | Таймаут HTTP запроса (тот же формат, что у коллекции). При `useDefault` = `true` берётся таймаут коллекции, если задан, иначе глобальный таймаут обработки. |
+| `port` | object | наследовать | Переопределение TCP-порта. При `useDefault` = `true` порт из `url` либо **443** (https) / **80** (http). |
 | `auth` | Auth | `InheritFromOwner` | Авторизация запроса. |
 | `headers` | массив KeyValue | `[]` | Заголовки. |
 | `query` | массив KeyValue | `[]` | Параметры строки запроса. |
 | `body` | Body | см. ниже | Тело запроса. |
+
+#### `timeout` запроса
+
+Те же поля, что у [`timeout`](#timeout) коллекции: `useDefault` (boolean, по умолчанию `true`) и `seconds` (number, по умолчанию `0`).
+
+#### `port` запроса
+
+| Поле | Тип | По умолчанию | Описание |
+| --- | --- | --- | --- |
+| `useDefault` | boolean | `true` | При `true` поле `number` игнорируется. |
+| `number` | number | `0` | TCP-порт (1–65535), если `useDefault` = `false`. |
 
 Ответы, скрипты, тесты и окружения в схему v1 **не входят**.
 

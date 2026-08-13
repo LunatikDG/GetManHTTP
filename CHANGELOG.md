@@ -24,6 +24,14 @@ Versions correspond to git tags (`v_X_Y_Z` tag → `X.Y.Z` version); see
 
 ## [Unreleased]
 
+### Added
+
+- Per-request settings form (issue #8): gear button next to Send, available only
+  for a selected request (disabled for folders). Own HTTP **timeout** (default:
+  inherit global / collection timeout) and **port** override (default: URI port
+  or 443 for HTTPS / 80 for HTTP). Native collection JSON stores request
+  `timeout` and `port`.
+
 ## [1.3.26] - 2026-08-12
 
 <a name="changelog-1-3-26-en"></a>
@@ -260,6 +268,14 @@ Versions correspond to git tags (`v_X_Y_Z` tag → `X.Y.Z` version); see
 ## Русский
 
 ## [Unreleased]
+
+### Добавлено
+
+- Форма настроек запроса (issue #8): шестерёнка рядом с кнопкой отправки, только
+  для выбранного запроса (для папки недоступна). Собственный HTTP-**таймаут**
+  (по умолчанию — глобальный / коллекции) и переопределение **порта** (по
+  умолчанию порт из URI либо 443 для HTTPS / 80 для HTTP). В native JSON
+  коллекции у запроса сохраняются `timeout` и `port`.
 
 ## [1.3.26] - 2026-08-12
 

@@ -1082,6 +1082,35 @@
           </picture>
           <representationInContextMenu>Auto</representationInContextMenu>
         </items>
+        <items xsi:type="form:Button">
+          <name>КнопкаНастройкиЗапроса</name>
+          <id>5300</id>
+          <visible>true</visible>
+          <enabled>true</enabled>
+          <userVisible>
+            <common>true</common>
+          </userVisible>
+          <extendedTooltip>
+            <name>КнопкаНастройкиЗапросаРасширеннаяПодсказка</name>
+            <id>5301</id>
+            <type>Label</type>
+            <autoMaxWidth>true</autoMaxWidth>
+            <autoMaxHeight>true</autoMaxHeight>
+            <extInfo xsi:type="form:LabelDecorationExtInfo">
+              <horizontalAlign>Left</horizontalAlign>
+            </extInfo>
+          </extendedTooltip>
+          <type>UsualButton</type>
+          <commandName>Form.Command.НастройкиЗапроса</commandName>
+          <representation>Picture</representation>
+          <autoMaxWidth>true</autoMaxWidth>
+          <autoMaxHeight>true</autoMaxHeight>
+          <placementArea>UserCmds</placementArea>
+          <picture xsi:type="core:PictureRef">
+            <picture>StdPicture.Setting</picture>
+          </picture>
+          <representationInContextMenu>Auto</representationInContextMenu>
+        </items>
         <visible>true</visible>
         <enabled>true</enabled>
         <userVisible>
@@ -4671,6 +4700,82 @@
     </edit>
   </attributes>
   <attributes>
+    <name>ИспользоватьТаймаутЗапросаПоУмолчанию</name>
+    <title>
+      <key>ru</key>
+      <value>Использовать таймаут запроса по умолчанию</value>
+    </title>
+    <id>5304</id>
+    <valueType>
+      <types>Boolean</types>
+    </valueType>
+    <view>
+      <common>true</common>
+    </view>
+    <edit>
+      <common>true</common>
+    </edit>
+  </attributes>
+  <attributes>
+    <name>ТаймаутЗапроса</name>
+    <title>
+      <key>ru</key>
+      <value>Таймаут запроса</value>
+    </title>
+    <id>5305</id>
+    <valueType>
+      <types>Number</types>
+      <numberQualifiers>
+        <precision>5</precision>
+        <nonNegative>true</nonNegative>
+      </numberQualifiers>
+    </valueType>
+    <view>
+      <common>true</common>
+    </view>
+    <edit>
+      <common>true</common>
+    </edit>
+  </attributes>
+  <attributes>
+    <name>ИспользоватьПортЗапросаПоУмолчанию</name>
+    <title>
+      <key>ru</key>
+      <value>Использовать порт запроса по умолчанию</value>
+    </title>
+    <id>5306</id>
+    <valueType>
+      <types>Boolean</types>
+    </valueType>
+    <view>
+      <common>true</common>
+    </view>
+    <edit>
+      <common>true</common>
+    </edit>
+  </attributes>
+  <attributes>
+    <name>ПортЗапроса</name>
+    <title>
+      <key>ru</key>
+      <value>Порт запроса</value>
+    </title>
+    <id>5307</id>
+    <valueType>
+      <types>Number</types>
+      <numberQualifiers>
+        <precision>5</precision>
+        <nonNegative>true</nonNegative>
+      </numberQualifiers>
+    </valueType>
+    <view>
+      <common>true</common>
+    </view>
+    <edit>
+      <common>true</common>
+    </edit>
+  </attributes>
+  <attributes>
     <name>АвтосохранениеВключено</name>
     <title>
       <key>ru</key>
@@ -5460,6 +5565,30 @@
     <action xsi:type="form:FormCommandHandlerContainer">
       <handler>
         <name>УдалитьЗапрос</name>
+      </handler>
+    </action>
+    <currentRowUse>DontUse</currentRowUse>
+  </formCommands>
+  <formCommands>
+    <name>НастройкиЗапроса</name>
+    <title>
+      <key>ru</key>
+      <value>Настройки запроса</value>
+    </title>
+    <id>5308</id>
+    <toolTip>
+      <key>ru</key>
+      <value>Настройки текущего HTTP-запроса</value>
+    </toolTip>
+    <use>
+      <common>true</common>
+    </use>
+    <picture xsi:type="core:PictureRef">
+      <picture>StdPicture.Setting</picture>
+    </picture>
+    <action xsi:type="form:FormCommandHandlerContainer">
+      <handler>
+        <name>НастройкиЗапроса</name>
       </handler>
     </action>
     <currentRowUse>DontUse</currentRowUse>

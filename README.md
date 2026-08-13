@@ -72,6 +72,11 @@ delete), a collection selected with its own settings.
 **Settings form** — HTTP timeout, auto-save interval, default execution
 context.
 
+**Per-request settings** (gear next to Send) — override HTTP timeout and TCP
+port for the selected request. Defaults inherit the global (or collection)
+timeout and the URI port / 443 (HTTPS) / 80 (HTTP). Unavailable when a folder
+is selected.
+
 ![Settings form](docs/images/settings-form.png)
 
 **Demo GIF** (optional but recommended) — record ~15–20 seconds: open the
@@ -238,6 +243,11 @@ RS256/RS384/RS512, PS256/PS384/PS512, ES256/ES384/ES512 (PEM приватный 
 
 **Форма настроек** — таймаут HTTP, интервал автосохранения, контекст
 выполнения по умолчанию.
+
+**Настройки запроса** (шестерёнка рядом с отправкой) — свой таймаут HTTP и
+TCP-порт для выбранного запроса. По умолчанию наследуются глобальный (или
+коллекции) таймаут и порт из URI / 443 (HTTPS) / 80 (HTTP). Для папки
+недоступны.
 
 ![Форма настроек](docs/images/settings-form.png)
 

@@ -70,12 +70,18 @@ delete), a collection selected with its own settings.
 ![Collections tree](docs/images/collections-tree.png)
 
 **Settings form** — HTTP timeout, auto-save interval, default execution
-context.
+context, history folder and entry limit (thick client; history is unavailable
+in the web client).
 
 **Per-request settings** (gear next to Send) — override HTTP timeout and TCP
 port for the selected request. Defaults inherit the global (or collection)
 timeout and the URI port / 443 (HTTPS) / 80 (HTTP). Unavailable when a folder
 is selected.
+
+**Request history** — left-panel tab next to collections: day-grouped send log
+on the user's PC. Client/Server HTTP mode only affects execution; history is
+always written on the client after the result is applied. Response bodies are
+not stored in v1.
 
 ![Settings form](docs/images/settings-form.png)
 
@@ -242,12 +248,18 @@ RS256/RS384/RS512, PS256/PS384/PS512, ES256/ES384/ES512 (PEM приватный 
 ![Дерево коллекций](docs/images/collections-tree.png)
 
 **Форма настроек** — таймаут HTTP, интервал автосохранения, контекст
-выполнения по умолчанию.
+выполнения по умолчанию, каталог и лимит **истории** запросов (толстый
+клиент; в веб-клиенте история недоступна).
 
 **Настройки запроса** (шестерёнка рядом с отправкой) — свой таймаут HTTP и
 TCP-порт для выбранного запроса. По умолчанию наследуются глобальный (или
 коллекции) таймаут и порт из URI / 443 (HTTPS) / 80 (HTTP). Для папки
 недоступны.
+
+**История запросов** — вкладка слева рядом с коллекциями: журнал отправок по
+дням (файлы на ПК пользователя). Режим HTTP Клиент/Сервер влияет только на
+выполнение запроса; история всегда пишется на клиенте после применения
+результата. Тела ответов в v1 не сохраняются.
 
 ![Форма настроек](docs/images/settings-form.png)
 

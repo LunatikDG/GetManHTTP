@@ -31,6 +31,14 @@ Versions correspond to git tags (`v_X_Y_Z` tag → `X.Y.Z` version); see
   inherit global / collection timeout) and **port** override (default: URI port
   or 443 for HTTPS / 80 for HTTP). Native collection JSON stores request
   `timeout` and `port`.
+- Request **History** tab (issue #23), Postman-like: left panel pages
+  **Collections | History**. After each send (success or error), the thick
+  client appends a JSONL entry under a user-configurable directory
+  (`manifest.json` + `YYYY-MM-dd.jsonl`), independent of Client/Server HTTP
+  mode (`sendMode` is only a field). Clicking a row loads the request snapshot
+  and status/time without writing into the collection tree. Settings: enable,
+  folder path, max entries (default 200). Disabled in the web client; secrets
+  in history are stored in plain text like collection export.
 
 ## [1.3.26] - 2026-08-12
 
@@ -276,6 +284,14 @@ Versions correspond to git tags (`v_X_Y_Z` tag → `X.Y.Z` version); see
   (по умолчанию — глобальный / коллекции) и переопределение **порта** (по
   умолчанию порт из URI либо 443 для HTTPS / 80 для HTTP). В native JSON
   коллекции у запроса сохраняются `timeout` и `port`.
+- Вкладка **История** (issue #23) в стиле Postman: слева страницы
+  **Коллекции | История**. После каждой отправки (успех или ошибка) толстый
+  клиент дописывает строку JSONL в каталог пользователя (`manifest.json` и
+  `YYYY-MM-dd.jsonl`), независимо от режима HTTP Клиент/Сервер (`sendMode` —
+  только поле записи). Клик по строке загружает снимок запроса и статус/время
+  без записи в дерево коллекций. В настройках: включение, путь к каталогу,
+  лимит записей (по умолчанию 200). В веб-клиенте выключено; секреты в истории
+  хранятся открытым текстом, как при экспорте коллекций.
 
 ## [1.3.26] - 2026-08-12
 
